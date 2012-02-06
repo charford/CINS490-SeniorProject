@@ -1,0 +1,11 @@
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.text_field :email, :placeholder => "email" %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password, :placeholder => "password" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login" %>
+  </div>
+<% end %>

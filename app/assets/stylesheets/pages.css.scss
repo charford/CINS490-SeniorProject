@@ -1,0 +1,38 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+nav {
+
+}
+
+nav ul {
+	item-style: none;
+}
+
+.main_content .signup_form {
+	border: 0pt dashed black;
+	width: 50%;
+	overflow: auto;
+	height: auto;
+	margin-left: 50%;
+	margin-bottom: 10pt;
+	padding: 10pt;
+}
+
+.signup_form .field input {
+	width: 250pt;
+	border: 1pt solid #ccc;
+	height: 17pt;
+	border-radius: 3pt;
+	-web-kit-border-radius: 3pt;
+	-moz-border-radius: 3pt;
+	margin-bottom: 10pt;
+}
+
+.welcome_message {
+	margin-top: 30pt;
+	margin-bottom: 50pt;
+	text-align: center;
+	font-weight: bold;
+	font-size: 50pt;
+}

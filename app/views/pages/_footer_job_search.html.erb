@@ -1,0 +1,11 @@
+<div class="search_form">
+<%= form_for(User.new) do |f| %>
+
+<div class="fields">
+	<%= f.text_field :email %>
+</div>
+<div class="actions">
+	<%= f.submit "Find a job" %>
+</div>
+<% end %>
+</div>

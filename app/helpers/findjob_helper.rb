@@ -1,0 +1,2 @@
+module FindjobHelper
+end

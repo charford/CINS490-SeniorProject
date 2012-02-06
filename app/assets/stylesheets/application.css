@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+.main_container {
+	top: 38pt;
+	margin-top: 0pt;
+	position: relative;
+	width: 768pt;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1pt dashed #eee;
+  box-shadow: 1px 1px 10px 1px #ccc;
+	height: auto;
+}
+
+.main_content {
+	width: 100%;
+	height: auto;
+	
+}
+
+.main_content .signup_form form .actions input {
+	background-color: #33cc99;
+	font-size: 22pt;
+	font-weight: bold;
+	padding: 10pt;
+	display: block;
+	border: 1pt solid #ccc;
+	border-radius: 3pt;
+	-web-kit-border-radius: 3pt;
+	-moz-border-radius: 3pt;
+	box-shadow: 0px 0px 10px 2px #ccc;
+}
+.main_content .signup_form form .actions input:hover {
+	background-color: #E1F5A9;
+}
+header {
+	position: fixed;
+	top: 0pt;
+	height: 45pt;
+	width: 774pt;
+	left: 50%;
+	margin-left: -387pt;
+	background-color: #eee;
+  border-bottom: 1pt solid #ccc;
+	box-shadow: 0px 0px 10px 1px gray;
+	z-index: 100;
+}
+
+header h1 {
+	position: relative;
+	top: 20pt;
+	left: 20pt;
+	padding: 0pt;
+	margin: 0pt;
+	font-size: 25pt;
+}
+
+header h1 span {
+	color: gray;
+	text-outline: 1pt solid black;
+}
+
+footer {
+	height: 45pt;
+	width: 774pt;
+	margin-left: -3pt;
+	background-color: #eee;
+	border-top: 1pt solid #ccc;
+	box-shadow: 0px 0px 10px 1px gray;
+	bottom: 0pt;
+}
+
+footer .search_form {
+	border: 0pt solid red;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300pt;
+	margin-top: 10pt;
+}
+footer .search_form .fields {
+	float: left;
+}
+
+footer .search_form .fields input,footer .search_form .actions input {
+	width: 200pt;
+	border: 1pt solid #ccc;
+	height: 17pt;
+	border-radius: 3pt;
+	-web-kit-border-radius: 3pt;
+	-moz-border-radius: 3pt;
+}
+footer .search_form .actions {
+	float:right;
+}
+footer .search_form .actions input {
+	width: 95pt;
+	background-color: #33cc99;
+	height: 20pt;
+}
+footer .search_form form input:hover {
+	border: 1pt solid maroon;
+}

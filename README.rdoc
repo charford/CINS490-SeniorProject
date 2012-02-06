@@ -1,1 +1,2 @@
 == JobApp
+An application to post and find jobs.

@@ -25,7 +25,11 @@
   </div>
   <div class="field">
     <%= f.label "Password" %><br />
-    <%= f.password_field :encrypted_password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label "Confirm Password" %><br />
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
     <%= f.submit "Sign up" %>

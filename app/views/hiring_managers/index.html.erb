@@ -1,0 +1,23 @@
+<h1>Listing hiring_managers</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hiring_managers.each do |hiring_manager| %>
+  <tr>
+    <td><%= hiring_manager.user_id %></td>
+    <td><%= link_to 'Show', hiring_manager %></td>
+    <td><%= link_to 'Edit', edit_hiring_manager_path(hiring_manager) %></td>
+    <td><%= link_to 'Destroy', hiring_manager, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hiring manager', new_hiring_manager_path %>

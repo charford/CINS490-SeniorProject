@@ -2,13 +2,28 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   attr_accessor :password
   
+  validates :email,                 :presence => true,
+                                    :uniqueness => true,
+                                    :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }
+                                    
+  validates :firstname,             :presence => true
+  
+  validates :lastname,              :presence => true
+  
+  validates :password,              :presence => true,
+                                    :confirmation => true
+                                    
+  validates :password_confirmation, :presence => true
+
+                    
+  
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
   
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
-    return if user.nil?
+    return nil if user.nil?
     return user if user.has_password?(submitted_password)
   end
   

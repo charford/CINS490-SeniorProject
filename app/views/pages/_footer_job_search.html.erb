@@ -2,7 +2,7 @@
 <%= form_for(User.new) do |f| %>
 
 <div class="fields">
-	<%= f.text_field :email %>
+	<%= f.text_field :email, :placeholder => "Stop dreaming, start searching!" %>
 </div>
 <div class="actions">
 	<%= f.submit "Find a job" %>

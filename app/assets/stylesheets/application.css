@@ -19,14 +19,15 @@
 	margin-left: auto;
 	margin-right: auto;
 	border: 1pt dashed #eee;
-  box-shadow: 1px 1px 10px 1px #ccc;
+  	box-shadow: 1px 1px 10px 1px #ccc;
 	height: auto;
+
 }
 
 .main_content {
 	width: 100%;
 	height: auto;
-	
+	overflow: auto;
 }
 
 .main_content .signup_form form .actions input {
@@ -86,19 +87,23 @@ footer .search_form {
 	margin-left: auto;
 	margin-right: auto;
 	width: 300pt;
-	margin-top: 10pt;
+	height: 20pt;
+	margin-top: 12pt;
 }
 footer .search_form .fields {
 	float: left;
+
 }
 
 footer .search_form .fields input,footer .search_form .actions input {
-	width: 200pt;
+	width: 190pt;
 	border: 1pt solid #ccc;
 	height: 17pt;
 	border-radius: 3pt;
 	-web-kit-border-radius: 3pt;
 	-moz-border-radius: 3pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
 }
 footer .search_form .actions {
 	float:right;

@@ -2,11 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 nav {
-
+	margin-top: 10pt;
+	float: right;
 }
 
-nav ul {
-	item-style: none;
+nav span {
+	padding-right: 10pt;
+	float: right;
+	display: block;
+}
+
+nav span a {
+	display: block;
+	font-weight: bold;
 }
 
 .main_content .signup_form {
@@ -27,6 +35,8 @@ nav ul {
 	-web-kit-border-radius: 3pt;
 	-moz-border-radius: 3pt;
 	margin-bottom: 10pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
 }
 
 .welcome_message {
@@ -35,4 +45,22 @@ nav ul {
 	text-align: center;
 	font-weight: bold;
 	font-size: 50pt;
+}
+.content_with_nav {
+	width: 80%;
+  border-left: 1pt dashed #ccc;
+	float: right;
+  padding: 5pt;
+
+}
+.main_side_nav {
+	width: 18%;
+	height: 100%;
+  clear: right;
+  float: left;
+}
+
+.clear_floats {
+	clear: both;
+
 }

@@ -1,4 +1,8 @@
 JobmeApp::Application.routes.draw do
+  resources :jobs
+
+  resources :hiring_managers
+
   resources :users
   resources :pages
   root :to => 'pages#index'

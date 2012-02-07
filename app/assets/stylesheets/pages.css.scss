@@ -1,18 +1,20 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-nav {
+header nav {
 	margin-top: 10pt;
 	float: right;
+	position: relative;
+	z-index: 101;
 }
 
-nav span {
+header nav span {
 	padding-right: 10pt;
 	float: right;
 	display: block;
 }
 
-nav span a {
+header nav span a {
 	display: block;
 	font-weight: bold;
 }
@@ -50,7 +52,7 @@ nav span a {
 	width: 80%;
   border-left: 1pt dashed #ccc;
 	float: right;
-  padding: 5pt;
+  min-height: 420pt;
 
 }
 .main_side_nav {
@@ -62,5 +64,13 @@ nav span a {
 
 .clear_floats {
 	clear: both;
-
+  	height: 1pt;
+}
+.index_info {
+  float: left;
+  padding-left: 40pt;
+  padding-top: 10pt;
+}
+.content_with_nav h1 {
+  padding: 10pt;
 }

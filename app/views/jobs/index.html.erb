@@ -1,10 +1,11 @@
 <%= render 'pages/side_nav' %>
 <div class="content_with_nav">
+<p id="notice"><%= notice %></p>
   <h1>Listing jobs</h1>
 
   <table>
     <tr>
-      <th>Name</th>
+      <th>position</th>
       <th>Description</th>
       <th>Requirements</th>
       <th>Hiring manager</th>
@@ -15,10 +16,10 @@
 
   <% @jobs.each do |job| %>
     <tr>
-      <td><%= job.name %></td>
+      <td><%= job.position %></td>
       <td><%= job.description %></td>
       <td><%= job.requirements %></td>
-      <td><%= job.hiring_manager_id %></td>
+      <td><%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></td>
       <td><%= link_to 'Show', job %></td>
       <td><%= link_to 'Edit', edit_job_path(job) %></td>
       <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>

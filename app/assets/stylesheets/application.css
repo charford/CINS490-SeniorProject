@@ -53,7 +53,7 @@ header {
 	left: 50%;
 	margin-left: -387pt;
 	background-color: #eee;
-  border-bottom: 1pt solid #ccc;
+  	border-bottom: 1pt solid #ccc;
 	box-shadow: 0px 0px 10px 1px gray;
 	z-index: 100;
 }
@@ -108,7 +108,7 @@ footer .search_form .fields input,footer .search_form .actions input {
 footer .search_form .actions {
 	float:right;
 }
-footer .search_form .actions input {
+footer .search_form .actions input, {
 	width: 95pt;
 	background-color: #33cc99;
 	height: 20pt;

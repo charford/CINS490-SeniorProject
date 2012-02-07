@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    "#{username}"
+    "#{firstname} #{lastname}"
   end
   
   private

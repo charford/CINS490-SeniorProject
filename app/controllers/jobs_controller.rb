@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_filter :validate_hiring_manager, :except => [:show, :index]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -40,6 +41,8 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    params[:job][:hiring_manager_id] = HiringManager.find_by_user_id(current_user.id).id
+    
     @job = Job.new(params[:job])
 
     respond_to do |format|
@@ -80,4 +83,10 @@ class JobsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def validate_hiring_manager
+      redirect_to jobs_path, notice: 'You must be a hiring manager to post a job.'
+    end
 end

@@ -25,3 +25,18 @@
 	border: 0pt solid black;
 	padding: 10pt;
 }
+
+.job_container {
+	border: 0pt dashed black;
+}
+
+.job_container ul {
+	list-style: none;
+
+}
+.job_separator {
+	border-top: 1pt dashed #eee;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}

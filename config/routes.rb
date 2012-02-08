@@ -1,5 +1,11 @@
 JobmeApp::Application.routes.draw do
-  resources :jobs
+  resources :evaluators
+
+  resources :ratings
+  
+  resources :jobs do
+    resources :applicants
+  end
 
   resources :hiring_managers
 

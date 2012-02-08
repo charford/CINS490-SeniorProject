@@ -87,6 +87,7 @@ class JobsController < ApplicationController
   private
 
     def validate_hiring_manager
+      return if HiringManager.find_by_user_id(current_user)
       redirect_to jobs_path, notice: 'You must be a hiring manager to post a job.'
     end
 end

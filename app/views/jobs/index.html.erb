@@ -3,29 +3,23 @@
 <p id="notice"><%= notice %></p>
   <h1>Listing jobs</h1>
 
-  <table>
-    <tr>
-      <th>position</th>
-      <th>Description</th>
-      <th>Requirements</th>
-      <th>Hiring manager</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
   <% @jobs.each do |job| %>
-    <tr>
-      <td><%= job.position %></td>
-      <td><%= job.description %></td>
-      <td><%= job.requirements %></td>
-      <td><%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></td>
-      <td><%= link_to 'Show', job %></td>
-      <td><%= link_to 'Edit', edit_job_path(job) %></td>
-      <td><%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %></td>
-    </tr>
+    <div class="job_container">
+      <ul> 
+        <li>Position: <%= job.position %></li>
+        <li>Description: <%= job.description %></li>
+        <li>Requirements: <%= job.requirements %></li>
+        <li>Hiring Manager: <%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></li>
+        <% if is_a_hiring_manager? %>
+          <li><%= link_to 'Show', job %> |  
+          <%= link_to 'Edit', edit_job_path(job) %> | 
+          <%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %> |
+          <%= link_to 'Applicants', job_applicants_path(job) %>(<%= job.applicants.count %>)</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="job_separator"></div>
   <% end %>
-  </table>
 
   <br />
 

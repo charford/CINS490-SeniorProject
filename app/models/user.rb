@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
                                     
   validates :password_confirmation, :presence => true
 
-                    
+  has_many :jobs, :through => :applicants
+  belongs_to :evaluator
+  belongs_to :hiringmanager
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

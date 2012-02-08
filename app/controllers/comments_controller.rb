@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   before_filter :is_admin?, :except => [:show,:new,:create,:update]
   before_filter :is_faculty?
   before_filter :get_job_and_applicant
-  # GET /applicant_comments
-  # GET /applicant_comments.json
+  # GET /comments
+  # GET /comments.json
   def index
     @comments = Comment.all
 
@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /applicant_comments/1
-  # GET /applicant_comments/1.json
+  # GET /comments/1
+  # GET /comments/1.json
   def show
     @comment = Comment.find(params[:id])
 
@@ -22,8 +22,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /applicant_comments/new
-  # GET /applicant_comments/new.json
+  # GET /comments/new
+  # GET /comments/new.json
   def new
     @comment = Comment.new
 
@@ -32,13 +32,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /applicant_comments/1/edit
+  # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
   end
 
-  # POST /applicant_comments
-  # POST /applicant_comments.json
+  # POST /comments
+  # POST /comments.json
   def create
     params[:comment][:applicant_id] = @applicant.id
     params[:comment][:user_id] = current_user.id
@@ -53,8 +53,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PUT /applicant_comments/1
-  # PUT /applicant_comments/1.json
+  # PUT /comments/1
+  # PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
 
@@ -67,14 +67,14 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /applicant_comments/1
-  # DELETE /applicant_comments/1.json
+  # DELETE /comments/1
+  # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to job_applicant_comments_url }
+      format.html { redirect_to job_comments_url }
     end
   end
   private

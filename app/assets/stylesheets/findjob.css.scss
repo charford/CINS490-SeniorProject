@@ -1,3 +1,24 @@
 // Place all the styles related to the findjob controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+footer .search_form .fields input,footer .search_form .actions input {
+	width: 190pt;
+	border: 1pt solid #ccc;
+	height: 17pt;
+	border-radius: 3pt;
+	-web-kit-border-radius: 3pt;
+	-moz-border-radius: 3pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+}
+footer .search_form .actions {
+	float:right;
+}
+footer .search_form .actions input {
+	width: 95pt;
+	background-color: #33cc99;
+	height: 20pt;
+}
+footer .search_form form input:hover {
+	border: 1pt solid maroon;
+}

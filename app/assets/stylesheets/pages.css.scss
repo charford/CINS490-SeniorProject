@@ -1,6 +1,89 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main_container {
+	top: 38pt;
+	margin-top: 0pt;
+	position: relative;
+	width: 768pt;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1pt dashed #eee;
+  	box-shadow: 1px 1px 10px 1px #ccc;
+	height: auto;
+
+}
+
+.main_content {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+}
+
+.main_content .signup_form form .actions input {
+	background-color: #33cc99;
+	font-size: 22pt;
+	font-weight: bold;
+	padding: 10pt;
+	display: block;
+	border: 1pt solid #ccc;
+	border-radius: 3pt;
+	-web-kit-border-radius: 3pt;
+	-moz-border-radius: 3pt;
+	box-shadow: 0px 0px 10px 2px #ccc;
+}
+.main_content .signup_form form .actions input:hover {
+	background-color: #E1F5A9;
+}
+header {
+	position: fixed;
+	top: 0pt;
+	height: 45pt;
+	width: 774pt;
+	left: 50%;
+	margin-left: -387pt;
+	background-color: #eee;
+  	border-bottom: 1pt solid #ccc;
+	box-shadow: 0px 0px 10px 1px gray;
+	z-index: 100;
+}
+
+header h1 {
+	position: relative;
+	top: 20pt;
+	left: 20pt;
+	padding: 0pt;
+	margin: 0pt;
+	font-size: 25pt;
+}
+
+header h1 span {
+	color: gray;
+	text-outline: 1pt solid black;
+}
+
+footer {
+	height: 45pt;
+	width: 774pt;
+	margin-left: -3pt;
+	background-color: #eee;
+	border-top: 1pt solid #ccc;
+	box-shadow: 0px 0px 10px 1px gray;
+	bottom: 0pt;
+}
+
+footer .search_form {
+	border: 0pt solid red;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300pt;
+	height: 20pt;
+	margin-top: 12pt;
+}
+footer .search_form .fields {
+	float: left;
+
+}
 header nav {
 	margin-top: 10pt;
 	float: right;

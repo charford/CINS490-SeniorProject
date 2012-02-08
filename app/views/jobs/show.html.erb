@@ -20,6 +20,8 @@
   <%= @job.hiring_manager_id %>
 </p>
 
-
+<%= link_to "Apply", new_job_applicant_path(@job) %> |
+<% if is_a_hiring_manager? %>
 <%= link_to 'Edit', edit_job_path(@job) %> |
+<% end %>
 <%= link_to 'Back', jobs_path %>

@@ -7,7 +7,6 @@ class AdministratorsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @administrators }
     end
   end
 
@@ -18,7 +17,6 @@ class AdministratorsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @administrator }
     end
   end
 
@@ -29,7 +27,6 @@ class AdministratorsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @administrator }
     end
   end
 
@@ -46,10 +43,8 @@ class AdministratorsController < ApplicationController
     respond_to do |format|
       if @administrator.save
         format.html { redirect_to @administrator, notice: 'Administrator was successfully created.' }
-        format.json { render json: @administrator, status: :created, location: @administrator }
       else
         format.html { render action: "new" }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,10 +57,8 @@ class AdministratorsController < ApplicationController
     respond_to do |format|
       if @administrator.update_attributes(params[:administrator])
         format.html { redirect_to @administrator, notice: 'Administrator was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,7 +71,6 @@ class AdministratorsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to administrators_url }
-      format.json { head :no_content }
     end
   end
   private

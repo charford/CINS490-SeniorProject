@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @comments }
     end
   end
 
@@ -20,7 +19,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @comment }
     end
   end
 
@@ -31,7 +29,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @comment }
     end
   end
 
@@ -48,10 +45,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Applicant comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +59,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update_attributes(params[:applicant_comment])
         format.html { redirect_to @comment, notice: 'Applicant comment was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,7 +73,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to applicant_comments_url }
-      format.json { head :no_content }
     end
   end
   private

@@ -7,7 +7,7 @@
 
 <p>
   <b>User:</b>
-  <%= @_comment.user_id %>
+  <%= @comment.user_id %>
 </p>
 
 <p>
@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_job_applicant_comment_path(@job,@applicant,@comment) %> |
+<%= link_to 'Back', job_applicant_comments_path(@job,@applicant) %>

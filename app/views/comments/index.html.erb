@@ -15,9 +15,9 @@
     <td><%= comment.applicant_id %></td>
     <td><%= comment.user_id %></td>
     <td><%= comment.body %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', job_applicant_comment_path(@job,@applicant,comment) %></td>
+    <td><%= link_to 'Edit', edit_job_applicant_comment_path(@job,@applicant,comment) %></td>
+    <td><%= link_to 'Destroy', job_applicant_comment_path(@job,@applicant,comment), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

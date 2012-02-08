@@ -10,6 +10,13 @@
   <%= @applicant.job_id %>
 </p>
 
+<p>
+  <b>Comments:</b>
+  <% @applicant.comments.each do |comment| %>
+  <p><%= comment.user %></p>
+  <p><%= comment.body %></p>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_job_applicant_path(@applicant) %> |
 <%= link_to 'Back', job_applicants_path %>

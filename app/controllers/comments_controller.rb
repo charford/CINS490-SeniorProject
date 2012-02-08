@@ -40,11 +40,13 @@ class CommentsController < ApplicationController
   # POST /applicant_comments
   # POST /applicant_comments.json
   def create
-    @comment = Comment.new(params[:applicant_comment])
+    params[:comment][:applicant_id] = @applicant.id
+    params[:comment][:user_id] = current_user.id
+    @comment = Comment.new(params[:comment])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Applicant comment was successfully created.' }
+        format.html { redirect_to [@job,@applicant,@comment], notice: 'Applicant comment was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -72,7 +74,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to applicant_comments_url }
+      format.html { redirect_to job_applicant_comments_url }
     end
   end
   private

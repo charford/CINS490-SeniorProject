@@ -1,9 +1,15 @@
 <div class="welcome_message">Do what you love.</div>
 <div class="index_info">
-	<%= image_tag '/assets/job_listings.jpg' %>
+  <% if signed_in? %>
+	  <%= image_tag '/assets/job_listings.jpg' %>
+  <% else %>
+    <%= render 'jobs/new_jobs' %>
+  <% end %>
 </div>
 <% if !signed_in? %>
 <div class="signup_form">
 	<%= render 'users/form' %>
 </div>
+<% else %>
+  <%= render 'jobs/new_jobs' %>
 <% end %>

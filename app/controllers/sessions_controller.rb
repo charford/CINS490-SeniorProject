@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email], params[:session][:password]);
     if user.nil?
       @title = "Login"
-      redirect_to login_path, :notice =>  "Grabatar was unable to authenticate, please try again."
+      redirect_to login_path, :notice =>  "Unable to authenticate, please try again."
     else
       sign_in user
       redirect_to root_path, :notice => "Created Account Successfully!"

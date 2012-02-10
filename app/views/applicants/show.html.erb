@@ -11,7 +11,7 @@
 </p>
 <p>
   <b>Rating:</b>
-  <%= get_applicant_rating %>
+  <%= get_applicant_rating @applicant %>
 </p>
 <p>
   <b>Comments:</b>
@@ -20,6 +20,7 @@
   <p><%= comment.body %></p>
   <% end %>
 </p>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_job_applicant_path(@applicant) %> |
 <%= link_to 'Back', job_applicants_path %>

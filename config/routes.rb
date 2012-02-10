@@ -4,12 +4,11 @@ JobmeApp::Application.routes.draw do
   resources :administrators
 
   resources :evaluators
-
-  resources :ratings
   
   resources :jobs do
     resources :applicants do
       resources :comments
+      resources :ratings
     end
   end
 

@@ -5,7 +5,7 @@ class Applicant < ActiveRecord::Base
   has_many :ratings
   validates :user_id, :uniqueness => { :scope => :job_id},
                       :presence   => true
-  validates :job_id,  :uniqueness => true
+  validates :job_id,  :presence => true
 
    def to_param
     @user = User.find(user_id)

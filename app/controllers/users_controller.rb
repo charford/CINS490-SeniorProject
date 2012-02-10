@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_filter :authenticate, :except => [:new, :create, :show]
-  # before_filter :correct_user, :only => [:edit, :update, :destroy]
+  before_filter :authenticate, :except => [:new, :create, :show]
+  before_filter :correct_user
 
   # GET /users
   # GET /users.json
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User was successfully created.' }
       else
         #format.html { render action: "new" }
         format.html { render 'pages/index' }
@@ -80,6 +80,7 @@ class UsersController < ApplicationController
   private
   
   def correct_user
-    redirect_to(root_path) unless current_user?(User.find(params[:id]))
+    return if !Administrator.find_by_user_id(current_user).nil?
+  #  redirect_to(root_path) unless (User.find(params[:id]))
   end
 end

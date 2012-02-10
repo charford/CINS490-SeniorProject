@@ -10,18 +10,17 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :applicant_id %><br />
-    <%= f.number_field :applicant_id %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluator_id %><br />
-    <%= f.text_field :evaluator_id %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating %>
+    <%= f.label "1" %>
+    <%= f.radio_button :rating, '1' %><br />
+    <%= f.label "2" %>
+    <%= f.radio_button :rating, '2' %><br />
+    <%= f.label "3" %>
+    <%= f.radio_button :rating, '3' %><br />
+    <%= f.label "4" %>
+    <%= f.radio_button :rating, '4' %><br />
+    <%= f.label "5" %>
+    <%= f.radio_button :rating, '5' %>
   </div>
   <div class="actions">
     <%= f.submit %>

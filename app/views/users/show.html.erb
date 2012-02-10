@@ -16,8 +16,12 @@
 </p>
 
 <p>
-  <b>User type:</b>
-  <%= @user.user_type %>
+	<b>Jobs applied for:</b>
+  <ul>
+	<% @user.jobs.each do |job| %>
+    <li><%= link_to job.position, job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago</li>
+  <% end %>
+  </ul>
 </p>
 
 

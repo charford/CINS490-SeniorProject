@@ -40,3 +40,24 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.new_jobs_container {
+	border: 0pt dashed #eee;
+  width: 300pt;
+  height: 200pt;
+  float: right;
+  margin-right: 70pt;
+  margin-top: 30pt;
+}
+
+.new_jobs_container ul {
+  list-style: none;
+  margin-left: -15pt;
+}
+
+.new_jobs_container li {
+  margin-bottom: 18pt;
+}
+
+.new_jobs_container h1 {
+  margin-bottom: 20pt;
+}

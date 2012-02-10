@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@job,@applicant,@comment], notice: 'Applicant comment was successfully created.' }
+        format.html { redirect_to [@job,@applicant], notice: 'Applicant comment was successfully created.' }
       else
         format.html { render action: "new" }
       end

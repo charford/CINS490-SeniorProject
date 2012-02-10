@@ -1,0 +1,10 @@
+<div class="new_jobs_container">
+  <h1>New Job Postings</h1>
+  <ul>
+  <% Job.all.each do |job| %>
+    <li>
+      <%= link_to job.position, job %>
+    </li>
+  <% end %>
+  <ul>
+</div>

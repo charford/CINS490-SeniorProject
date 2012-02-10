@@ -1,8 +1,9 @@
 class RatingsController < ApplicationController
+  before_filter :get_job_and_applicant
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
+    @ratings = @applicant.ratings
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,11 +38,14 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
+    params[:rating][:applicant_id] = params[:applicant_id]
+    params[:rating][:evaluator_id] = Evaluator.find_by_user_id(current_user).id
+
     @rating = Rating.new(params[:rating])
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
+        format.html { redirect_to [@job,@applicant], notice: 'Rating was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -69,7 +73,14 @@ class RatingsController < ApplicationController
     @rating.destroy
 
     respond_to do |format|
-      format.html { redirect_to ratings_url }
+      format.html { redirect_to job_applicant_ratings_url(@job,@applicant) }
     end
   end
+
+  private
+
+    def get_job_and_applicant
+      @job = Job.find(params[:job_id])
+      @applicant = Applicant.find(params[:applicant_id])
+    end
 end

@@ -1,0 +1,83 @@
+class QuestionsController < ApplicationController
+  before_filter :get_job
+
+  # GET /questions
+  # GET /questions.json
+  def index
+    #@questions = Question.all
+    @questions = @job.questions
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  # GET /questions/1
+  # GET /questions/1.json
+  def show
+    @question = Question.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
+  # GET /questions/new
+  # GET /questions/new.json
+  def new
+    @question = Question.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  # GET /questions/1/edit
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  # POST /questions
+  # POST /questions.json
+  def create
+    params[:question][:job_id] = @job.id
+    @question = Question.new(params[:question])
+
+    respond_to do |format|
+      if @question.save
+        format.html { redirect_to [@job,@question], notice: 'Question was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
+  end
+
+  # PUT /questions/1
+  # PUT /questions/1.json
+  def update
+    @question = Question.find(params[:id])
+
+    respond_to do |format|
+      if @question.update_attributes(params[:question])
+        format.html { redirect_to [@job,@question], notice: 'Question was successfully updated.' }
+      else
+        format.html { render action: "edit" }
+      end
+    end
+  end
+
+  # DELETE /questions/1
+  # DELETE /questions/1.json
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+
+    respond_to do |format|
+      format.html { redirect_to job_questions_url(@job) }
+    end
+  end
+  private
+    def get_job
+      @job = Job.find(params[:job_id])
+    end
+end

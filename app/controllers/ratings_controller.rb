@@ -39,12 +39,16 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     params[:rating][:applicant_id] = params[:applicant_id]
-    params[:rating][:evaluator_id] = Evaluator.find_by_user_id(current_user).id
+    evaluator = Evaluator.find_by_user_id(current_user)
+    evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
+    params[:rating][:evaluator_id] = evaluator.id
 
     @rating = Rating.new(params[:rating])
 
     respond_to do |format|
       if @rating.save
+        applicant = Applicant.find(@rating.applicant_id)
+        applicant.update_attribute(:avgrating, applicant.ratings.average('rating'))
         format.html { redirect_to [@job,@applicant], notice: 'Rating was successfully created.' }
       else
         format.html { render action: "new" }

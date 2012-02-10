@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="full_width_content">
+  <%= render 'pages/tabs' %>
+  <div class="fwc_body">
 <p>
   <b>User:</b>
   <%= @applicant.user_id %>
@@ -14,9 +16,26 @@
   <%= get_applicant_rating @applicant %>
 </p>
 <p>
+  </b>Answers:</b>
+  <ul>
+    <% @applicant.answers.each do |answer| %>
+      <li>
+        Question:<br />
+        <p>
+          <%= answer.question.body %>
+        </p>
+        Answer:<br />
+        <p>
+          <%= answer.body %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</p>
+<p>
   <b>Comments:</b>
   <% @applicant.comments.each do |comment| %>
-  <p><%= comment.user %></p>
+  <p><%= User.find(comment.user_id) %></p>
   <p><%= comment.body %></p>
   <% end %>
 </p>
@@ -24,3 +43,5 @@
 
 <%= link_to 'Edit', edit_job_applicant_path(@applicant) %> |
 <%= link_to 'Back', job_applicants_path %>
+</div>
+</div>

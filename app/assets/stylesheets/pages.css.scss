@@ -157,3 +157,52 @@ header nav span a {
 .content_with_nav h1 {
   padding: 10pt;
 }
+
+.full_width_content {
+  width: 95%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20pt;
+  margin-bottom: 18pt;
+}
+.full_width_content nav {
+  border: 0pt solid black;
+  width: 100%;
+  overflow: auto;
+}
+#notice {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
+.full_width_content nav span {
+  border-left: 1pt dashed #ccc;
+  border-right: 1pt dashed #ccc;
+  border-top: 1pt dashed #ccc;
+  float: left;
+  margin-right: 5pt;
+  padding-left: 8pt;
+  padding-right: 8pt;
+  padding-top: 4pt;
+  padding-bottom: 4pt;
+  border-radius: 3pt;
+  font-weight: bold;
+}
+.full_width_content .fwc_body {
+  border: 1pt dashed #ccc;
+  border-radius: 0pt 3pt 3pt 3pt;
+}
+.fwc_body table {
+  width: 100%;
+  border: 0pt solid black;
+  padding: 10pt;
+}
+.fwc_body th {
+  text-align: left;
+}
+
+.fwc_body td {
+  padding-top: 8pt;
+}

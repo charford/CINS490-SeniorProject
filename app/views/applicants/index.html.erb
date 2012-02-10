@@ -1,30 +1,27 @@
-<h1>Listing applicants</h1>
 <p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <%= render 'pages/tabs' %>
+  <div class="fwc_body">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Applied</th>
+        <th>Average Rating</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Job</th>
-    <th>Applied</th>
-    <th>Rating</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @applicants.each do |applicant| %>
-  <tr>
-    <td><%= applicant.user_id %></td>
-    <td><%= applicant.job_id %></td>
-    <td><%= applicant.created_at %></td>
-    <td><%= get_applicant_rating(applicant) %></td>
-    <td><%= link_to 'Show', job_applicant_path(@job,applicant) %></td>
-    <td><%= link_to 'Edit', edit_job_applicant_path(@job,applicant) %></td>
-    <td><%= link_to 'Destroy', job_applicant_path(@job,applicant), confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Applicant', new_job_applicant_path %>
+    <% @applicants.each do |applicant| %>
+      <tr>
+        <td><%= link_to applicant.user, job_applicant_path(@job,applicant) %></td>
+        <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+        <td><%= applicant.avgrating %></td>
+        <td><%= link_to 'Show', job_applicant_path(@job,applicant) %></td>
+        <td><%= link_to 'Edit', edit_job_applicant_path(@job,applicant) %></td>
+        <td><%= link_to 'Destroy', job_applicant_path(@job,applicant), confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

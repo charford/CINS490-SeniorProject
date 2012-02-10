@@ -87,9 +87,9 @@ class CommentsController < ApplicationController
       redirect_to root_path, notice: 'You do not have permission to perform this action.'
     end
     def is_faculty?
-      return if Administrator.find_by_user_id(current_user)
-      return if HiringManager.find_by_user_id(current_user)
-      return if Evaluator.find_by_user_id(current_user)
+      return if !Administrator.find_by_user_id(current_user).nil?
+      return if !HiringManager.find_by_user_id(current_user).nil?
+      return if !Evaluator.find_by_user_id(current_user).nil?
       redirect_to root_path, notice: 'You do not have permission to perform this action.'
     end
 end

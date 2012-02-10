@@ -26,5 +26,5 @@
 
   <br />
 
-  <%= link_to 'New Job', new_job_path %>
+  <%= link_to 'New Job', new_job_path if is_a_hiring_manager? %>
 </div>

@@ -47,7 +47,7 @@ class UsersController < ApplicationController
         format.html { redirect_to login_path, notice: 'User was successfully created.' }
       else
         #format.html { render action: "new" }
-        format.html { render 'pages/index' }
+        format.html { render action: "new" }
       end
     end
   end

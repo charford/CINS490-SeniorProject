@@ -3,6 +3,7 @@ class Applicant < ActiveRecord::Base
   belongs_to :job
   has_many   :comments
   has_many :ratings
+  has_many :answers
   validates :user_id, :uniqueness => { :scope => :job_id},
                       :presence   => true
   validates :job_id,  :presence => true

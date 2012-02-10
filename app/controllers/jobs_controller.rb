@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_filter :validate_administrator, :except => [:show, :index, :update, :new]
   before_filter :validate_hiring_manager, :except => [:show, :index]
   # GET /jobs
   # GET /jobs.json
@@ -38,7 +39,9 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    params[:job][:hiring_manager_id] = HiringManager.find_by_user_id(current_user.id).id
+    hiring_manager = HiringManager.find_by_user_id(current_user.id)
+    hiring_manager.nil? ? hiring_manager = Administrator.find_by_user_id(current_user.id) : nil
+    params[:job][:hiring_manager_id] = hiring_manager.id
     
     @job = Job.new(params[:job])
 
@@ -78,7 +81,13 @@ class JobsController < ApplicationController
 
   private
 
+    def validate_administrator
+      return if Administrator.find_by_user_id(current_user)
+      redirect_to jobs_path, notice: 'You must be an Administrator to perform this task.'
+    end
+
     def validate_hiring_manager
+      return if Administrator.find_by_user_id(current_user)
       return if HiringManager.find_by_user_id(current_user)
       redirect_to jobs_path, notice: 'You must be a hiring manager to post a job.'
     end

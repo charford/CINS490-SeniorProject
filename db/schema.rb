@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210030949) do
+ActiveRecord::Schema.define(:version => 20120210055458) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "applicant_id"
+    t.text     "body"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "applicant_questions", :force => true do |t|
@@ -38,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120210030949) do
     t.integer  "job_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "avgrating"
   end
 
   create_table "comments", :force => true do |t|
@@ -67,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20120210030949) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "position"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "job_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ratings", :force => true do |t|

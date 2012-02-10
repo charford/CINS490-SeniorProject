@@ -15,8 +15,8 @@
     <td><%= link_to rating.applicant_id, job_applicant_path(@job,@applicant) %></td>
     <td><%= rating.evaluator_id %></td>
     <td><%= rating.rating %></td>
-    <td><%= link_to 'Show', rating %></td>
-    <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+    <td><%= link_to 'Show', job_applicant_rating_path(@job,@applicant,rating) %></td>
+    <td><%= link_to 'Edit', edit_job_applicant_rating_path(@job,@applicant,rating) %></td>
     <td><%= link_to 'Destroy', job_applicant_rating_path(@job,@applicant,rating), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>

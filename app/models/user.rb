@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    "#{firstname} #{lastname}"
+    "#{firstname.capitalize} #{lastname.capitalize}"
   end
   
   private

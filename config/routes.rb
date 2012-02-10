@@ -1,16 +1,18 @@
 JobmeApp::Application.routes.draw do
   
 
-  resources :applicant_responses
+  resources :answers
 
-  resources :applicant_questions
+  resources :questions
 
   resources :administrators
 
   resources :evaluators
   
   resources :jobs do
+    resources :questions
     resources :applicants do
+      resources :answers
       resources :comments
       resources :ratings
     end

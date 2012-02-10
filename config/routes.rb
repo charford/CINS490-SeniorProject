@@ -1,6 +1,10 @@
 JobmeApp::Application.routes.draw do
   
 
+  resources :applicant_responses
+
+  resources :applicant_questions
+
   resources :administrators
 
   resources :evaluators

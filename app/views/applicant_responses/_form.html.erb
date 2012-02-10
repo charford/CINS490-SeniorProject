@@ -1,0 +1,25 @@
+<%= form_for(@applicant_response) do |f| %>
+  <% if @applicant_response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant_response.errors.count, "error") %> prohibited this applicant_response from being saved:</h2>
+
+      <ul>
+      <% @applicant_response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :applicant_id %><br />
+    <%= f.number_field :applicant_id %>
+  </div>
+  <div class="field">
+    <%= f.label :response %><br />
+    <%= f.text_area :response %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

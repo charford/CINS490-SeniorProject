@@ -1,0 +1,2 @@
+module ApplicantResponsesHelper
+end

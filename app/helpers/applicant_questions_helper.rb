@@ -1,0 +1,2 @@
+module ApplicantQuestionsHelper
+end

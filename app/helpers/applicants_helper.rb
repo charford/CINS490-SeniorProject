@@ -8,7 +8,7 @@ module ApplicantsHelper
     if applicant.ratings.where("evaluator_id = ?", evaluator.id).empty?
       render 'ratings/rate_applicant'
     else
-      !applicant.ratings.empty? ? sprintf("%.2f",applicant.ratings.average('rating')) : "None"
+      !applicant.ratings.empty? ? applicant.avgrating : "None"
     end
   end
 end

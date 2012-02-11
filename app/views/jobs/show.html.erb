@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class="full_width_content">
 <%= render 'pages/tabs' %>
 <div class="fwc_body">
@@ -14,8 +13,28 @@
 </p>
 
 <p>
-  <b>Requirements:</b>
-  <%= @job.requirements %>
+  <b>Minimum Qualifications:</b>
+  <%= @job.minimum_qualifications %>
+</p>
+
+<p>
+  <b>Preferred Qualifications:</b>
+  <%= @job.preferred_qualifications %>
+</p>
+
+<p>
+  <b>Responsibilities:</b>
+  <%= @job.responsibilities %>
+</p>
+
+<p>
+  <b>Salary:</b>
+  <%= @job.salary %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @job.department %>
 </p>
 
 <p>

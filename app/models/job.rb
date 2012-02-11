@@ -6,8 +6,11 @@ class Job < ActiveRecord::Base
 
   validates :position, 				  :presence => true
   validates :description,       :presence => true
-  validates :requirements,      :presence => true
+  validates :minimum_qualifications,      :presence => true
   validates :hiring_manager_id, :presence => true
+
+  accepts_nested_attributes_for :questions
+  attr_accessible :questions_attributes
 
   def to_param
     @job = Job.find(id)

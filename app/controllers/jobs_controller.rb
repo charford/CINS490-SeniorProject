@@ -25,7 +25,12 @@ class JobsController < ApplicationController
   # GET /jobs/new.json
   def new
     @job = Job.new
-
+    #@job.questions.build #creates one task
+    # @question = Question.new
+    # 5.times { @job.questions.build }
+    # @question = Question.new
+    @job.questions.build
+    
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -44,6 +49,10 @@ class JobsController < ApplicationController
     params[:job][:hiring_manager_id] = hiring_manager.id
     
     @job = Job.new(params[:job])
+    #@question = @job.questions.build(params[:question])
+    # params[:questions].each_value do |question| 
+    #   @job.questions.build(question) unless question.values.all?(&:blank?)
+    # end
 
     respond_to do |format|
       if @job.save

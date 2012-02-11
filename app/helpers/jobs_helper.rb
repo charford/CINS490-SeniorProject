@@ -6,8 +6,13 @@ module JobsHelper
   end
 
   def is_a_hiring_manager?
-	return true if !HiringManager.find_by_user_id(current_user).nil?
-	return true if !Administrator.find_by_user_id(current_user).nil?
-	return false
+    return true if !Administrator.find_by_user_id(current_user).nil?
+	  return true if !HiringManager.find_by_user_id(current_user).nil?
+	  return false
+  end
+
+  def is_the_hiring_manager?
+    return true if !Administrator.find_by_user_id(current_user).nil?
+    return true if !HiringManager.find_by_user_id(current_user).nil?
   end
 end

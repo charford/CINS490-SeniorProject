@@ -20,9 +20,15 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :requirements %><br />
-    <%= f.text_area :requirements %>
+    <%= f.label :minimum_qualifications %><br />
+    <%= f.text_area :minimum_qualifications %>
   </div>
+<% f.fields_for :questions_attributes do |questions_fields| %>
+  <div class="fields>">
+    <%= questions_fields.label :body %>
+    <%= questions_fields.text_field :body %>
+  </div>
+<% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

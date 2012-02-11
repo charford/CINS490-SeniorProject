@@ -4,19 +4,19 @@
   <div class="fwc_body">
 <p>
   <b>User:</b>
-  <%= @applicant.user_id %>
+  <%= User.find(@applicant.user_id) %>
 </p>
 
 <p>
   <b>Job:</b>
-  <%= @applicant.job_id %>
+  <%= Job.find(@applicant.job_id).position %>
 </p>
 <p>
-  <b>Rating:</b>
-  <%= get_applicant_rating @applicant %>
+  <b>Average Rating:</b>
+  <%= get_applicant_rating @applicant %> / 5
 </p>
 <p>
-  </b>Answers:</b>
+  <b>Answers:</b>
   <ul>
     <% @applicant.answers.each do |answer| %>
       <li>

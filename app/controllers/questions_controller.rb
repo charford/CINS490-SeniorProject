@@ -40,7 +40,6 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    params[:question][:job_id] = @job.id
     @question = Question.new(params[:question])
 
     respond_to do |format|

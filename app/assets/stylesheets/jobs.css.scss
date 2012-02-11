@@ -1,13 +1,13 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#job_position {
+#job_position, #job_salary, #job_department {
 	border-radius: 3pt;
 	border: 1pt dashed #ccc;
 	height: 20pt;
 	width: 250pt;
 }
-#job_description, #job_requirements {
+#job_description, #job_minimum_qualifications, #job_preferred_qualifications, #job_responsibilities {
 	width: 80%;
 	padding: 5pt;
 	border-radius: 3pt;

@@ -8,7 +8,7 @@
       <ul> 
         <li>Position: <%= job.position %></li>
         <li>Description: <%= job.description %></li>
-        <li>Requirements: <%= job.requirements %></li>
+        <li>Minimum Qualifications: <%= job.minimum_qualifications %></li>
         <li>Hiring Manager: <%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></li>
         <li><%= link_to "Apply", new_job_applicant_path(job) %> | <%= link_to 'Show', job %></li>
         <% if is_a_hiring_manager? %>

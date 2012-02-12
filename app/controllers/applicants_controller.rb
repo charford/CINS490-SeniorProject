@@ -1,7 +1,7 @@
 class ApplicantsController < ApplicationController
-  before_filter :is_admin?, :except => [:index,:show,:new,:create,:update]
-  before_filter :is_faculty?, :except => [:new, :create]
-  before_filter :is_signed_in?, :except => [:new]
+  before_filter :is_admin?, :except => [:index,:show,:new,:create,:update,:edit]
+  #before_filter :is_faculty?, :except => [:new, :create,:edit,:show]
+  #before_filter :is_signed_in?, :except => [:new,:update,:edit]
   before_filter :get_job
 
   def get_job
@@ -35,6 +35,7 @@ class ApplicantsController < ApplicationController
   def new
     @applicant = Applicant.new
     @job = Job.find(params[:job_id])
+    @job.jobapp.questions.count.times { @job.jobapp.questions.build }
 
     respond_to do |format|
       format.html # new.html.erb

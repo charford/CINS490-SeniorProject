@@ -1,4 +1,4 @@
-<%= form_for([@job,@jobapp]) do |f| %>
+<%= form_for([@job,@job.jobapp]) do |f| %>
   <% if @jobapp.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jobapp.errors.count, "error") %> prohibited this jobapp from being saved:</h2>
@@ -15,15 +15,25 @@
     <%= f.label :intro %><br />
     <%= f.text_area :intro %>
   </div>
+<div id="qfc">
+ 
+  <%= render 'question_fields', :ff => f, :q => :questions %>
 
-  <% @jobapp.questions.each.with_index do |question,index| %>
-    <%= f.fields_for :questions, question do |builder| %>
-      <%= builder.check_box :_destroy, {checked: builder.object.persisted?}, '0', '1' %>
-      <%= builder.label :_destroy, :body %>
-      <%= builder.text_field :body %>
-    <% end %>
-  <% end %>
-  <div class="actions">
+</div>
+
+<ul>
+
+<li><%= link_to "Short Answer", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "short") %></li>
+<li><%= link_to "Multiple Choice", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "multiple") %></li>
+<li><%= link_to "File Attachment", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "file") %></li>
+</ul>
+
+<div class="fields">
+ <%= f.label :published %>
+ <%= f.check_box :published, :confirm => "Are you sure?" %>
+</div>
+
+<div class="actions">
     <%= f.submit %>
-  </div>
+</div>
 <% end %>

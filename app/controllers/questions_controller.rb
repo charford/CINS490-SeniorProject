@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -45,6 +45,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         format.html { redirect_to [@job,@jobapp,@question], notice: 'Question was successfully created.' }
+        format.js
       else
         format.html { render action: "new" }
       end
@@ -69,10 +70,12 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1.json
   def destroy
     @question = Question.find(params[:id])
-    @question.destroy
-
+    if !@question.jobapp.published
+      @question.destroy
+    end
     respond_to do |format|
-      format.html { redirect_to job_questions_url(@job) }
+      format.html { redirect_to edit_job_jobapp_path(@job,@job.jobapp) }
+      format.js
     end
   end
   private

@@ -1,12 +1,8 @@
 <h1><%= @job.position %></h1>
 <nav>
-    <% if is_faculty? %>
-      <span><%= link_to "The Job", @job %></span>
+  <span><%= link_to "The Job", @job %></span>
       <span><%= link_to "Applicants", job_applicants_path(@job) %></span>
-    <% end %>
-    <% if is_the_hiring_manager? %>
       <span><%= link_to "Edit Application", edit_job_jobapp_path(@job,@job.jobapp) %></span>
       <span><%= link_to "Edit Job Post", edit_job_path(@job) %></span>
-    <% end %>
   <span><%= link_to "Apply", new_job_applicant_path(@job) %></span>
 </nav>

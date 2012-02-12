@@ -19,7 +19,7 @@
 	<b>Jobs applied for:</b>
   <ul>
 	<% @user.jobs.each do |job| %>
-    <li><%= link_to job.position, job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago</li>
+    <li><%= link_to job.position, edit_job_applicant_path(job,Applicant.find_by_user_id(@user.id)) %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
   <% end %>
   </ul>
 </p>

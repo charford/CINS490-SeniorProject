@@ -1,6 +1,19 @@
 class JobappsController < ApplicationController
   before_filter :get_job
 
+  def add_question
+    #jobapp = Jobapp.find(params[:jobapp_id])
+    question = @job.jobapp.questions.new
+    question.job_id=@job.id
+    question.qtype=params[:add_question]
+    
+    question.save
+  end
+
+  def remove_question
+    Question.find(params[:remove_question]).destroy
+  end
+
   def get_job
     @job = Job.find(params[:job_id])
   end
@@ -41,6 +54,22 @@ class JobappsController < ApplicationController
   # GET /jobapps/1/edit
   def edit
     @jobapp = Jobapp.find(params[:id])
+
+    if params[:add_question]
+      add_question
+      respond_to do |format|
+        format.html { redirect_to edit_job_jobapp_path(@job,@jobapp) }
+        format.js
+      end
+    end
+
+    if params[:remove_question]
+      remove_question 
+      respond_to do |format|
+        format.html { redirect_to edit_job_jobapp_path(@job,@jobapp) }
+        format.js
+      end
+    end
   end
 
   # POST /jobapps
@@ -67,7 +96,7 @@ class JobappsController < ApplicationController
 
     respond_to do |format|
       if @jobapp.update_attributes(params[:jobapp])
-        format.html { redirect_to @jobapp, notice: 'Jobapp was successfully updated.' }
+        format.html { redirect_to job_jobapp_path(@job,@jobapp), notice: 'Jobapp was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

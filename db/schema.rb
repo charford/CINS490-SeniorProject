@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211234050) do
+ActiveRecord::Schema.define(:version => 20120212045901) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120211234050) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "avgrating"
+    t.boolean  "published"
   end
 
   create_table "comments", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120211234050) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "intro"
+    t.boolean  "published"
   end
 
   create_table "jobs", :force => true do |t|
@@ -80,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120211234050) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "type"
+    t.string   "qtype"
     t.integer  "jobapp_id"
   end
 

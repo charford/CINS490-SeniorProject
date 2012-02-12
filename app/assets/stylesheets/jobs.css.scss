@@ -1,19 +1,25 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#job_position, #job_salary, #job_department {
+#job_position, #job_department {
 	border-radius: 3pt;
 	border: 1pt dashed #ccc;
 	height: 20pt;
 	width: 250pt;
+	font-size: 11pt;
 }
-#job_description, #job_minimum_qualifications, #job_preferred_qualifications, #job_responsibilities, .edit_jobapp textarea{
-	width: 80%;
+#job_description, #job_salary, #job_minimum_qualifications, #job_preferred_qualifications, #job_responsibilities, .edit_jobapp textarea{
+	width: 698pt;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 5pt;
 	border-radius: 3pt;
 	border: 1pt dashed #ccc;
 	height: 100pt;
-	resize: vertical;
+	resize: y;
+	font-size: 10pt;
+	line-height: 17pt;
 }
 
 .new_job .actions input {
@@ -60,4 +66,19 @@
 
 .new_jobs_container h1 {
   margin-bottom: 20pt;
+}
+
+.edit_button {
+	border-radius: 0pt 0pt 3pt 3pt;
+	float: right;
+	font-weight: bold;
+	position: relative;
+	right: 0pt;
+	top: -5pt;
+}
+.edit_mode {
+	width: 100%;
+	background-color: #ccffdd;
+	text-align: center;
+	font-weight: bold;
 }

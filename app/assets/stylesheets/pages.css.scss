@@ -163,7 +163,7 @@ header nav span a {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20pt;
+  margin-top: 30pt;
   margin-bottom: 18pt;
 }
 .full_width_content nav {
@@ -182,7 +182,7 @@ header nav span a {
   border-right: 1pt dashed #ccc;
   border-top: 1pt dashed #ccc;
   float: left;
-  margin-right: 5pt;
+  margin-left: 10pt;
   padding-left: 8pt;
   padding-right: 8pt;
   padding-top: 4pt;
@@ -191,9 +191,10 @@ header nav span a {
   font-weight: bold;
 }
 .full_width_content .fwc_body {
-  border: 1pt dashed #ccc;
+  border-top: 1pt dashed #ccc;
   border-radius: 0pt 3pt 3pt 3pt;
   padding: 10pt;
+  border-radius: 10pt;
 }
 .fwc_body table {
   width: 100%;
@@ -206,4 +207,10 @@ header nav span a {
 
 .fwc_body td {
   padding-top: 8pt;
+}
+
+.fwc_body h3 {
+  width: 100%;
+  border-bottom: 1pt dashed #ccc;
+  padding-bottom: 3pt;
 }

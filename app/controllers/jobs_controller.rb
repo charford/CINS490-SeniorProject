@@ -47,6 +47,9 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
+        @jobapp = Jobapp.new
+        @jobapp.job_id = @job.id
+        @jobapp.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
       else
         format.html { render action: "new" }

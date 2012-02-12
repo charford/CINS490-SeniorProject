@@ -1,3 +1,18 @@
+<script src="/assets/jquery.autoresize.js"></script>
+<script>
+
+$('textarea,input').autoResize({
+    onBeforeResize: function(){
+        console.log('Before');
+    },
+    onAfterResize: function(){
+        console.log('After');
+    }
+});
+
+</script>
+
+</script>
 <%= form_for(@job) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +27,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :position %><br />
+    <h3>Position</h3>
     <%= f.text_field :position %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <h3>Description</h3>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :minimum_qualifications %><br />
+    <h3>Minimum Qualifications</h3>
     <%= f.text_area :minimum_qualifications %>
+  </div>
+
+  <div class="field">
+   <h3>Preferred Qualifications</h3>
+  <%= f.text_area :preferred_qualifications %>
+  </div>
+
+  <div class="field">
+  <h3>Responsibilities</h3>
+  <%= f.text_area :responsibilities %>
+  </div>
+
+  <div class="field">
+  <h3>Salary</h3>
+  <%= f.text_area :salary %>
+  </div>
+
+  <div class="field">
+  <h3>Department</h3>
+  <%= f.text_area :department %>
   </div>
 
   <div class="actions">

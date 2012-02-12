@@ -10,8 +10,19 @@
       </ul>
     </div>
   <% end %>
-  <p>To start the application process, click begin.</p>
+  
+<%= f.fields_for :answers do |builder| %>
+<div class="fields">
+  <%= builder.label "Question" %><br />
+  <%= builder.object.question.body %><br />
+  <%= builder.hidden_field :question_id %>
+  <%= builder.label :body %><br />
+  <%= builder.text_field :body %>
+</div>
+
+<% end %>
+  <p>To save your application, click save.</p>
   <div class="actions">
-    <%= f.submit "Begin Application" %>
+    <%= f.submit "Save Application" %>
   </div>
 <% end %>

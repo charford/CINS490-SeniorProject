@@ -35,7 +35,10 @@ class ApplicantsController < ApplicationController
   def new
     @applicant = Applicant.new
     @job = Job.find(params[:job_id])
-    @job.jobapp.questions.count.times { @job.jobapp.questions.build }
+    @job.jobapp.questions.each do |question|
+      answer = @applicant.answers.build
+      answer.question_id = question.id
+    end
 
     respond_to do |format|
       format.html # new.html.erb

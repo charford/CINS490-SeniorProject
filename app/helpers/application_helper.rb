@@ -22,6 +22,15 @@ module ApplicationHelper
     return true if !Evaluator.find_by_user_id(current_user).nil?
   end
 
+  def link_to_job_application
+    @job = Job.find(params[:id])
+    if @job.jobapp.nil?
+      link_to "New Application", new_job_jobapp_path(@job)
+    else
+      link_to "Edit Application", edit_job_jobapp_path(@job,@job.jobapp)
+    end
+  end
+
   #########################################################################
   # THIS CODE WAS NOT WRITTEN ENTIRELY BY ME. I RECIEVED THIS CODE        #
   # FROM TYSON HENRY's PROJECT FOR "GROUPS" IT HAS BEEN MODIFIED.         #

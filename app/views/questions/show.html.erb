@@ -2,7 +2,7 @@
 
 <p>
   <b>Job:</b>
-  <%= @question.job_id %>
+  <%= @question.jobapp.job.position %>
 </p>
 
 <p>
@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', job_questions_path(@job) %>
+<%= link_to 'Edit', edit_job_jobapp_question_path(@job,@jobapp,@question) %> |
+<%= link_to 'Back', job_jobapp_questions_path(@job,@jobapp) %>

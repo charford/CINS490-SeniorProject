@@ -12,17 +12,17 @@
 
 <% @questions.each do |question| %>
   <tr>
-    <td><%= question.job.position %></td>
+    <td><%= question.jobapp.job.position %></td>
     <td><%= question.body %></td>
-    <td><%= link_to 'Show', job_question_path(@job,question) %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', job_question_path(@job,question), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', job_jobapp_question_path(@job,@jobapp,question) %></td>
+    <td><%= link_to 'Edit', edit_job_jobapp_question_path(@job,@jobapp,question) %></td>
+    <td><%= link_to 'Destroy', job_jobapp_question_path(@job,@jobapp,question), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Question', new_job_question_path(@job) %>
+<%= link_to 'New Question', new_job_jobapp_question_path(@job,@jobapp) %>
 </div>
 </div>

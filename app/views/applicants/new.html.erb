@@ -4,11 +4,7 @@
   <div class="fwc_body">
   <h1>New applicant</h1>
   <%= render 'form' %>
-    <ul>
-      <% @job.questions.each do |question| %>
-      <li><%= question.body %></li>
-      <% end %>
-    </ul>
+ 
     <%= link_to 'Back', :back %>
   </div>
 </div>

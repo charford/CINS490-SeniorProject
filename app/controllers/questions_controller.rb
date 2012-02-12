@@ -1,11 +1,11 @@
 class QuestionsController < ApplicationController
-  before_filter :get_job
+  before_filter :get_job_and_job_app
 
   # GET /questions
   # GET /questions.json
   def index
     #@questions = Question.all
-    @questions = @job.questions
+    @questions = @job.jobapp.questions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +41,10 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
-
+    @question.jobapp_id = @jobapp.id
     respond_to do |format|
       if @question.save
-        format.html { redirect_to [@job,@question], notice: 'Question was successfully created.' }
+        format.html { redirect_to [@job,@jobapp,@question], notice: 'Question was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -76,7 +76,8 @@ class QuestionsController < ApplicationController
     end
   end
   private
-    def get_job
+    def get_job_and_job_app
       @job = Job.find(params[:job_id])
+      @jobapp = @job.jobapp
     end
 end

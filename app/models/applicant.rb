@@ -4,6 +4,8 @@ class Applicant < ActiveRecord::Base
   has_many   :comments
   has_many :ratings
   has_many :answers
+  has_many :questions
+  accepts_nested_attributes_for :answers
   validates :user_id, :uniqueness => { :scope => :job_id},
                       :presence   => true
   validates :job_id,  :presence => true

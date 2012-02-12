@@ -1,0 +1,29 @@
+<%= form_for([@job,@jobapp]) do |f| %>
+  <% if @jobapp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jobapp.errors.count, "error") %> prohibited this jobapp from being saved:</h2>
+
+      <ul>
+      <% @jobapp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :intro %><br />
+    <%= f.text_area :intro %>
+  </div>
+
+  <% @jobapp.questions.each.with_index do |question,index| %>
+    <%= f.fields_for :questions, question do |builder| %>
+      <%= builder.check_box :_destroy, {checked: builder.object.persisted?}, '0', '1' %>
+      <%= builder.label :_destroy, :body %>
+      <%= builder.text_field :body %>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -2,10 +2,14 @@ class ApplicantsController < ApplicationController
   before_filter :is_admin?, :except => [:index,:show,:new,:create,:update]
   before_filter :is_faculty?, :except => [:new, :create]
   before_filter :is_signed_in?, :except => [:new]
+  before_filter :get_job
+
+  def get_job
+    @job = Job.find(params[:job_id])
+  end
   # GET /applicants
   # GET /applicants.json
   def index
-    @job = Job.find(params[:job_id])
     @applicants = @job.applicants.order("avgrating DESC")
 
     respond_to do |format|
@@ -55,7 +59,7 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.save
         #format.html { redirect_to new_job_applicant_answers_path(@job,@applicant), notice: 'Applicant was successfully created.' }
-        format.html { redirect_to new_job_applicant_answer_path(@job,@applicant), notice: 'Applicant was successfully created.' }
+        format.html { redirect_to job_path(@job), notice: 'Applicant was successfully created.' }
       else
         #format.html { render action: "new" }
         format.html { redirect_to new_job_applicant_path(@job) }

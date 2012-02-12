@@ -1,4 +1,4 @@
-<%= form_for([@job,@question]) do |f| %>
+<%= form_for([@job,@jobapp,@question]) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+  <% @job.jobapp.questions.each do |question| %>
+    <%= question.body %>
+  <% end %>
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body %>

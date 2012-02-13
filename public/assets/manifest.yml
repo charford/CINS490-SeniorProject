@@ -1,6 +1,5 @@
 ---
-job_listings.jpg: job_listings-4f9d7eb1ce2a01f055f9291ae50f6d0a.jpg
-rails.png: rails-782b548cc1ba7f898cdad2d9eb8420d2.png
-application.js: application-145eaee31e0ca4e9b4d3fca4e892ce2d.js
-jquery.textarea-expander: jquery.textarea-expander
-application.css: application-3c13868cb830b560885b73d1b4231eea.css
+job_listings.jpg: job_listings.jpg
+rails.png: rails.png
+application.js: application.js
+application.css: application.css

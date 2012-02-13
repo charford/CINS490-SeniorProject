@@ -27,6 +27,9 @@
         Answer:<br />
         <p>
           <%= answer.body %>
+          <% if answer.question.qtype == "file" %>
+            <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
+          <% end %>
         </p>
       </li>
     <% end %>

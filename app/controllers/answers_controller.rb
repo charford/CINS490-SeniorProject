@@ -1,4 +1,17 @@
 class AnswersController < ApplicationController
+
+
+  def get_attachment
+  @answer = Answer.find(params[:answer_id])
+    filename = "resumes/#{@answer.id}/#{@answer.photo_file_name}"
+    send_file filename, :filename => "#{@answer.id}.pdf",
+            :type => "application/pdf",
+            :disposition => "inline"
+  end
+
+  def show_attachment
+    @job = Job.find(params[:job_id])
+  end
   # GET /answers
   # GET /answers.json
   def index

@@ -30,6 +30,9 @@ JobmeApp::Application.routes.draw do
   
   match '/logout', :to => 'sessions#destroy'
   match '/login', :to => 'sessions#new'
+  match '/jobs/:job_id/applicants/:applicant_id/resume', :to => 'applicants#resume'
+  match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/get_attachment', :to => 'answers#get_attachment'
+  match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/show_attachment', :to => 'answers#show_attachment'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

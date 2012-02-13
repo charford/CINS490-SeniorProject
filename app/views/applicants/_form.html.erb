@@ -1,4 +1,4 @@
-<%= form_for([@job,@applicant]) do |f| %>
+<%= form_for([@job,@applicant],:html => { :multipart => true }) do |f| %>
   <% if @applicant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
@@ -12,14 +12,22 @@
   <% end %>
   
 <%= f.fields_for :answers do |builder| %>
+<% if builder.object.question.qtype == "short" %>
 <div class="fields">
-  <%= builder.label "Question" %><br />
-  <%= builder.object.question.body %><br />
+  <h3>Short Answer</h3>
+  <%= builder.object.question.body.html_safe %><br />
   <%= builder.hidden_field :question_id %>
   <%= builder.label :body %><br />
-  <%= builder.text_field :body %>
+  <%= builder.text_area :body %>
 </div>
-
+<% end %>
+<% if builder.object.question.qtype == "file" %>
+  <div class="field">
+    <h3><%= "#{builder.object.question.body}" %></h3>
+    <%= builder.hidden_field :question_id %>
+    <%= builder.file_field :photo %>
+  </div>
+  <% end %>
 <% end %>
   <p>To save your application, click save.</p>
   <div class="actions">

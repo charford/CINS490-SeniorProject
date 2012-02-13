@@ -1,1 +1,533 @@
-.main_container{top:38pt;margin-top:0pt;position:relative;width:768pt;margin-left:auto;margin-right:auto;border:1pt dashed #eee;box-shadow:1px 1px 10px 1px #ccc;height:auto}.main_content{width:100%;height:auto;overflow:auto}.main_content .signup_form form .actions input{background-color:#33cc99;font-size:22pt;font-weight:bold;padding:10pt;display:block;border:1pt solid #ccc;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt;box-shadow:0px 0px 10px 2px #ccc}.main_content .signup_form form .actions input:hover{background-color:#E1F5A9}header{position:fixed;top:0pt;height:45pt;width:774pt;left:50%;margin-left:-387pt;background-color:#eee;border-bottom:1pt solid #ccc;box-shadow:0px 0px 10px 1px gray;z-index:100}header h1{position:relative;top:20pt;left:20pt;padding:0pt;margin:0pt;font-size:25pt}header h1 span{color:gray;text-outline:1pt solid black}footer{height:45pt;width:774pt;margin-left:-3pt;background-color:#eee;border-top:1pt solid #ccc;box-shadow:0px 0px 10px 1px gray;bottom:0pt}footer .search_form{border:0pt solid red;margin-left:auto;margin-right:auto;width:300pt;height:20pt;margin-top:12pt}footer .search_form .fields{float:left}footer .search_form .fields input,footer .search_form .actions input,.job_container #apply_link{width:190pt;border:1pt solid #ccc;height:17pt;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt;padding-left:5pt;padding-right:5pt}footer .search_form .actions{float:right}footer .search_form .actions input{width:95pt;background-color:#33cc99;height:20pt}footer .search_form form input:hover{border:1pt solid maroon}#job_position{border-radius:3pt;border:1pt dashed #ccc;height:20pt;width:250pt}#job_description,#job_requirements{width:80%;padding:5pt;border-radius:3pt;border:1pt dashed #ccc;height:100pt;resize:vertical}.new_job .actions input{border:1pt solid #eee;border-radius:3pt;background-color:#3c9}#new_job,#edit_job{border:0pt solid black;padding:10pt}.job_container{border:0pt dashed black}.job_container ul{list-style:none}.job_separator{border-top:1pt dashed #eee;width:95%;margin-left:auto;margin-right:auto}.main_container{top:38pt;margin-top:0pt;position:relative;width:768pt;margin-left:auto;margin-right:auto;border:1pt dashed #eee;box-shadow:1px 1px 10px 1px #ccc;height:auto}.main_content{width:100%;height:auto;overflow:auto}.main_content .signup_form form .actions input{background-color:#33cc99;font-size:22pt;font-weight:bold;padding:10pt;display:block;border:1pt solid #ccc;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt;box-shadow:0px 0px 10px 2px #ccc}.main_content .signup_form form .actions input:hover{background-color:#E1F5A9}header{position:fixed;top:0pt;height:45pt;width:774pt;left:50%;margin-left:-387pt;background-color:#eee;border-bottom:1pt solid #ccc;box-shadow:0px 0px 10px 1px gray;z-index:100}header h1{position:relative;top:20pt;left:20pt;padding:0pt;margin:0pt;font-size:25pt}header h1 span{color:gray;text-outline:1pt solid black}footer{height:45pt;width:774pt;margin-left:-3pt;background-color:#eee;border-top:1pt solid #ccc;box-shadow:0px 0px 10px 1px gray;bottom:0pt}footer .search_form{border:0pt solid red;margin-left:auto;margin-right:auto;width:300pt;height:20pt;margin-top:12pt}footer .search_form .fields{float:left}header nav{margin-top:10pt;float:right;position:relative;z-index:101}header nav span{padding-right:10pt;float:right;display:block}header nav span a{display:block;font-weight:bold}.main_content .signup_form{border:0pt dashed black;width:265pt;overflow:auto;height:auto;margin-bottom:10pt;padding-left:30pt}.signup_form .field input{width:250pt;border:1pt solid #ccc;height:17pt;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt;margin-bottom:10pt;padding-left:5pt;padding-right:5pt}.welcome_message{margin-top:30pt;margin-bottom:50pt;text-align:center;font-weight:bold;font-size:50pt}.content_with_nav{width:80%;border-left:1pt dashed #ccc;float:right;min-height:420pt}.main_side_nav{width:18%;height:100%;clear:right;float:left}.clear_floats{clear:both;height:1pt}.index_info{float:left;padding-left:40pt;padding-top:10pt}.content_with_nav h1{padding:10pt}body{background-color:#fff;color:#333;font-family:verdana, arial, helvetica, sans-serif;font-size:13px;line-height:18px}p,ol,ul,td{font-family:verdana, arial, helvetica, sans-serif;font-size:13px;line-height:18px}pre{background-color:#eee;padding:10px;font-size:11px}a{color:#000;text-decoration:none}a:visited{color:#000}a:hover{color:#3c9}div.field,div.actions{margin-bottom:10px}#notice{color:green}.field_with_errors{padding:2px;background-color:red;display:table}#error_explanation{width:450px;border:2px solid red;padding:7px;padding-bottom:0;margin-bottom:20px;background-color:#f0f0f0}#error_explanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:12px;margin:-7px;margin-bottom:0px;background-color:#c00;color:#fff}#error_explanation ul li{font-size:12px;list-style:square}header form{position:absolute;top:20pt;right:10pt}header form .field,header form .actions{float:left}header form .field input{width:80pt;margin-right:5pt;height:17pt;border:1pt solid #ccc;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt;padding-left:5pt;padding-right:5pt}header form .actions input{height:20pt;border:1pt solid #ccc;background-color:#eee;border-radius:3pt;-web-kit-border-radius:3pt;-moz-border-radius:3pt}header form input:hover{border:1pt solid maroon}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+*/
+
+
+
+/* line 4, ../../app/assets/stylesheets/applicants.css.scss */
+#pdf {
+  border: 4pt solid #eee;
+  height: 11in;
+}
+/* line 4, ../../app/assets/stylesheets/findjob.css.scss */
+footer .search_form .fields input, footer .search_form .actions input {
+  width: 190pt;
+  border: 1pt solid #ccc;
+  height: 17pt;
+  border-radius: 3pt;
+  -web-kit-border-radius: 3pt;
+  -moz-border-radius: 3pt;
+  padding-left: 5pt;
+  padding-right: 5pt;
+}
+
+/* line 14, ../../app/assets/stylesheets/findjob.css.scss */
+footer .search_form .actions {
+  float: right;
+}
+
+/* line 17, ../../app/assets/stylesheets/findjob.css.scss */
+footer .search_form .actions input {
+  width: 95pt;
+  background-color: #33cc99;
+  height: 20pt;
+}
+
+/* line 22, ../../app/assets/stylesheets/findjob.css.scss */
+footer .search_form form input:hover {
+  border: 1pt solid maroon;
+}
+/* line 4, ../../app/assets/stylesheets/jobs.css.scss */
+#job_position {
+  border-radius: 3pt;
+  border: 1pt dashed #ccc;
+  height: 20pt;
+  width: 250pt;
+  font-size: 11pt;
+}
+
+/* line 11, ../../app/assets/stylesheets/jobs.css.scss */
+#job_description, #job_department, #job_salary, #job_minimum_qualifications, #job_preferred_qualifications, #job_responsibilities, .edit_jobapp textarea, .new_jobapp textarea, .fwc_body textarea {
+  width: 699pt;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5pt;
+  border-radius: 3pt;
+  border: 1pt dashed #ccc;
+  height: 50pt;
+  resize: y;
+  font-size: 10pt;
+  line-height: 17pt;
+}
+
+/* line 25, ../../app/assets/stylesheets/jobs.css.scss */
+.new_job .actions input {
+  border: 1pt solid #eee;
+  border-radius: 3pt;
+  background-color: #3c9;
+}
+
+/* line 30, ../../app/assets/stylesheets/jobs.css.scss */
+#new_job, #edit_job {
+  border: 1pt solid black;
+}
+
+/* line 35, ../../app/assets/stylesheets/jobs.css.scss */
+.job_container {
+  border: 0pt dashed black;
+}
+
+/* line 39, ../../app/assets/stylesheets/jobs.css.scss */
+.job_container ul {
+  list-style: none;
+}
+
+/* line 43, ../../app/assets/stylesheets/jobs.css.scss */
+.job_separator {
+  border-top: 1pt dashed #eee;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 49, ../../app/assets/stylesheets/jobs.css.scss */
+.new_jobs_container {
+  border: 0pt dashed #eee;
+  width: 300pt;
+  height: 200pt;
+  float: right;
+  margin-right: 70pt;
+  margin-top: 30pt;
+}
+
+/* line 58, ../../app/assets/stylesheets/jobs.css.scss */
+.new_jobs_container ul {
+  list-style: none;
+  margin-left: -15pt;
+}
+
+/* line 63, ../../app/assets/stylesheets/jobs.css.scss */
+.new_jobs_container li {
+  margin-bottom: 18pt;
+}
+
+/* line 67, ../../app/assets/stylesheets/jobs.css.scss */
+.new_jobs_container h1 {
+  margin-bottom: 20pt;
+}
+
+/* line 71, ../../app/assets/stylesheets/jobs.css.scss */
+.edit_button {
+  border-radius: 0pt 0pt 3pt 3pt;
+  float: right;
+  font-weight: bold;
+  position: relative;
+  right: 0pt;
+  top: -5pt;
+}
+
+/* line 79, ../../app/assets/stylesheets/jobs.css.scss */
+.edit_mode {
+  width: 100%;
+  background-color: #ccffdd;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* line 85, ../../app/assets/stylesheets/jobs.css.scss */
+.save_changes_button {
+  position: absolute;
+  right: 25pt;
+  top: 55pt;
+}
+/* line 4, ../../app/assets/stylesheets/pages.css.scss */
+.main_container {
+  top: 38pt;
+  margin-top: 0pt;
+  position: relative;
+  width: 768pt;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1pt dashed #eee;
+  box-shadow: 1px 1px 10px 1px #ccc;
+  height: auto;
+}
+
+/* line 17, ../../app/assets/stylesheets/pages.css.scss */
+.main_content {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+
+/* line 23, ../../app/assets/stylesheets/pages.css.scss */
+.main_content .signup_form form .actions input {
+  background-color: #33cc99;
+  font-size: 22pt;
+  font-weight: bold;
+  padding: 10pt;
+  display: block;
+  border: 1pt solid #ccc;
+  border-radius: 3pt;
+  -web-kit-border-radius: 3pt;
+  -moz-border-radius: 3pt;
+  box-shadow: 0px 0px 10px 2px #ccc;
+}
+
+/* line 35, ../../app/assets/stylesheets/pages.css.scss */
+.main_content .signup_form form .actions input:hover {
+  background-color: #E1F5A9;
+}
+
+/* line 38, ../../app/assets/stylesheets/pages.css.scss */
+header {
+  position: fixed;
+  top: 0pt;
+  height: 45pt;
+  width: 774pt;
+  left: 50%;
+  margin-left: -387pt;
+  background-color: #eee;
+  border-bottom: 1pt solid #ccc;
+  box-shadow: 0px 0px 10px 1px gray;
+  z-index: 100;
+}
+
+/* line 51, ../../app/assets/stylesheets/pages.css.scss */
+header h1 {
+  position: relative;
+  top: 20pt;
+  left: 20pt;
+  padding: 0pt;
+  margin: 0pt;
+  font-size: 25pt;
+}
+
+/* line 60, ../../app/assets/stylesheets/pages.css.scss */
+header h1 span {
+  color: gray;
+  text-outline: 1pt solid black;
+}
+
+/* line 65, ../../app/assets/stylesheets/pages.css.scss */
+footer {
+  height: 45pt;
+  width: 774pt;
+  margin-left: -3pt;
+  background-color: #eee;
+  border-top: 1pt solid #ccc;
+  box-shadow: 0px 0px 10px 1px gray;
+  bottom: 0pt;
+}
+
+/* line 75, ../../app/assets/stylesheets/pages.css.scss */
+footer .search_form {
+  border: 0pt solid red;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300pt;
+  height: 20pt;
+  margin-top: 12pt;
+}
+
+/* line 83, ../../app/assets/stylesheets/pages.css.scss */
+footer .search_form .fields {
+  float: left;
+}
+
+/* line 87, ../../app/assets/stylesheets/pages.css.scss */
+header nav {
+  margin-top: 10pt;
+  float: right;
+  position: relative;
+  z-index: 101;
+}
+
+/* line 94, ../../app/assets/stylesheets/pages.css.scss */
+header nav span {
+  padding-right: 10pt;
+  float: right;
+  display: block;
+}
+
+/* line 100, ../../app/assets/stylesheets/pages.css.scss */
+header nav span a {
+  display: block;
+  font-weight: bold;
+}
+
+/* line 105, ../../app/assets/stylesheets/pages.css.scss */
+.main_content .signup_form {
+  border: 0pt dashed black;
+  width: 265pt;
+  overflow: auto;
+  height: auto;
+  margin-bottom: 10pt;
+  padding-left: 30pt;
+}
+
+/* line 115, ../../app/assets/stylesheets/pages.css.scss */
+.signup_form .field input {
+  width: 250pt;
+  border: 1pt solid #ccc;
+  height: 17pt;
+  border-radius: 3pt;
+  -web-kit-border-radius: 3pt;
+  -moz-border-radius: 3pt;
+  margin-bottom: 10pt;
+  padding-left: 5pt;
+  padding-right: 5pt;
+}
+
+/* line 127, ../../app/assets/stylesheets/pages.css.scss */
+.welcome_message {
+  margin-top: 30pt;
+  margin-bottom: 50pt;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50pt;
+}
+
+/* line 134, ../../app/assets/stylesheets/pages.css.scss */
+.content_with_nav {
+  width: 80%;
+  border-left: 1pt dashed #ccc;
+  float: right;
+  min-height: 420pt;
+}
+
+/* line 141, ../../app/assets/stylesheets/pages.css.scss */
+.main_side_nav {
+  width: 18%;
+  height: 100%;
+  clear: right;
+  float: left;
+}
+
+/* line 148, ../../app/assets/stylesheets/pages.css.scss */
+.clear_floats {
+  clear: both;
+  height: 1pt;
+}
+
+/* line 152, ../../app/assets/stylesheets/pages.css.scss */
+.index_info {
+  float: left;
+  padding-left: 40pt;
+  padding-top: 10pt;
+}
+
+/* line 157, ../../app/assets/stylesheets/pages.css.scss */
+.content_with_nav h1 {
+  padding: 10pt;
+}
+
+/* line 161, ../../app/assets/stylesheets/pages.css.scss */
+.full_width_content {
+  width: 95%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30pt;
+  margin-bottom: 18pt;
+}
+
+/* line 169, ../../app/assets/stylesheets/pages.css.scss */
+.full_width_content nav {
+  border: 0pt solid black;
+  width: 100%;
+  overflow: auto;
+  margin-left: 5pt;
+}
+
+/* line 175, ../../app/assets/stylesheets/pages.css.scss */
+#notice {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 181, ../../app/assets/stylesheets/pages.css.scss */
+.full_width_content nav span {
+  border-left: 1pt dashed #ccc;
+  border-right: 1pt dashed #ccc;
+  border-top: 1pt dashed #ccc;
+  float: left;
+  margin-left: 5pt;
+  padding-left: 8pt;
+  padding-right: 8pt;
+  padding-top: 4pt;
+  padding-bottom: 4pt;
+  border-radius: 3pt;
+  font-weight: bold;
+}
+
+/* line 194, ../../app/assets/stylesheets/pages.css.scss */
+.full_width_content .fwc_body {
+  border-top: 1pt dashed #ccc;
+  border-radius: 0pt 3pt 3pt 3pt;
+  border-radius: 10pt;
+}
+
+/* line 199, ../../app/assets/stylesheets/pages.css.scss */
+.fwc_body {
+  padding: 10pt;
+}
+
+/* line 202, ../../app/assets/stylesheets/pages.css.scss */
+.fwc_body table {
+  width: 100%;
+  border: 0pt solid black;
+}
+
+/* line 207, ../../app/assets/stylesheets/pages.css.scss */
+.fwc_body th {
+  text-align: left;
+}
+
+/* line 211, ../../app/assets/stylesheets/pages.css.scss */
+.fwc_body td {
+  padding-top: 8pt;
+}
+
+/* line 215, ../../app/assets/stylesheets/pages.css.scss */
+.fwc_body h3 {
+  width: 100%;
+  border-bottom: 1pt dashed #ccc;
+  padding-bottom: 3pt;
+}
+/* line 1, ../../app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 8, ../../app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 13, ../../app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 18, ../../app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+  text-decoration: none;
+}
+/* line 21, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #000;
+}
+/* line 23, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #3c9;
+}
+
+/* line 28, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 31, ../../app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 34, ../../app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 39, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 46, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 55, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* line 5, ../../app/assets/stylesheets/sessions.css.scss */
+header form {
+  position: absolute;
+  top: 20pt;
+  right: 10pt;
+}
+
+/* line 11, ../../app/assets/stylesheets/sessions.css.scss */
+header form .field, header form .actions {
+  float: left;
+}
+
+/* line 15, ../../app/assets/stylesheets/sessions.css.scss */
+header form .field input {
+  width: 80pt;
+  margin-right: 5pt;
+  height: 17pt;
+  border: 1pt solid #ccc;
+  border-radius: 3pt;
+  -web-kit-border-radius: 3pt;
+  -moz-border-radius: 3pt;
+  padding-left: 5pt;
+  padding-right: 5pt;
+}
+
+/* line 27, ../../app/assets/stylesheets/sessions.css.scss */
+header form .actions input {
+  height: 20pt;
+  border: 1pt solid #ccc;
+  background-color: #eee;
+  border-radius: 3pt;
+  -web-kit-border-radius: 3pt;
+  -moz-border-radius: 3pt;
+}
+
+/* line 36, ../../app/assets/stylesheets/sessions.css.scss */
+header form input:hover {
+  border: 1pt solid maroon;
+}
+
+/* line 40, ../../app/assets/stylesheets/sessions.css.scss */
+.user_login_form {
+  border: 0pt dashed black;
+  padding: 10pt;
+}

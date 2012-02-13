@@ -1,4 +1,5 @@
 <%= form_for([@job,@job.jobapp]) do |f| %>
+  <%= f.submit "Save Changes" , :class => "save_changes_button" %>
   <% if @jobapp.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jobapp.errors.count, "error") %> prohibited this jobapp from being saved:</h2>
@@ -12,7 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :intro %><br />
+    <h3>Introduction</h3>
     <%= f.text_area :intro %>
   </div>
 <div id="qfc">
@@ -31,9 +32,5 @@
 <div class="fields">
  <%= f.label :published %>
  <%= f.check_box :published, :confirm => "Are you sure?" %>
-</div>
-
-<div class="actions">
-    <%= f.submit %>
 </div>
 <% end %>

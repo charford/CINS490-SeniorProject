@@ -1,8 +1,12 @@
 class ApplicantsController < ApplicationController
   before_filter :is_admin?, :except => [:index,:show,:new,:create,:update,:edit]
-  #before_filter :is_faculty?, :except => [:new, :create,:edit,:show]
-  #before_filter :is_signed_in?, :except => [:new,:update,:edit]
+  before_filter :is_faculty?, :except => [:new, :create,:edit,:show]
+  before_filter :is_signed_in?, :except => [:new,:update,:edit]
   before_filter :get_job
+
+  def resume
+    @applicant = Applicant.find(params[:applicant_id])
+  end
 
   def get_job
     @job = Job.find(params[:job_id])

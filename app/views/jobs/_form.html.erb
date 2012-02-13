@@ -1,19 +1,6 @@
-<script src="/assets/jquery.autoresize.js"></script>
-<script>
-
-$('textarea,input').autoResize({
-    onBeforeResize: function(){
-        console.log('Before');
-    },
-    onAfterResize: function(){
-        console.log('After');
-    }
-});
-
-</script>
-
-</script>
+<%= render 'pages/confirm_before_close' %>
 <%= form_for(@job) do |f| %>
+    <%= f.submit "Save Changes" , :class => "save_changes_button", :onclick => "needToConfirm = false;" %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -57,9 +44,5 @@ $('textarea,input').autoResize({
   <div class="field">
   <h3>Department</h3>
   <%= f.text_area :department %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

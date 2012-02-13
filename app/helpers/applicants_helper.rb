@@ -11,4 +11,11 @@ module ApplicantsHelper
       !applicant.ratings.empty? ? applicant.avgrating : "None"
     end
   end
+  def get_attachment(answer_id)
+  @answer = Answer.find(answer_id)
+    filename = "resumes/#{@answer.id}/#{@answer.photo_file_name}"
+    send_file filename, :filename => "#{@answer.id}.pdf",
+            :type => "application/pdf",
+            :disposition => "inline"
+  end
 end

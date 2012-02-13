@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
-  before_filter :validate_administrator, :except => [:show, :index, :update, :new]
   before_filter :validate_hiring_manager, :except => [:show, :index]
+  before_filter :validate_administrator, :except => [:show, :index, :update, :new]
+
   # GET /jobs
   # GET /jobs.json
   def index
@@ -92,6 +93,6 @@ class JobsController < ApplicationController
     def validate_hiring_manager
       return if Administrator.find_by_user_id(current_user)
       return if HiringManager.find_by_user_id(current_user)
-      redirect_to jobs_path, notice: 'You must be a hiring manager to post a job.'
+      redirect_to Job.find(params[:id]), notice: 'You must be a hiring manager to post/edit a job.'
     end
 end

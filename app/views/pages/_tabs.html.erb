@@ -1,8 +1,13 @@
-<h1><%= @job.position %></h1>
+<h1><%= @job.position %>&nbsp</h1>
 <nav>
-  <span><%= link_to "The Job", @job %></span>
+<% if @job.id.nil? %>
+  <span>New Job</span>
+<% else %>
+  <span><%= link_to "Overview", @job%></span>
+    <span><%= link_to "Application", job_jobapp_path(@job,@job.jobapp) %></span>
+    <% if is_faculty? %>
       <span><%= link_to "Applicants", job_applicants_path(@job) %></span>
-      <span><%= link_to "Edit Application", edit_job_jobapp_path(@job,@job.jobapp) %></span>
-      <span><%= link_to "Edit Job Post", edit_job_path(@job) %></span>
+    <% end %>
   <span><%= link_to "Apply", new_job_applicant_path(@job) %></span>
+<% end %>
 </nav>

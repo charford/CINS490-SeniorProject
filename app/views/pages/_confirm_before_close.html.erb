@@ -1,0 +1,10 @@
+<script language="JavaScript">
+var needToConfirm = true;
+
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    if (needToConfirm)
+      return "Are you sure? Unsaved changes will be lost!"
+  }
+</script>

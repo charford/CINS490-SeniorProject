@@ -1,5 +1,6 @@
 class JobappsController < ApplicationController
   before_filter :get_job
+  before_filter :is_hiring_manager?, :except => [:show]
 
   def add_question
     #jobapp = Jobapp.find(params[:jobapp_id])
@@ -116,4 +117,10 @@ class JobappsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+    def is_hiring_manager?
+      return if Administrator.find_by_user_id(current_user)
+      return if HiringManager.find_by_user_id(current_user)
+      redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be a hiring manager to edit a job application.'
+    end
 end

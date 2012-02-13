@@ -2,14 +2,14 @@
 
 <% if builder.object.qtype == "short" %>
 <div class="field">
-<%= builder.label "Short Answer" %><br />  
+<h3>Short Answer</h3>
 <%= builder.text_area :body %>
 <%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
 </div> 
 <% end %>
   <% if builder.object.qtype == "multiple" %>
   <div class="fields">
-    <%= builder.label "Multiple Choice" %><br />  
+    <h3>Multiple Choice</h3>
     <%= builder.text_field :body %>
     <%= builder.radio_button :body, "" %>
     <%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
@@ -19,8 +19,10 @@
 
   <% if builder.object.qtype == "file" %>
   <div class="fields">
-    <%= builder.label "Attachment Required" %> <br />
+    <h3>Attachment Required</h3>
     <%= builder.text_field :body %> <br />
+    <%= builder.file_field :photo %>
+  </div>
     <%= link_to "Remove", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
   </div>
   <% end %>

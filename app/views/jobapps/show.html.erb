@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="full_width_content">
+<%= render 'pages/tabs' %>
+<div class="fwc_body">
 <p>
   <b>Job:</b>
   <%= @jobapp.job_id %>
@@ -13,3 +15,5 @@
 
 <%= link_to 'Edit', edit_job_jobapp_path(@job,@jobapp) %> |
 <%= link_to 'Back', job_path(@job) %>
+</div>
+</div>

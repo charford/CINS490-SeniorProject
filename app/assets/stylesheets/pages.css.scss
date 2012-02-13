@@ -170,6 +170,7 @@ header nav span a {
   border: 0pt solid black;
   width: 100%;
   overflow: auto;
+  margin-left: 5pt;
 }
 #notice {
   text-align: center;
@@ -182,7 +183,7 @@ header nav span a {
   border-right: 1pt dashed #ccc;
   border-top: 1pt dashed #ccc;
   float: left;
-  margin-left: 10pt;
+  margin-left: 5pt;
   padding-left: 8pt;
   padding-right: 8pt;
   padding-top: 4pt;
@@ -193,8 +194,10 @@ header nav span a {
 .full_width_content .fwc_body {
   border-top: 1pt dashed #ccc;
   border-radius: 0pt 3pt 3pt 3pt;
-  padding: 10pt;
   border-radius: 10pt;
+}
+.fwc_body {
+  padding: 10pt;
 }
 .fwc_body table {
   width: 100%;

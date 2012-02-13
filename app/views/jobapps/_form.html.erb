@@ -1,3 +1,4 @@
+<%= render 'pages/confirm_before_close' %>
 <%= form_for([@job,@job.jobapp]) do |f| %>
   <%= f.submit "Save Changes" , :class => "save_changes_button" %>
   <% if @jobapp.errors.any? %>

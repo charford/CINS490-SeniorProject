@@ -67,7 +67,7 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.save
         #format.html { redirect_to new_job_applicant_answers_path(@job,@applicant), notice: 'Applicant was successfully created.' }
-        format.html { redirect_to job_path(@job), notice: 'Applicant was successfully created.' }
+        format.html { redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'Applicant was successfully created.' }
       else
         #format.html { render action: "new" }
         format.html { redirect_to new_job_applicant_path(@job) }

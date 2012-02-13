@@ -2,9 +2,9 @@ JobmeApp::Application.routes.draw do
   
 
 
-  # resources :answers
+  resources :answers
 
-  # resources :questions
+  resources :questions
 
   resources :administrators
 

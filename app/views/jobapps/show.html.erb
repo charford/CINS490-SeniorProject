@@ -1,17 +1,34 @@
 <p id="notice"><%= notice %></p>
+
 <div class="full_width_content">
 <%= render 'pages/tabs' %>
+
 <div class="fwc_body">
-<p>
-  <b>Job:</b>
-  <%= @jobapp.job_id %>
-</p>
+  <% if is_a_hiring_manager? %>
+    <%= link_to 'Edit Content', edit_job_jobapp_path(@job,@job.jobapp), :class => "edit_button" %>
+  <% end %>
+<h3>Intro:</h3>
 
-<p>
-  <b>Intro:</b>
-  <%= @jobapp.intro %>
-</p>
+<p><%= @jobapp.intro.nil? ? "" : @jobapp.intro.html_safe %></p>
 
+<% @jobapp.questions.each do |question| %>
+  <% if question.qtype == "short" %>
+  <div class="fields">
+    <h3>Short Answer</h3>
+    <%= question.body.nil? ? "" : question.body.html_safe %>
+  </div>
+  <% end %>
+
+  <% if question.qtype == "multiple" %>
+    <h3>Multiple Choice</h3>
+    <%= question.body.nil? ? "" : question.body.html_safe  %>
+  <% end %>
+
+  <% if question.qtype == "file" %>
+    <h3>File Attachment</h3>
+    <%= question.body.nil? ? "" : question.body.html_safe %>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_job_jobapp_path(@job,@jobapp) %> |
 <%= link_to 'Back', job_path(@job) %>

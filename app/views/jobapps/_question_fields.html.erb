@@ -22,8 +22,9 @@
     <h3>Attachment Required</h3>
     <%= builder.text_field :body %> <br />
     <%= builder.file_field :photo %>
-  </div>
     <%= link_to "Remove", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
   </div>
+   
+
   <% end %>
 <% end %>

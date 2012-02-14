@@ -178,7 +178,7 @@ header nav span a {
   width: 100%;
 }
 
-.full_width_content nav span {
+.full_width_content nav a span {
   border-left: 1pt dashed #ccc;
   border-right: 1pt dashed #ccc;
   border-top: 1pt dashed #ccc;
@@ -191,6 +191,9 @@ header nav span a {
   border-radius: 3pt;
   font-weight: bold;
 }
+.full_width_content nav a span:hover {
+	background-color: #ffffee;
+} 
 .full_width_content .fwc_body {
   border-top: 1pt dashed #ccc;
   border-radius: 0pt 3pt 3pt 3pt;

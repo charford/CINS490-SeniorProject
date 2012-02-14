@@ -7,14 +7,20 @@
 <%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
 </div> 
 <% end %>
-  <% if builder.object.qtype == "multiple" %>
+
+<% if builder.object.qtype == "multiple" %>
   <div class="fields">
     <h3>Multiple Choice</h3>
-    <%= builder.text_field :body %>
-    <%= builder.radio_button :body, "" %>
+    <%= builder.text_area :body %>
+    <ul>
+      <li><%= builder.text_field :choice_a %></li>
+      <li><%= builder.text_field :choice_b %></li>
+      <li><%= builder.text_field :choice_c %></li>
+      <li><%= builder.text_field :choice_d %></li>
+    </ul>
     <%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
-    </div>
-  <% end %>
+  </div>
+<% end %>
 
 
   <% if builder.object.qtype == "file" %>

@@ -1,3 +1,12 @@
 // Place all the styles related to the jobapps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.edit_jobapp .fields input {
+	border: 0pt;
+	border-bottom: 1pt dashed #ccc;
+	width: 250pt;
+	font-size: 11pt;
+}
+.edit_jobapp .fields input:active,.edit_jobapp .fields input:hover {
+	background-color: #ffffcc;
+}

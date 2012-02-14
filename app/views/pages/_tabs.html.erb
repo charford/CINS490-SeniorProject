@@ -3,11 +3,11 @@
 <% if @job.id.nil? %>
   <span>New Job</span>
 <% else %>
-  <span><%= link_to "Overview", @job%></span>
-    <span><%= link_to "Application", job_jobapp_path(@job,@job.jobapp) %></span>
+  <%= link_to content_tag(:span, 'Overview'), @job %>
+    <%= link_to content_tag(:span, 'Application'), job_jobapp_path(@job,@job.jobapp) %>
     <% if is_faculty? %>
-      <span><%= link_to "Applicants", job_applicants_path(@job) %></span>
+      <%= link_to content_tag(:span, 'Applicants'), job_applicants_path(@job) %>
     <% end %>
-  <span><%= link_to "Apply", new_job_applicant_path(@job) %></span>
+  <%= link_to content_tag(:span, 'Apply'), new_job_applicant_path(@job) %>
 <% end %>
 </nav>

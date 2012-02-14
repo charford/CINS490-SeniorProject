@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213014859) do
+ActiveRecord::Schema.define(:version => 20120214203938) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -87,6 +87,10 @@ ActiveRecord::Schema.define(:version => 20120213014859) do
     t.datetime "updated_at", :null => false
     t.string   "qtype"
     t.integer  "jobapp_id"
+    t.string   "choice_a"
+    t.string   "choice_b"
+    t.string   "choice_c"
+    t.string   "choice_d"
   end
 
   create_table "ratings", :force => true do |t|

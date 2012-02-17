@@ -2,14 +2,15 @@
 
 <% if builder.object.qtype == "short" %>
 <div class="field">
+<%= link_to image_tag('/assets/delete.png'), job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
 <h3>Short Answer</h3>
 <%= builder.text_area :body %>
-<%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
 </div> 
 <% end %>
 
 <% if builder.object.qtype == "multiple" %>
   <div class="fields">
+  <%= link_to image_tag('/assets/delete.png'), job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
     <h3>Multiple Choice</h3>
     <%= builder.text_area :body %>
     <ul>
@@ -18,17 +19,18 @@
       <li><%= builder.text_field :choice_c %></li>
       <li><%= builder.text_field :choice_d %></li>
     </ul>
-    <%= link_to "R", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
+    
   </div>
 <% end %>
 
 
   <% if builder.object.qtype == "file" %>
   <div class="fields">
+  <%= link_to image_tag('/assets/delete.png'), job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
     <h3>Attachment Required</h3>
     <%= builder.text_field :body %> <br />
     <%= builder.file_field :photo %>
-    <%= link_to "Remove", job_jobapp_question_path(@job,@job.jobapp,builder.object), :confirm => "Are you sure?", :method => :delete %>
+    
   </div>
    
 

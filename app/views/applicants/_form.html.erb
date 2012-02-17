@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-  
+<h3>Introduction</h3>
+<%= !@job.jobapp.intro.nil? ? @job.jobapp.intro.html_safe : nil %>
 <%= f.fields_for :answers do |builder| %>
 <% if builder.object.question.qtype == "short" %>
 <div class="fields">

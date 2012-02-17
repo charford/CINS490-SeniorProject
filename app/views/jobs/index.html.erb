@@ -1,30 +1,32 @@
-<%= render 'pages/side_nav' %>
-<div class="content_with_nav">
 <p id="notice"><%= notice %></p>
+<div class="full_width_content">
   <h1>Listing jobs</h1>
+  <%= "render 'pages/tabs'" %>
+  <div class="fwc_body">
 
   <% @jobs.each do |job| %>
-    <div class="job_container">
+  <div class="job_container">
+      <% if is_a_hiring_manager? %>
+        <nav>
+          <%= link_to content_tag(:span,'View Applicants'), job_applicants_path(job) %>
+          <%= link_to content_tag(:span,'Edit'), edit_job_path(job) %>
+          <% if is_an_administrator? %>
+            <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
+          <% end %>
+        </nav>
+      <% end %>
+      <h3><%= job.position %></h3>
       <ul> 
-        <li>Position: <%= job.position %></li>
-        <li>Description: <%= job.description %></li>
-        <li>Minimum Qualifications: <%= job.minimum_qualifications %></li>
+        <li><b>Description</b><br /> <%= strip_tags(job.description) %></li>
+        <li>Minimum Qualifications: <%= strip_tags(job.minimum_qualifications) %></li>
         <li>Hiring Manager: <%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></li>
         <li><%= link_to "Apply", new_job_applicant_path(job) %> | <%= link_to 'Show', job %></li>
-        <% if is_a_hiring_manager? %>
-          <li>  
-          <%= link_to 'Edit', edit_job_path(job) %> | 
-          <% if is_an_administrator? %>
-            <%= link_to 'Destroy', job, confirm: 'Are you sure?', method: :delete %> |
-          <% end %>
-          <%= link_to 'Applicants', job_applicants_path(job) %>(<%= job.applicants.count %>)</li>
-        <% end %>
       </ul>
     </div>
-    <div class="job_separator"></div>
   <% end %>
 
   <br />
 
   <%= link_to 'New Job', new_job_path if is_a_hiring_manager? %>
+</div>
 </div>

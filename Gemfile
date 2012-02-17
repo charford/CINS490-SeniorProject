@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gem 'bluecloth'
 gem 'rails', '3.2.1'
-gem "nested_form", :git => "git://github.com/madebydna/nested_form.git"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

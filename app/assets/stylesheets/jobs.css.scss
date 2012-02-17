@@ -77,6 +77,9 @@
 	right: 0pt;
 	top: -5pt;
 }
+.edit_button img {
+	width: 20pt;
+}
 .edit_mode {
 	width: 100%;
 	background-color: #ccffdd;
@@ -87,4 +90,29 @@
 	position: absolute;
 	right: 25pt;
 	top: 55pt;
+}
+.job_container {
+	width: 100%;
+
+}
+.full_width_content .fwc_body .job_container nav {
+	width: auto;
+	float: right;
+/*	top: -32pt;
+	left: 525pt;
+	z-index: 101;*/
+}
+.full_width_content .fwc_body .job_container nav span {
+	padding-bottom: 5pt;
+	height: auto;
+	font-size: 8pt;
+	padding-top: 2pt;
+	padding-left: 3pt;
+	padding-right: 3pt;
+	padding-bottom: 1pt;
+	/*font-size: 8pt;
+	height: auto;
+	z-index: 101;*/
+	margin-right: 5pt;
+	margin-left: 0pt;
 }

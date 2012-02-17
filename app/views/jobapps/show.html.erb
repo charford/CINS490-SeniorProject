@@ -5,9 +5,9 @@
 
 <div class="fwc_body">
   <% if is_a_hiring_manager? %>
-    <%= link_to 'Edit Content', edit_job_jobapp_path(@job,@job.jobapp), :class => "edit_button" %>
+    <%= link_to image_tag('/assets/pencil_edit.png'), edit_job_jobapp_path(@job,@job.jobapp), :class => "edit_button" %>
   <% end %>
-<h3>Intro:</h3>
+<h3>Introduction</h3>
 
 <p><%= @jobapp.intro.nil? ? "" : @jobapp.intro.html_safe %></p>
 

@@ -5,3 +5,12 @@
 	border: 4pt solid #eee;
 	height: 11in;
 }
+.new_applicant ul, .edit_applicant ul {
+  list-style: none;
+  border: 1pt solid back;	
+}
+
+.new_applicant li, .edit_applicant li {
+  margin-left: -20pt;
+  padding-bottom: 4pt;
+}

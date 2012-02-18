@@ -15,4 +15,9 @@ module JobsHelper
     return true if !Administrator.find_by_user_id(current_user).nil?
     return true if !HiringManager.find_by_user_id(current_user).nil?
   end
+
+  def link_to_view_applicants(job)
+
+    link_to content_tag(:span,"View Applicants(#{job.applicants.count})"), job_applicants_path(job)
+  end
 end

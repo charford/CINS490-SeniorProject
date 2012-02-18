@@ -8,7 +8,7 @@
   <div class="job_container">
       <% if is_a_hiring_manager? %>
         <nav>
-          <%= link_to content_tag(:span,'View Applicants'), job_applicants_path(job) %>
+          <%= link_to_view_applicants job %>
           <%= link_to content_tag(:span,'Edit'), edit_job_path(job) %>
           <% if is_an_administrator? %>
             <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>

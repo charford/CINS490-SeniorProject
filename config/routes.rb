@@ -2,6 +2,8 @@ JobmeApp::Application.routes.draw do
   
 
 
+  resources :references
+
   resources :answers
 
   resources :questions

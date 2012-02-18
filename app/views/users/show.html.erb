@@ -1,6 +1,8 @@
-<%= render 'pages/side_nav' %>
-<div class="content_with_nav">
 <p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <h1>Profile</h1>
+  <%= "render 'pages/profile_tabs'" %>
+  <div class="fwc_body">
 
 <p>
   <b>First Name:</b>
@@ -19,12 +21,12 @@
 	<b>Jobs applied for:</b>
   <ul>
 	<% @user.jobs.each do |job| %>
-    <li><%= link_to job.position, job_applicant_path(job,Applicant.find_by_user_id(@user.id)) %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
+    <li><%= link_to_job_app job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
   <% end %>
   </ul>
 </p>
 
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
 </div>

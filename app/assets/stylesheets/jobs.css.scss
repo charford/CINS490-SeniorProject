@@ -39,7 +39,10 @@
 
 .job_container ul {
 	list-style: none;
-
+}
+.job_container li {
+  margin-left: -20pt;
+  padding-bottom: 4pt;
 }
 .job_separator {
 	border-top: 1pt dashed #eee;

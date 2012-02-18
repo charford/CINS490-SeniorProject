@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_filter :validate_hiring_manager, :except => [:show, :index]
-  before_filter :validate_administrator, :except => [:show, :index, :update, :new]
+  before_filter :validate_administrator, :except => [:show, :index, :update, :new, :edit]
 
   # GET /jobs
   # GET /jobs.json

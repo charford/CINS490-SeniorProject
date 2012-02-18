@@ -1,5 +1,5 @@
 class AdministratorsController < ApplicationController
-  before_filter :is_admin?
+  #before_filter :is_admin?
   # GET /administrators
   # GET /administrators.json
   def index

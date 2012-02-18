@@ -1,0 +1,33 @@
+<h1>Listing references</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Letter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @references.each do |reference| %>
+  <tr>
+    <td><%= reference.user_id %></td>
+    <td><%= reference.firstname %></td>
+    <td><%= reference.lastname %></td>
+    <td><%= reference.email %></td>
+    <td><%= reference.phone %></td>
+    <td><%= reference.letter %></td>
+    <td><%= link_to 'Show', reference %></td>
+    <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+    <td><%= link_to 'Destroy', reference, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reference', new_reference_path %>

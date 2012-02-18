@@ -23,4 +23,21 @@ module ApplicantsHelper
     @job = Job.find(params[:job_id])
     @job.applicants.find_by_user_id(current_user.id).nil? ? true : false
   end
+
+  def set_row_color(applicant)
+    case applicant.avgrating
+      when 1
+        "<tr class=\"rating_1_row\">"
+      when 2
+        "<tr class=\"rating_2_row\">"
+      when 3
+        "<tr class=\"rating_3_row\">"
+      when 4
+        "<tr class=\"rating_4_row\">"
+      when 5
+        "<tr class=\"rating_5_row\">"
+      else
+        "<tr>"
+    end
+  end
 end

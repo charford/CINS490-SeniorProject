@@ -107,11 +107,11 @@ header nav span a {
 	overflow: auto;
 	height: auto;
 	margin-bottom: 15px;
-	padding-left: 50px;
+	padding-left: 60px;
 
 }
 
-.signup_form .field input {
+.signup_form .field input, .fwc_body #new_reference .field input {
 	width: 350px;
 	border: 1pt solid #ccc;
 	height: 17pt;
@@ -137,8 +137,9 @@ header nav span a {
 }
 .index_info {
   float: left;
-  padding-left: 40px;
+  padding-left: 60px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .full_width_content {

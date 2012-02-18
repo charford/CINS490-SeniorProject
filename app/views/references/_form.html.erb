@@ -13,6 +13,10 @@
   <%= f.hidden_field :reference_hash, :value=> params[:reference_hash] %>
   <%= f.hidden_field :user_id, :value => params[:user_id] %>
 
+  <h3>Welcome</h3>
+  <p>Please fill out the form below to leave a reference for, <%= User.find(params[:user_id]) %>.</p>
+
+  <h3>Your Information</h3>
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
@@ -29,8 +33,8 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
+  <h3>Letter of Reference</h3>
   <div class="field">
-    <%= f.label :letter %><br />
     <%= f.text_area :letter %>
   </div>
   <div class="actions">

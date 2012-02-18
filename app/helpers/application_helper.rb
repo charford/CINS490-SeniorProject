@@ -35,7 +35,7 @@ module ApplicationHelper
 
   #########################################################################
   # THIS CODE WAS NOT WRITTEN ENTIRELY BY ME. I RECIEVED THIS CODE        #
-  # FROM TYSON HENRY's PROJECT FOR "GROUPS" IT HAS BEEN MODIFIED.         #
+  # FROM TYSON HENRY's PROJECT FOR "GROUPS" IT HAS BEEN MODIFIED.         # => TODO REMOVE thiS, i'm not using it
   #                                                                      ###
   # create a link that allows user to create a new object                 #
   # from railscasts 197

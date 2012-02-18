@@ -10,17 +10,27 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label "1" %>
-    <%= f.radio_button :rating, '1' %><br />
-    <%= f.label "2" %>
-    <%= f.radio_button :rating, '2' %><br />
-    <%= f.label "3" %>
-    <%= f.radio_button :rating, '3' %><br />
-    <%= f.label "4" %>
-    <%= f.radio_button :rating, '4' %><br />
-    <%= f.label "5" %>
+  <div class="rating_scale">
+    <div class="field">
+    <%= f.radio_button :rating, '1' %>
+    <%= f.label "1: Unacceptable" %>
+    </div>
+    <div class="field">
+    <%= f.radio_button :rating, '2' %>
+    <%= f.label "2: Below Average" %>
+    </div>
+    <div class="field">
+      <%= f.radio_button :rating, '3' %>
+      <%= f.label "3: Average" %>
+    </div>
+    <div class="field">
+      <%= f.radio_button :rating, '4' %>
+      <%= f.label "4: Above Average" %>
+    </div>
+    <div class="field">
     <%= f.radio_button :rating, '5' %>
+    <%= f.label "5: Outstanding" %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

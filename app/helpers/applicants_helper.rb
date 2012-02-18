@@ -8,7 +8,7 @@ module ApplicantsHelper
     if applicant.ratings.where("evaluator_id = ?", evaluator.id).empty?
       render 'ratings/rate_applicant'
     else
-      !applicant.ratings.empty? ? applicant.avgrating : "None"
+      !applicant.ratings.empty? ? "#{applicant.avgrating} / 5" : "None"
     end
   end
   def get_attachment(answer_id)
@@ -17,5 +17,10 @@ module ApplicantsHelper
     send_file filename, :filename => "#{@answer.id}.pdf",
             :type => "application/pdf",
             :disposition => "inline"
+  end
+
+  def new_applicant
+    @job = Job.find(params[:job_id])
+    @job.applicants.find_by_user_id(current_user.id).nil? ? true : false
   end
 end

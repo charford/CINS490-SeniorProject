@@ -24,14 +24,40 @@
 <% end %>
 <% if builder.object.question.qtype == "file" %>
   <div class="field">
-    <h3><%= "#{builder.object.question.body}" %></h3>
+    <h3>File Attachment</h3>
+    <p><%= "#{builder.object.question.body}" %></p>
     <%= builder.hidden_field :question_id %>
     <%= builder.file_field :photo %>
   </div>
   <% end %>
+  <% if builder.object.question.qtype == "multiple" %>
+  <div class="field">
+    <h3>Multiple Choice</h3>
+    <%= builder.object.question.body.html_safe %>
+    <ul>
+      <%= builder.hidden_field :question_id %>
+      <li>
+        <%= builder.radio_button :body, builder.object.question.choice_a %>
+        <%= builder.object.question.choice_a %>
+      </li>
+      <li>
+        <%= builder.radio_button :body, builder.object.question.choice_b %>
+        <%= builder.object.question.choice_b %>
+      </li>
+      <li>
+        <%= builder.radio_button :body, builder.object.question.choice_c %>
+        <%= builder.object.question.choice_c %>
+      </li>
+      <li>
+        <%= builder.radio_button :body, builder.object.question.choice_d %>
+        <%= builder.object.question.choice_d %>
+      </li>
+    </ul>
+  </div>
+  <% end %>
 <% end %>
-  <p>To save your application, click save.</p>
   <div class="actions">
+    <h3>Submit Application</h3>
     <%= f.submit "Save Application" %>
   </div>
 <% end %>

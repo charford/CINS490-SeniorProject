@@ -26,7 +26,7 @@
 
   <% if question.qtype == "file" %>
     <h3>File Attachment</h3>
-    <%= question.body.nil? ? "" : question.body.html_safe %>
+    <p><%= question.body.nil? ? "" : question.body %></p>
   <% end %>
 <% end %>
 

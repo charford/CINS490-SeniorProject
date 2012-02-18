@@ -2,8 +2,10 @@
 <div class="full_width_content">
   <%= render 'pages/tabs' %>
   <div class="fwc_body">
-  <%= render 'form' %>
- 
-    <%= link_to 'Back', :back %>
-  </div>
+  <% if new_applicant %>
+  	<%= render 'form' %>
+  <% else %>
+  	<h2>You have already applied.</h2>	
+  <% end %>
+   </div>
 </div>

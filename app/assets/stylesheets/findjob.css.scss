@@ -2,23 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 footer .search_form .fields input,footer .search_form .actions input {
-	width: 190pt;
-	border: 1pt solid #ccc;
-	height: 17pt;
-	border-radius: 3pt;
-	-web-kit-border-radius: 3pt;
-	-moz-border-radius: 3pt;
-	padding-left: 5pt;
-	padding-right: 5pt;
+	width: 255px;
+	border: 1px solid #ccc;
+	height: 22px;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 footer .search_form .actions {
 	float:right;
 }
 footer .search_form .actions input {
-	width: 95pt;
+	width: 125px;
 	background-color: #33cc99;
-	height: 20pt;
+	height: 26px;
 }
 footer .search_form form input:hover {
-	border: 1pt solid maroon;
+	border: 1px solid maroon;
 }

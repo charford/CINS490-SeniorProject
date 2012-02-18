@@ -2,19 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .edit_jobapp .fields input {
-	border: 0pt;
-	border-bottom: 1pt dashed #ccc;
-	width: 250pt;
-	font-size: 11pt;
+	border: 0px;
+	border-bottom: 1px dashed #ccc;
+	width: 250px;
+	font-size: 11px;
 }
 .edit_jobapp .fields input:active,.edit_jobapp .fields input:hover {
 	background-color: #ffffcc;
 }
 #qfc img {
 	float: right;
-	width: 20pt;
-	padding-right: 2pt;
-}
-#wfc img:hover {
-	
+	width: 20px;
+	padding-right: 2px;
 }

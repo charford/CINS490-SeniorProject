@@ -2,86 +2,86 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #job_position {
-	border-radius: 3pt;
-	border: 1pt dashed #ccc;
-	height: 20pt;
-	width: 250pt;
-	font-size: 11pt;
+	border-radius: 3px;
+	border: 1px dashed #ccc;
+	height: 22px;
+	width: 350px;
+	font-size: 12px;
 }
 #job_description,#job_department, #job_salary, #job_minimum_qualifications, #job_preferred_qualifications, #job_responsibilities, .edit_jobapp textarea, .new_jobapp textarea, .fwc_body textarea{
-	width: 699pt;
+	width: 870px;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 5pt;
-	border-radius: 3pt;
-	border: 1pt dashed #ccc;
-	height: 50pt;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px dashed #ccc;
+	height: 50px;
 	resize: y;
-	font-size: 10pt;
-	line-height: 17pt;
+	font-size: 10px;
+	line-height: 17px;
 }
 
 .new_job .actions input {
-	border: 1pt solid #eee;
-	border-radius: 3pt;
+	border: 1px solid #eee;
+	border-radius: 3px;
 	background-color: #3c9;
 }
 
 #new_job, #edit_job {
-	border: 0pt solid black;
+	border: 0px solid black;
 
 }
 
 .job_container {
-	border: 0pt dashed black;
+	border: 0px dashed black;
 }
 
 .job_container ul {
 	list-style: none;
 }
 .job_container li {
-  margin-left: -20pt;
-  padding-bottom: 4pt;
+  margin-left: -20px;
+  padding-bottom: 4px;
 }
 .job_separator {
-	border-top: 1pt dashed #eee;
+	border-top: 1px dashed #eee;
 	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 }
 .new_jobs_container {
-	border: 0pt dashed #eee;
-  width: 300pt;
-  height: 200pt;
-  float: right;
-  margin-right: 70pt;
-  margin-top: 30pt;
+  border: 0px dashed #eee;
+  width: 300px;
+  height: 200px;
+  float: left;
+  margin-left: 90px;
+  margin-top: 30px;
 }
 
 .new_jobs_container ul {
   list-style: none;
-  margin-left: -15pt;
+  margin-left: -15px;
 }
 
 .new_jobs_container li {
-  margin-bottom: 18pt;
+  margin-bottom: 18px;
 }
 
 .new_jobs_container h1 {
-  margin-bottom: 20pt;
+  margin-bottom: 20px;
 }
 
 .edit_button {
-	border-radius: 0pt 0pt 3pt 3pt;
+	border-radius: 0px 0px 3px 3px;
 	float: right;
 	font-weight: bold;
 	position: relative;
-	right: 0pt;
-	top: -5pt;
+	right: 0px;
+	top: -5px;
 }
 .edit_button img {
-	width: 20pt;
+	width: 20px;
 }
 .edit_mode {
 	width: 100%;
@@ -91,8 +91,8 @@
 }
 .save_changes_button {
 	position: absolute;
-	right: 25pt;
-	top: 55pt;
+	right: 30px;
+	top: 65px;
 }
 .job_container {
 	width: 100%;
@@ -101,21 +101,15 @@
 .full_width_content .fwc_body .job_container nav {
 	width: auto;
 	float: right;
-/*	top: -32pt;
-	left: 525pt;
-	z-index: 101;*/
 }
 .full_width_content .fwc_body .job_container nav span {
-	padding-bottom: 5pt;
+	padding-bottom: 5px;
 	height: auto;
-	font-size: 8pt;
-	padding-top: 2pt;
-	padding-left: 3pt;
-	padding-right: 3pt;
-	padding-bottom: 1pt;
-	/*font-size: 8pt;
-	height: auto;
-	z-index: 101;*/
-	margin-right: 5pt;
-	margin-left: 0pt;
+	font-size: 12px;
+	padding-top: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 1px;
+	margin-right: 5px;
+	margin-left: 0px;
 }

@@ -2,15 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #pdf {
-	border: 4pt solid #eee;
+	border: 3px solid #eee;
 	height: 11in;
 }
 .new_applicant ul, .edit_applicant ul {
   list-style: none;
-  border: 1pt solid back;	
+  border: 1px solid back;	
 }
 
 .new_applicant li, .edit_applicant li {
-  margin-left: -20pt;
-  padding-bottom: 4pt;
+  margin-left: -20px;
+  padding-bottom: 4px;
 }

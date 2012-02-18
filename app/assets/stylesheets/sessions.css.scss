@@ -4,8 +4,8 @@
 
 header form {
   position: absolute;
-	top: 20pt;
-	right: 10pt;
+	top: 30px;
+	right: 10px;
 }
 
 header form .field, header form .actions {
@@ -13,31 +13,31 @@ header form .field, header form .actions {
 }
 
 header form .field input {
-	width: 80pt;
-	margin-right: 5pt;
-	height: 17pt;
-	border: 1pt solid #ccc;
-	border-radius: 3pt;
-	-web-kit-border-radius: 3pt;
-	-moz-border-radius: 3pt;
-	padding-left: 5pt;
-	padding-right: 5pt;
+	width: 100px;
+	margin-right: 5px;
+	height: 22px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 header form .actions input {
-	height: 20pt;
-	border: 1pt solid #ccc;
+	height: 26px;
+	border: 1px solid #ccc;
 	background-color: #eee;
-	border-radius: 3pt;
-	-web-kit-border-radius: 3pt;
-	-moz-border-radius: 3pt;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
 
 header form input:hover {
-	border: 1pt solid maroon;
+	border: 1px solid maroon;
 }
 
 .user_login_form {
-	border: 0pt dashed black;
-	padding: 10pt;
+	border: 0px dashed black;
+	padding: 10px;
 }

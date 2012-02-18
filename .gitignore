@@ -15,4 +15,4 @@
 /tmp
 *.swp
 ORIG_README.rdoc
-/resumes/*.pdf
+/resumes/*

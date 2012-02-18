@@ -43,12 +43,16 @@ class ReferencesController < ApplicationController
     @reference = Reference.new(params[:reference])
 
     respond_to do |format|
-      if @reference.save
-        format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
-        format.json { render json: @reference, status: :created, location: @reference }
+      if verify_reference_hash
+        if @reference.save
+          format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
+          format.json { render json: @reference, status: :created, location: @reference }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @reference.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: "new" }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,4 +84,9 @@ class ReferencesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def verify_reference_hash
+      User.find(@reference.user_id).reference_hash == @reference.reference_hash ? true : false
+    end
 end

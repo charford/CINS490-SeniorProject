@@ -11,4 +11,10 @@ module UsersHelper
   def link_to_job_app(job)
     link_to job.position, job_applicant_path(job,job.applicants.find_by_user_id(@user.id))
   end
+
+  def show_link_to_new_user_reference(user)
+    request.ssl? ? con_type = "https://" : con_type = "http://"
+    link_to "#{con_type}#{request.env['HTTP_HOST']}/references/#{user.id}/#{user.reference_hash}", 
+            "#{con_type}#{request.env['HTTP_HOST']}/references/#{user.id}/#{user.reference_hash}"
+  end
 end

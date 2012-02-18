@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218082024) do
+ActiveRecord::Schema.define(:version => 20120218205258) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -108,8 +108,9 @@ ActiveRecord::Schema.define(:version => 20120218082024) do
     t.string   "email"
     t.string   "phone"
     t.text     "letter"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "reference_hash"
   end
 
   create_table "users", :force => true do |t|
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20120218082024) do
     t.datetime "updated_at",         :null => false
     t.string   "firstname"
     t.string   "lastname"
+    t.string   "reference_hash"
   end
 
 end

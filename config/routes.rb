@@ -1,6 +1,4 @@
 JobmeApp::Application.routes.draw do
-  
-
 
   resources :references
 
@@ -35,7 +33,7 @@ JobmeApp::Application.routes.draw do
   match '/jobs/:job_id/applicants/:applicant_id/resume', :to => 'applicants#resume'
   match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/get_attachment', :to => 'answers#get_attachment'
   match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/show_attachment', :to => 'answers#show_attachment'
-
+  match '/references/:user_id/:reference_hash', :to => 'references#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

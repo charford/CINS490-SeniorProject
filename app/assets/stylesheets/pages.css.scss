@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .main_container {
-	top: 38pt;
-	margin-top: 0pt;
+	top: 45px;
+	margin-top: 0px;
 	position: relative;
-	width: 768pt;
+	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
-	border: 1pt dashed #eee;
+	border: 1px dashed #eee;
   	box-shadow: 1px 1px 10px 1px #ccc;
 	height: auto;
 
@@ -22,14 +22,14 @@
 
 .main_content .signup_form form .actions input {
 	background-color: #33cc99;
-	font-size: 22pt;
+	font-size: 22px;
 	font-weight: bold;
-	padding: 10pt;
+	padding: 10px;
 	display: block;
-	border: 1pt solid #ccc;
-	border-radius: 3pt;
-	-web-kit-border-radius: 3pt;
-	-moz-border-radius: 3pt;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
 	box-shadow: 0px 0px 10px 2px #ccc;
 }
 .main_content .signup_form form .actions input:hover {
@@ -37,55 +37,54 @@
 }
 header {
 	position: fixed;
-	top: 0pt;
-	height: 45pt;
-	width: 774pt;
+	top: 0px;
+	height: 65px;
+	width: 970px;
 	left: 50%;
-	margin-left: -387pt;
+	margin-left: -485px;
 	background-color: #eee;
-  	border-bottom: 1pt solid #ccc;
+  	border-bottom: 1px solid #ccc;
 	box-shadow: 0px 0px 10px 1px gray;
 	z-index: 100;
 }
 
 header h1 {
 	position: relative;
-	top: 20pt;
-	left: 20pt;
-	padding: 0pt;
-	margin: 0pt;
-	font-size: 25pt;
+	top: 30px;
+	left: 15px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 35px;
 }
 
 header h1 span {
 	color: gray;
-	text-outline: 1pt solid black;
 }
 
 footer {
-	height: 45pt;
-	width: 774pt;
-	margin-left: -3pt;
+	height: 65px;
+	width: 970px;
+	margin-left: -5px;
 	background-color: #eee;
-	border-top: 1pt solid #ccc;
+	border-top: 1px solid #ccc;
 	box-shadow: 0px 0px 10px 1px gray;
-	bottom: 0pt;
+	bottom: 0px;
 }
 
 footer .search_form {
-	border: 0pt solid red;
+	border: 0px solid red;
 	margin-left: auto;
 	margin-right: auto;
-	width: 300pt;
-	height: 20pt;
-	margin-top: 12pt;
+	width: 400px;
+	height: 20px;
+	margin-top: 15px;
 }
 footer .search_form .fields {
 	float: left;
 
 }
 header nav {
-	margin-top: 10pt;
+	margin-top: 10px;
 	float: right;
 	position: relative;
 	z-index: 101;
@@ -104,58 +103,42 @@ header nav span a {
 
 .main_content .signup_form {
 	border: 0pt dashed black;
-	width: 265pt;
+	width: auto;
 	overflow: auto;
 	height: auto;
-	margin-bottom: 10pt;
-	padding-left: 30pt;
+	margin-bottom: 15px;
+	padding-left: 50px;
 
 }
 
 .signup_form .field input {
-	width: 250pt;
+	width: 350px;
 	border: 1pt solid #ccc;
 	height: 17pt;
-	border-radius: 3pt;
-	-web-kit-border-radius: 3pt;
-	-moz-border-radius: 3pt;
-	margin-bottom: 10pt;
-	padding-left: 5pt;
-	padding-right: 5pt;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .welcome_message {
-	margin-top: 30pt;
-	margin-bottom: 50pt;
+	margin-top: 50px;
+	margin-bottom: 50px;
 	text-align: center;
 	font-weight: bold;
-	font-size: 50pt;
-}
-.content_with_nav {
-	width: 80%;
-  border-left: 1pt dashed #ccc;
-	float: right;
-  min-height: 420pt;
-
-}
-.main_side_nav {
-	width: 18%;
-	height: 100%;
-  clear: right;
-  float: left;
+	font-size: 60px;
 }
 
 .clear_floats {
 	clear: both;
-  	height: 1pt;
+  	height: 1px;
 }
 .index_info {
   float: left;
-  padding-left: 40pt;
-  padding-top: 10pt;
-}
-.content_with_nav h1 {
-  padding: 10pt;
+  padding-left: 40px;
+  padding-top: 10px;
 }
 
 .full_width_content {
@@ -163,14 +146,15 @@ header nav span a {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30pt;
-  margin-bottom: 18pt;
+  margin-top: 35px;
+  margin-bottom: 18px;
 }
+
 .full_width_content nav {
   border: 0pt solid black;
   width: 100%;
   overflow: auto;
-  margin-left: 5pt;
+  margin-left: 5px;
 }
 #notice {
   text-align: center;
@@ -178,37 +162,35 @@ header nav span a {
   width: 100%;
  
 }
-
 .full_width_content nav a span {
-  border-left: 1pt dashed #ccc;
-  border-right: 1pt dashed #ccc;
-  border-top: 1pt dashed #ccc;
+  border-left: 1px dashed #ccc;
+  border-right: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
   float: left;
-  margin-left: 5pt;
-  padding-left: 8pt;
-  padding-right: 8pt;
-  padding-top: 4pt;
-  padding-bottom: 4pt;
-  border-radius: 3pt 3pt 0pt 0pt;
+  margin-left: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 3px 3px 0px 0px;
   font-weight: bold;
 }
 .full_width_content nav a span:hover {
 	background-color: #ffffee;
-	border-top: 1pt solid #ccc;
-	border-left: 1pt solid #ccc;
-	border-right: 1pt solid #ccc;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
 } 
 .full_width_content .fwc_body {
   border-top: 1pt dashed #ccc;
-  border-radius: 0pt 3pt 3pt 3pt;
-  border-radius: 10pt;
+  border-radius: 0pt 3px 3px 3px;
 }
 .fwc_body {
-  padding: 10pt;
+  padding: 14px;
 }
 .fwc_body table {
   width: 100%;
-  border: 0pt solid black;
+  border: 0px solid black;
 
 }
 .fwc_body th {
@@ -221,6 +203,6 @@ header nav span a {
 
 .fwc_body h3 {
   width: 100%;
-  border-bottom: 1pt dashed #ccc;
-  padding-bottom: 3pt;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 3px;
 }

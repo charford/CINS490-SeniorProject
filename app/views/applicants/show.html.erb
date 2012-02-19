@@ -2,18 +2,25 @@
 <div class="full_width_content">
   <%= render 'pages/tabs' %>
   <div class="fwc_body">
+  <h3>Applicant Name</h3>
 <p>
-  <b>User:</b>
   <%= User.find(@applicant.user_id) %>
 </p>
 
+
+<h3>Position</h3>
 <p>
-  <b>Job:</b>
   <%= Job.find(@applicant.job_id).position %>
 </p>
+
+<h3>Rating</h3>
 <p>
-  <b>Average Rating:</b>
-  <%= get_applicant_rating @applicant %>
+  Average: <%= get_applicant_rating @applicant %><br />
+  <% if !@applicant.ratings.empty? %>
+  Total: <%= @applicant.ratings.count %><br />
+  Max: <%= @applicant.ratings.order("rating").first.rating %><br />
+  Min: <%= @applicant.ratings.order("rating").last.rating %>
+  <% end %>
 </p>
 <p>
   <b>Answers:</b>
@@ -35,8 +42,8 @@
     <% end %>
   </ul>
 </p>
+<h3>Evaluator Comments</h3>
 <p>
-  <b>Comments:</b>
   <% @applicant.comments.each do |comment| %>
   <p><%= User.find(comment.user_id) %></p>
   <p><%= comment.body %></p>

@@ -9,7 +9,6 @@
         <th>Average Rating</th>
         <th></th>
         <th></th>
-        <th></th>
       </tr>
 
     <% @applicants.each do |applicant| %>
@@ -18,10 +17,16 @@
         <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
         <td><%= applicant.avgrating %></td>
         <td><%= link_to 'Show', job_applicant_path(@job,applicant) %></td>
-        <td><%= link_to 'Edit', edit_job_applicant_path(@job,applicant) %></td>
-        <td><span  class="rating_text_row"><%= link_to 'Destroy', job_applicant_path(@job,applicant), confirm: 'Are you sure?', method: :delete %></span></td>
+        <td>
+          <span  class="rating_text_row"><%= link_to 'Destroy', job_applicant_path(@job,applicant), 
+                                              confirm: 'Are you sure?', method: :delete %>
+          </span>
+        </td>
       </tr>
     <% end %>
     </table>
+    <h4>Total Applicants: <%= @applicants.count %></h4>
+    <h4>Total Comments: <%= get_total_comments(@applicants) %></h4>
+    <h4>Total Ratings: <%= get_total_ratings(@applicants) %></h4>
   </div>
 </div>

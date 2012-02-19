@@ -41,7 +41,7 @@ class RatingsController < ApplicationController
     params[:rating][:applicant_id] = params[:applicant_id]
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
-    params[:rating][:evaluator_id] = evaluator.id
+    params[:rating][:evaluator_id] = evaluator.user_id
 
     @rating = Rating.new(params[:rating])
 

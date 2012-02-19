@@ -198,8 +198,13 @@ header nav span a {
   text-align: left;
 }
 
-.fwc_body td {
+.fwc_body td,.fwc_body th {
   padding: 3px;
+  margin: 0pt;
+  border-bottom: 1pt solid #eee;
+}
+.fwc_body table {
+	border-collapse: collapse;
 }
 
 .fwc_body h3 {

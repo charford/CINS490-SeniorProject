@@ -14,8 +14,9 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   # GET /applicants.json
   def index
-    @applicants = @job.applicants.order("avgrating DESC")
-
+    # @applicants = @job.applicants.where(" < ?", 18).order("avgrating DESC")
+      @applicants = @job.applicants.order("avgrating DESC")
+    
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -116,5 +117,17 @@ class ApplicantsController < ApplicationController
       return if signed_in?
       job=Job.find(params[:job_id])
       redirect_to job, notice: 'You must create an account before applying for a job.'
+    end
+
+    def is_the_hiring_manager?
+      return true if Administrator.find_by_user_id(current_user)
+
+      job = Job.find(params[:job_id])
+      hiringmanager = HiringManager.find(job.hiring_manager_id)
+      if hiringmanager.user_id == current_user.id
+        return true
+      else
+        return false
+      end
     end
 end

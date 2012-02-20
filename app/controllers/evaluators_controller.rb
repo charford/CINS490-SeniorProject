@@ -1,5 +1,5 @@
 class EvaluatorsController < ApplicationController
-  before_filter :is_admin?
+  #before_filter :is_admin?
   # GET /evaluators
   # GET /evaluators.json
   def index

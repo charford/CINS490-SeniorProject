@@ -12,6 +12,17 @@ module ApplicantsHelper
     end
   end
 
+  def has_rated_applicant?(applicant)
+    evaluator = Evaluator.find_by_user_id(current_user)
+    evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
+    return false if evaluator.nil?
+    if applicant.ratings.where("evaluator_id = ?", evaluator.id).nil?
+      return false
+    else
+      return true
+    end
+  end
+
   def get_attachment(answer_id)
   @answer = Answer.find(answer_id)
     filename = "resumes/#{@answer.id}/#{@answer.photo_file_name}"

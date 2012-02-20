@@ -1,11 +1,11 @@
 class JobsController < ApplicationController
-  before_filter :validate_hiring_manager, :except => [:show, :index]
-  before_filter :validate_administrator, :except => [:show, :index, :update, :new, :edit]
+  before_filter :validate_hiring_manager, :except => [:search,:show, :index]
+  before_filter :validate_administrator, :except => [:search,:show, :index, :update, :new, :edit]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb

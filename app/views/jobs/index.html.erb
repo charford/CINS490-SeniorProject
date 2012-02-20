@@ -6,6 +6,7 @@
 
   <% @jobs.each do |job| %>
   <div class="job_container">
+    <% if signed_in? %>
       <% if is_a_hiring_manager? %>
         <nav>
           <%= link_to_view_applicants job %>
@@ -14,6 +15,7 @@
             <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
           <% end %>
         </nav>
+      <% end %>
       <% end %>
       <h3><%= job.position %></h3>
       <ul> 

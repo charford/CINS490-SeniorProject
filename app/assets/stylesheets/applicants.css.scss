@@ -16,17 +16,27 @@
 }
 
 .rating_1_row {
-	background-color: #ff6600;
+	/*background-color: #ff6600;*/
+  background-image: url('/assets/1_rating.png');
 }
 .rating_2_row {
-	background-color: #cccc33;
+	/*background-color: #cccc33;*/
+  background-image: url('/assets/2_rating.png');
 }
 .rating_3_row {
-	background-color: #99cc33;
+	/*background-color: #99cc33;*/
+  background-image: url('/assets/3_rating.png');
+
 }
 .rating_4_row {
-	background-color: #66cc33;
+  /*background-color: #66cc33;*/
+	background-image: url('/assets/4_rating.png');
 }
 .rating_5_row {
-	background-color: #33cc33;
+	/*background-color: #33cc33;*/
+	background-image: url('/assets/5_rating.png');
+}
+#table_border {
+  border: 3px solid #ccc;
+  border-radius: 5px;
 }

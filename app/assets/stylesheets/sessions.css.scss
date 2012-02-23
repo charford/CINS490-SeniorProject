@@ -2,17 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-header form {
-  position: absolute;
-	top: 30px;
-	right: 10px;
+footer form {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 288px;
+  margin-top: 20px;
 }
 
-header form .field, header form .actions {
+
+footer form .field, header form .actions {
 	float: left;
 }
 
-header form .field input {
+footer form .field input {
 	width: 100px;
 	margin-right: 5px;
 	height: 22px;
@@ -24,8 +27,9 @@ header form .field input {
 	padding-right: 5px;
 }
 
-header form .actions input {
+footer form .actions input {
 	height: 26px;
+  width: 50px;
 	border: 1px solid #ccc;
 	background-color: #eee;
 	border-radius: 3px;
@@ -33,11 +37,12 @@ header form .actions input {
 	-moz-border-radius: 3px;
 }
 
-header form input:hover {
+footer form input:hover {
 	border: 1px solid maroon;
 }
 
+/*
 .user_login_form {
 	border: 0px dashed black;
 	padding: 10px;
-}
+}*/

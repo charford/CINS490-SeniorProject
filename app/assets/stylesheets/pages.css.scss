@@ -71,6 +71,15 @@ footer {
 	bottom: 0px;
 }
 
+header .search_form {
+  position: absolute;
+	border: 0px solid red;
+	width: 400px;
+	height: 20px;
+	top: 30px;
+  right: 10px;
+  z-index: 101;
+}
 footer .search_form {
 	border: 0px solid red;
 	margin-left: auto;
@@ -79,21 +88,22 @@ footer .search_form {
 	height: 20px;
 	margin-top: 15px;
 }
+heade
 footer .search_form .fields {
 	float: left;
 
 }
-header nav {
-	margin-top: 10px;
-	float: right;
-	position: relative;
-	z-index: 101;
+header .search_form .fields {
+  float: left;
 }
 
 header nav span {
-	padding-right: 10pt;
+	margin-right: 10px;
 	float: right;
 	display: block;
+  padding-left: 3px;
+  padding-bottom: 2px;
+  padding-right: 3px;
 }
 
 header nav span a {
@@ -201,11 +211,18 @@ header nav span a {
 .fwc_body td,.fwc_body th {
   padding: 3px;
   margin: 0pt;
-  border-bottom: 1pt solid #eee;
+  border-top: 1pt solid #eee;
 }
 
 .fwc_body h3 {
   width: 100%;
   border-bottom: 1px dashed #ccc;
   padding-bottom: 3px;
+}
+
+#signed_in_nav {
+  position: relative;
+  z-index: 0;
+  top: -15px;
+  right: 0px;
 }

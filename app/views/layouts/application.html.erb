@@ -14,9 +14,13 @@
 <header>
   <h1><span>Job</span><i>Me</i></h1>
 	<%= render 'pages/header' %>
+<% if signed_in? %>
+	<%= render 'pages/navigation_bar' %>
+<% end %>
 </header>
 
 <div class="main_container">
+
 	<div class="main_content">
 		<%= yield %>
 		<div class="clear_floats"></div>

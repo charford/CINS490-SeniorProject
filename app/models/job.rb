@@ -19,9 +19,10 @@ class Job < ActiveRecord::Base
   def self.search(search)
     if search
       search_condition = "%" + search + "%"
-      find(:all, :conditions => ['position LIKE ? OR description LIKE ?', search_condition, search_condition])
+      where('position LIKE ? OR description LIKE ?', search_condition, search_condition)
     else
-      find(:all)
+      scoped
+      #all
     end
   end
 end

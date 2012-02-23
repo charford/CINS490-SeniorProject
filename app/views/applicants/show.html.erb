@@ -18,8 +18,8 @@
   Average: <%= get_applicant_rating @applicant %><br />
   <% if !@applicant.ratings.empty? %>
   Total: <%= @applicant.ratings.count %><br />
-  Max: <%= @applicant.ratings.order("rating").first.rating %><br />
-  Min: <%= @applicant.ratings.order("rating").last.rating %>
+  Max: <%= @applicant.ratings.order("rating").last.rating %><br />
+  Min: <%= @applicant.ratings.order("rating").first.rating %>
   <% end %>
 </p>
 <p>

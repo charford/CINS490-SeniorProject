@@ -22,3 +22,25 @@ footer .search_form .actions input {
 footer .search_form form input:hover {
 	border: 1px solid maroon;
 }
+
+header .search_form .fields input,header .search_form .actions input {
+	width: 255px;
+	border: 1px solid #ccc;
+	height: 22px;
+	border-radius: 3px;
+	-web-kit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+header .search_form .actions {
+	float:right;
+}
+header .search_form .actions input {
+	width: 125px;
+	background-color: #33cc99;
+	height: 26px;
+}
+header .search_form input:hover {
+	border: 1px solid maroon;
+}

@@ -21,7 +21,7 @@
 	<b>Jobs applied for:</b>
   <ul>
 	<% @user.jobs.each do |job| %>
-    <li><%= link_to_job_app job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
+    <li><%= link_to_edit_job_app job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
   <% end %>
   </ul>
 </p>

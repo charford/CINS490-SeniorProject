@@ -1,9 +1,10 @@
 class ApplicantsController < ApplicationController
   before_filter :is_admin?, :except => [:index,:show,:new,:create,:update,:edit]
-  before_filter :is_faculty?, :except => [:new, :create,:edit,:show]
-  before_filter :is_signed_in?, :except => [:new,:update,:edit]
+  before_filter :is_faculty?, :except => [:new, :create,:edit]
+  before_filter :is_signed_in?
   before_filter :get_job
-
+  before_filter :is_the_applicant?, :only => [:edit,:update]
+  
   def resume
     @applicant = Applicant.find(params[:applicant_id])
   end
@@ -119,15 +120,26 @@ class ApplicantsController < ApplicationController
       redirect_to job, notice: 'You must create an account before applying for a job.'
     end
 
-    def is_the_hiring_manager?
-      return true if Administrator.find_by_user_id(current_user)
+    # def is_the_hiring_manager?
+    #   return true if Administrator.find_by_user_id(current_user)
 
-      job = Job.find(params[:job_id])
-      hiringmanager = HiringManager.find(job.hiring_manager_id)
-      if hiringmanager.user_id == current_user.id
-        return true
+    #   job = Job.find(params[:job_id])
+    #   hiringmanager = HiringManager.find(job.hiring_manager_id)
+    #   if hiringmanager.user_id == current_user.id
+    #     return true
+    #   else
+    #     return false
+    #   end
+    # end
+
+    def is_the_applicant?
+      return if Administrator.find_by_user_id(current_user)
+      if params[:applicant_id].nil? 
+        applicant = Applicant.find(params[:id])
       else
-        return false
+        applicant = Applicant.find(params[:applicant_id])
       end
+      return if applicant.user_id == current_user.id
+      redirect_to root_path
     end
 end

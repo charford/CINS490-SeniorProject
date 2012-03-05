@@ -2,56 +2,68 @@
 <div class="full_width_content">
   <%= render 'pages/tabs' %>
   <div class="fwc_body">
-  <h3>Applicant Name</h3>
-<p>
-  <%= User.find(@applicant.user_id) %>
-</p>
+    <h3>Applicant Name</h3>
+    <p>
+      <%= link_to User.find(@applicant.user_id), User.find(@applicant.user_id) %>
+    </p>
+    <h3>Position</h3>
+    <p>
+      <%= link_to Job.find(@applicant.job_id).position, Job.find(@applicant.job_id) %>
+    </p>
 
-
-<h3>Position</h3>
-<p>
-  <%= Job.find(@applicant.job_id).position %>
-</p>
-
-<h3>Rating</h3>
-<p>
-  Average: <%= get_applicant_rating @applicant %><br />
-  <% if !@applicant.ratings.empty? %>
-  Total: <%= @applicant.ratings.count %><br />
-  Max: <%= @applicant.ratings.order("rating").last.rating %><br />
-  Min: <%= @applicant.ratings.order("rating").first.rating %>
-  <% end %>
-</p>
-<p>
-  <b>Answers:</b>
-  <ul>
-    <% @applicant.answers.each do |answer| %>
-      <li>
-        Question:<br />
-        <p>
-          <%= answer.question.body %>
-        </p>
-        Answer:<br />
-        <p>
-          <%= answer.body %>
-          <% if answer.question.qtype == "file" %>
-            <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
-          <% end %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-</p>
-<h3>Evaluator Comments</h3>
-<p>
-  <% @applicant.comments.each do |comment| %>
-  <p><%= User.find(comment.user_id) %></p>
-  <p><%= comment.body %></p>
-  <% end %>
-</p>
-<%= render 'comments/form' %>
-
-<%= link_to 'Edit', edit_job_applicant_path(@applicant) %> |
-<%= link_to 'Back', job_applicants_path %>
-</div>
+    <h3>Rating</h3>
+    <table>
+    <thead>
+     <tr>
+        <th>Average</th>
+        <th>Max</th>
+        <th>Min</th>
+        <th>Total Responses</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr>
+          <td><%= get_applicant_rating @applicant %></td>
+          <td><%= @applicant.ratings.order("rating").last.rating %></td>
+          <td><%= @applicant.ratings.order("rating").first.rating %></td>
+          <td><%= @applicant.ratings.count %></td>
+        </tr>
+      </tbody>
+      <% if !@applicant.ratings.empty? %>
+      <% end %>
+    </table>
+    <h3>Survey Answers</h3>
+    <p>
+      <ul>
+        <% @applicant.answers.each do |answer| %>
+          <li>
+            <b>Question:</b><br />
+            <p>
+              <%= answer.question.body.html_safe %>
+            </p>
+            <b>Response:</b><br />
+            <p>
+              <%= !answer.body.nil? ? answer.body.html_safe : "" %>
+              <% if answer.question.qtype == "file" %>
+                <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
+              <% end %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </p>
+    <h3>References (<%= User.find(@applicant.user_id).references.count %>)</h3>
+      <% User.find(@applicant.user_id).references.each do |reference| %>
+        <p><%= reference.letter.html_safe %></p>
+      <% end %>
+      <% if User.find(@applicant.user_id).references.empty? %>
+      <p>No references available.</p>
+      <% end %>
+    <h3>Evaluator Comments (<%= @applicant.comments.count %>)</h3>
+      <% @applicant.comments.each do |comment| %>
+      <p>Posted by: <%= User.find(comment.user_id) %> <%= time_ago_in_words(comment.created_at) %> ago.</p>
+      <p><%= comment.body.html_safe %></p>
+      <% end %>
+    <%= render 'comments/form' %>
+  </div>
 </div>

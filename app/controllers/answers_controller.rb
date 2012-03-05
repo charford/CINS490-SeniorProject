@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
 
-
   def get_attachment
   @answer = Answer.find(params[:answer_id])
     filename = "resumes/#{@answer.id}/#{@answer.photo_file_name}"

@@ -8,8 +8,8 @@ module UsersHelper
     applicant.published? ? "Submitted" : "Saved, still needs to be submitted."
   end
 
-  def link_to_job_app(job)
-    link_to job.position, job_applicant_path(job,job.applicants.find_by_user_id(@user.id))
+  def link_to_edit_job_app(job)
+    link_to job.position, edit_job_applicant_path(job,job.applicants.find_by_user_id(@user.id))
   end
 
   def show_link_to_new_user_reference(user)

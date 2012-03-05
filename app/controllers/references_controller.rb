@@ -1,4 +1,5 @@
 class ReferencesController < ApplicationController
+  before_filter :is_correct_user_and_hash?
   # GET /references
   def index
     @references = Reference.all
@@ -67,7 +68,13 @@ class ReferencesController < ApplicationController
     end
   end
     private
-    def verify_hash_is_valid 
+    def verify_hash_is_valid
       User.find(@reference.user_id).reference_hash == @reference.reference_hash ? true : false
+    end
+
+    def is_correct_user_and_hash?
+      if User.where("id = ? AND reference_hash = ?", params[:user_id], params[:reference_hash]).empty?
+        redirect_to root_path
+      end
     end
 end

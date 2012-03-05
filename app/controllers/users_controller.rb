@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:new, :create, :show]
+  before_filter :authenticate, :except => [:new, :create]
   before_filter :correct_user
 
   # GET /users
@@ -80,7 +80,8 @@ class UsersController < ApplicationController
   private
   
   def correct_user
-    return if !Administrator.find_by_user_id(current_user).nil?
-  #  redirect_to(root_path) unless (User.find(params[:id]))
+    return if Administrator.find_by_user_id(current_user)
+    return if User.find_by_id(params[:id]) == current_user
+    redirect_to root_path
   end
 end

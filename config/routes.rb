@@ -1,32 +1,25 @@
 JobmeApp::Application.routes.draw do
 
-  resources :references
+  resources :references, :only => [:create, :new, :show]
+  resources :administrators, :only => [:create, :new, :destroy]
+  resources :hiring_managers, :only => [:create, :new, :destroy]
+  resources :evaluators, :only => [:create, :new, :destroy]
+  resources :users
+  resources :pages
+  resources :sessions, :only => [:create, :new, :destroy]
 
-  resources :answers
-
-  resources :questions
-
-  resources :administrators
-
-  resources :evaluators
-  
   resources :jobs do
     resources :jobapps do
-      resources :questions
+      resources :questions, :only => [:create, :new, :edit, :update, :destroy]
     end
     resources :applicants do
-      resources :answers
-      resources :comments
-      resources :ratings
+      resources :answers, :only => [:create, :new, :edit, :update, :destroy]
+      resources :comments, :only => [:create, :new, :edit, :update, :destroy]
+      resources :ratings, :only => [:create, :new, :destroy]
     end
   end
 
-  resources :hiring_managers
-
-  resources :users
-  resources :pages
   root :to => 'pages#index'
-  resources :sessions, :only => [:create, :new, :destroy]
   
   match '/logout', :to => 'sessions#destroy'
   match '/login', :to => 'sessions#new'
@@ -34,60 +27,4 @@ JobmeApp::Application.routes.draw do
   match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/get_attachment', :to => 'answers#get_attachment'
   match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/show_attachment', :to => 'answers#show_attachment'
   match '/references/:user_id/:reference_hash', :to => 'references#new'
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

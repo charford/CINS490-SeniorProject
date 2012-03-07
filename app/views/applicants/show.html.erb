@@ -24,13 +24,18 @@
       <tbody>
         <tr>
           <td><%= get_applicant_rating @applicant %></td>
-          <td><%= @applicant.ratings.order("rating").last.rating %></td>
-          <td><%= @applicant.ratings.order("rating").first.rating %></td>
-          <td><%= @applicant.ratings.count %></td>
+          <% if !@applicant.ratings.empty? %>
+            <td><%= @applicant.ratings.order("rating").last.rating %></td>
+            <td><%= @applicant.ratings.order("rating").first.rating %></td>
+            <td><%= @applicant.ratings.count %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td></td>
+          <% end %>
         </tr>
       </tbody>
-      <% if !@applicant.ratings.empty? %>
-      <% end %>
+
     </table>
     <h3>Survey Answers</h3>
     <p>

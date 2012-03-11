@@ -9,7 +9,7 @@ JobmeApp::Application.routes.draw do
   
   resources :sessions, :only => [:create, :new, :destroy]
 
-  resources :users, :only => [:new, :create, :edit, :update, :destroy] do
+  resources :users, :only => [:new, :create, :edit, :update, :destroy, :show] do
     resources :references, :only => [:index, :create, :new, :show, :destroy]
   end
 

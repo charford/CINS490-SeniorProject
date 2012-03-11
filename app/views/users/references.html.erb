@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <h1>Profile</h1>
+  <%= render 'pages/profile_tabs' %>
+  <div class="fwc_body">
+  <h3>References (<%= @user.references.count %>)</h3>
+  <% @user.references.each do |reference| %>
+    <p>
+      <b>Name:</b> <br />
+      <%= reference.firstname %> <%= reference.lastname %>
+    </p>
+    <p>
+      <b>Submitted:</b> <br />
+      <%= reference.created_at.strftime("%b %d, %Y") %>
+    </p>
+    <p>
+      <b>Message:</b>
+      <%= reference.letter.html_safe %>
+    </p>
+    <p>Delete Reference</p>
+    <h3></h3>
+  <% end %>
+  <% if @user.references.empty? %>
+    <p>No references available.</p>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<nav>
+  <%= link_to content_tag(:span, 'View Profile'), user_path(@user) %>
+  <%= link_to content_tag(:span, 'Edit Profile'), edit_user_path(@user) %>
+  <%= link_to content_tag(:span, 'Job Applications'), job_apps_path(@user) %>
+  <%= link_to content_tag(:span, 'References'), references_path(@user) %>
+</nav>

@@ -15,9 +15,19 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   # GET /applicants.json
   def index
-    # @applicants = @job.applicants.where(" < ?", 18).order("avgrating DESC")
-      @applicants = @job.applicants.order("avgrating DESC")
-    
+    if Administrator.find_by_user_id(current_user)
+      @evaluator_id = Administrator.find_by_user_id(current_user).user_id
+    else
+      @evaluator_id = Evaluator.find_by_user_id(current_user).user_id
+    end
+    @applicants = 
+      @job.applicants.where("published = ? 
+                            AND id IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
+                            true,@evaluator_id).order("avgrating DESC")
+    @unrated_applicants = 
+      @job.applicants.where("published = ? 
+                            AND id NOT IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
+                            true,@evaluator_id)
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -81,6 +91,11 @@ class ApplicantsController < ApplicationController
   # PUT /applicants/1.json
   def update
     @applicant = Applicant.find(params[:id])
+    if @applicant.published?
+      redirect_to edit_job_applicant_path(Job.find(params[:job_id]), Applicant.find(params[:id])), 
+        notice: 'This application has already been submitted. Changes cannot be made at this time.'
+      return
+    end
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])

@@ -94,7 +94,6 @@ class JobappsController < ApplicationController
   # PUT /jobapps/1.json
   def update
     @jobapp = Jobapp.find(params[:id])
-
     respond_to do |format|
       if @jobapp.update_attributes(params[:jobapp])
         format.html { redirect_to job_jobapp_path(@job,@jobapp), notice: 'Jobapp was successfully updated.' }

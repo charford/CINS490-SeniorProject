@@ -2,6 +2,7 @@
 <div class="full_width_content">
   <%= render 'pages/tabs' %>
   <div class="fwc_body">
+    <% if !@applicants.empty? %>
     <div id="table_border">
       <table>
         <tr>
@@ -28,10 +29,41 @@
           <% end %>
         <% end %>
       </table>
+      </div>
+      <% else %>
+        No applicants with ratings to display.
+      <% end %>
+
+      <% if !@unrated_applicants.empty? %>
+      <h3>Unrated Applicants</h3>
+      <div id="table_border">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Applied</th>
+          <th>Average Rating</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @unrated_applicants.each do |applicant| %>
+          <tr>
+            <td><%= link_to applicant.user, job_applicant_path(@job,applicant) %></td>
+            <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+            <td>Not rated</td>
+            <td><%= link_to 'Display', job_applicant_path(@job,applicant) %></td>
+            <td>
+              <span  class="rating_text_row"><%= link_to 'Destroy', job_applicant_path(@job,applicant), 
+                                                  confirm: 'Are you sure?', method: :delete %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
-    <h4>Total Applicants: <%= @applicants.count %></h4>
-    <h4>Total Comments: <%= get_total_comments(@applicants) %></h4>
-    <h4>Total Ratings: <%= get_total_ratings(@applicants) %></h4>
+    <% end %>
+    <h4>Total Applicants: <%= @job.applicants.where("published = ?", true).count %></h4>
+    <h4>Total Comments: <%= get_total_comments(@job.applicants.where("published = ?", true)) %></h4>
+    <h4>Total Ratings: <%= get_total_ratings(@job.applicants.where("published = ?")) %></h4>
   </div>
 
 </div>

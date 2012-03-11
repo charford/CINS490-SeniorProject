@@ -1,13 +1,15 @@
 JobmeApp::Application.routes.draw do
 
-  resources :references, :only => [:create, :new, :show, :destroy]
   resources :administrators, :only => [:create, :new, :destroy]
   resources :hiring_managers, :only => [:create, :new, :destroy]
   resources :evaluators, :only => [:create, :new, :destroy]
-  resources :pages
+  #resources :pages
+  # resources :admin
+  
+  
   resources :sessions, :only => [:create, :new, :destroy]
 
-  resources :users do
+  resources :users, :only => [:new, :create, :edit, :update, :destroy] do
     resources :references, :only => [:index, :create, :new, :show, :destroy]
   end
 
@@ -31,5 +33,9 @@ JobmeApp::Application.routes.draw do
   match '/jobs/:job_id/applicants/:applicant_id/answers/:answer_id/show_attachment', :to => 'answers#show_attachment'
   match '/references/:user_id/:reference_hash', :to => 'references#new'
   match '/users/:id/jobapps', :to => 'users#jobapps'
- # match '/users/:id/references', :to => 'users#references'
+  match '/admin/users', :to => 'admin#users'
+  match '/admin', :to => 'admin#index'
+  match '/admin/jobs', :to => 'admin#jobs'
+  match '/admin/applications', :to => 'admin#applications'
+  match '/admin/ratings', :to => 'admin#ratings'
 end

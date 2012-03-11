@@ -1,0 +1,25 @@
+<h3>You have not rated these applicants</h3>
+<div id="table_border">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Applied</th>
+      <th>Average Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @unrated_applicants.each do |applicant| %>
+      <tr>
+        <td><%= link_to applicant.user, job_applicant_path(@job,applicant) %></td>
+        <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+        <td>Not rated</td>
+        <td><%= link_to 'Display', job_applicant_path(@job,applicant) %></td>
+        <td>
+          <span  class="rating_text_row"><%= link_to 'Destroy', job_applicant_path(@job,applicant), 
+                                              confirm: 'Are you sure?', method: :delete %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,7 +1,7 @@
 class Applicant < ActiveRecord::Base
   belongs_to :user
   belongs_to :job
-  has_many   :comments
+  has_many   :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers

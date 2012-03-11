@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <h1>Administration</h1>
+  <%= render 'pages/admin_tabs' %>
+  <div class="fwc_body">
+    <h3>Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Last name</th>
+          <th>First name</th>
+          <th>Signup Date</th>
+          <th># Applications</th>
+          <th># References</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.lastname %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.created_at.strftime("%m/%d/%Y") %></td>
+        <td></td>
+        <td><%= user.references.count %></td>
+        <td style='text-align: right'>Destroy</td>
+      </tr>
+    <% end %>
+    </tbody>   
+    </table> 
+ </div>
+
+</div>

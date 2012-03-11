@@ -17,12 +17,12 @@ class User < ActiveRecord::Base
   validates   :password_confirmation, :presence => true
   # validate    :password_must_be_present
   validates   :reference_hash,        :uniqueness => true
-  has_many    :applicants
+  has_many    :applicants, :dependent => :destroy
   has_many    :jobs,                  :through => :applicants
   belongs_to  :evaluator
   belongs_to  :hiringmanager
   belongs_to  :administrator
-  has_many    :references
+  has_many    :references, :dependent => :destroy
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

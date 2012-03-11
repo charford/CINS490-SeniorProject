@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to login_path, :notice =>  "Unable to authenticate, please try again."
     else
       sign_in user
-      redirect_to root_path, :notice => "Created Account Successfully!"
+      redirect_back_or root_path
     end 
   end 
   

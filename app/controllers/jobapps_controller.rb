@@ -81,7 +81,7 @@ class JobappsController < ApplicationController
 
     respond_to do |format|
       if @jobapp.save
-        format.html { redirect_to job_path(@job), notice: 'Jobapp was successfully created.' }
+        format.html { redirect_to job_path(@job), notice: 'Application was successfully created.' }
         format.json { render json: @jobapp, status: :created, location: @jobapp }
       else
         format.html { render action: "new" }
@@ -96,7 +96,7 @@ class JobappsController < ApplicationController
     @jobapp = Jobapp.find(params[:id])
     respond_to do |format|
       if @jobapp.update_attributes(params[:jobapp])
-        format.html { redirect_to job_jobapp_path(@job,@jobapp), notice: 'Jobapp was successfully updated.' }
+        format.html { redirect_to job_jobapp_path(@job,@jobapp), notice: 'Application was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -118,8 +118,9 @@ class JobappsController < ApplicationController
   end
   private
     def is_hiring_manager?
+      @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)
-      return if HiringManager.find_by_user_id(current_user)
-      redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be a hiring manager to edit a job application.'
+      return if HiringManager.find(@job.hiring_manager_id).user_id == current_user.id
+      redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be the hiring manager to edit a job application.'
     end
 end

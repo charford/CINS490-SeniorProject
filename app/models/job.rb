@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
   belongs_to :hiring_manager
-  has_many   :applicants
+  has_many   :applicants, :dependent => :destroy
   has_many   :users, :through => :applicants
  
 
@@ -9,7 +9,7 @@ class Job < ActiveRecord::Base
   validates :minimum_qualifications,      :presence => true
   validates :hiring_manager_id, :presence => true
 
-  has_one :jobapp
+  has_one :jobapp, :dependent => :destroy
 
   def to_param
     @job = Job.find(id)

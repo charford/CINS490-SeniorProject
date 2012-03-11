@@ -16,7 +16,7 @@
           <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
         <% end %>
       <% end %>
-      <%= link_to content_tag(:span, 'Apply Now!'), new_job_applicant_path(job) %>
+      <%= link_to content_tag(:span, 'Apply Now!'), new_job_jobapp_applicant_path(job,job.jobapp) %>
     </nav>
       <h3><%= link_to job.position, job %></h3>
       <ul> 

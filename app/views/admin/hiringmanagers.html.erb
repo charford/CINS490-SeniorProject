@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <h1>Administration</h1>
+  <%= render 'pages/admin_tabs' %>
+  <div class="fwc_body">
+    <h3>Hiring Managers</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th></th>
+          <th>Created</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hiringmanagers.each do |hiringmanager| %>
+          <tr>
+            <td><%= User.find(hiringmanager.user_id) %></td>
+            <td></td>
+            <td><%= hiringmanager.created_at.strftime("%m/%d/%Y") %></td>
+            <td></td>
+            <td></td>
+            <td style='text-align: right'><%= link_to 'Destroy', hiringmanager, confirm: 'Are you sure?', method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>   
+    </table> 
+    <h3>Add Hiring Manager</h3>
+    <%= render 'hiring_managers/form' %>
+  </div>
+</div>

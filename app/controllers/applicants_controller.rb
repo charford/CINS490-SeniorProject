@@ -101,9 +101,10 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
         #format.html { redirect_to [@job,@applicant], notice: 'Applicant was successfully updated.' }
-        format.html { redirect_to User.find(@applicant.user_id), notice: 'Application was successfully updated.' }
+        #format.html { redirect_to user_jobapps_path(@applicant.user_id), notice: 'Application was successfully updated.' }
+        format.html { redirect_to user_job_apps_path(User.find(@applicant.user_id)), notice: 'Application was successfully updated.' }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp) }
       end
     end
   end
@@ -119,6 +120,11 @@ class ApplicantsController < ApplicationController
     end
   end
   private
+    
+    def user_job_apps_path(user)
+    "#{user_path(user)}/jobapps"
+    end
+    
     def is_admin?
       @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)

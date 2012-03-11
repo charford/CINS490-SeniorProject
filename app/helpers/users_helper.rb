@@ -14,7 +14,7 @@ module UsersHelper
   end
 
   def link_to_edit_job_app(job)
-    link_to job.position, edit_job_applicant_path(job,job.applicants.find_by_user_id(@user.id))
+    link_to job.position, edit_job_jobapp_applicant_path(job,job.jobapp,job.applicants.find_by_user_id(@user.id))
   end
 
   def show_link_to_new_user_reference(user)
@@ -22,8 +22,8 @@ module UsersHelper
     link_to "#{con_type}#{request.env['HTTP_HOST']}/references/#{user.id}/#{user.reference_hash}", 
             "#{con_type}#{request.env['HTTP_HOST']}/references/#{user.id}/#{user.reference_hash}"
   end
-
-  def job_apps_path(user)
+  
+  def user_job_apps_path(user)
     "#{user_path(user)}/jobapps"
   end
 

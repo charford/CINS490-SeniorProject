@@ -22,8 +22,6 @@ module ApplicationHelper
     return true if !Evaluator.find_by_user_id(current_user).nil?
   end
 
-
-
   def link_to_job_application
     @job = Job.find(params[:id])
     if @job.jobapp.nil?

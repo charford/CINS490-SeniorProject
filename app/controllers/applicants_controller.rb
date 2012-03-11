@@ -82,7 +82,7 @@ class ApplicantsController < ApplicationController
         format.html { redirect_to User.find(@applicant.user_id), notice: 'Application was successfully created.' }
       else
         #format.html { render action: "new" }
-        format.html { redirect_to new_job_applicant_path(@job) }
+        format.html { redirect_to new_job_jobapp_applicant_path(@job,@job.jobapp) }
       end
     end
   end
@@ -91,8 +91,9 @@ class ApplicantsController < ApplicationController
   # PUT /applicants/1.json
   def update
     @applicant = Applicant.find(params[:id])
+    @job = Job.find(params[:job_id])
     if @applicant.published?
-      redirect_to edit_job_applicant_path(Job.find(params[:job_id]), Applicant.find(params[:id])), 
+      redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp,@applicant), 
         notice: 'This application has already been submitted. Changes cannot be made at this time.'
       return
     end
@@ -112,15 +113,16 @@ class ApplicantsController < ApplicationController
   def destroy
     @applicant = Applicant.find(params[:id])
     @applicant.destroy
-
+    @job = Job.find(params[:job_id])
     respond_to do |format|
-      format.html { redirect_to job_applicants_url }
+      format.html { redirect_to job_jobapp_applicants_path(@job,@job.jobapp), notice: 'Successfully deleted applicant.' }
     end
   end
   private
     def is_admin?
+      @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)
-      redirect_to job_applicants_path, notice: 'You must be an administrator for this action.'
+      redirect_to job_jobapp_applicants_path(@job,@job.jobapp), notice: 'You must be an administrator for this action.'
     end
 
     def is_faculty?

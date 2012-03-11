@@ -12,6 +12,27 @@ class AdminController < ApplicationController
     end
   end
 
+  def jobs
+    @jobs = Job.find(:all, :order => ("position"))
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def applications
+    @applications = Jobapp.find(:all, :order => ("created_at DESC"))
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def ratings
+    @ratings = Rating.find(:all, :order => ("created_at DESC"))
+    respond_to do |format|
+      format.html
+    end
+  end
+
   private
     def is_admin?
       return if Administrator.find_by_user_id(current_user)

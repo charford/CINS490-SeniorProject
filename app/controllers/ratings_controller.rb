@@ -49,9 +49,9 @@ class RatingsController < ApplicationController
       if @rating.save
         applicant = Applicant.find(@rating.applicant_id)
         applicant.update_attribute(:avgrating, applicant.ratings.average('rating'))
-        format.html { redirect_to [@job,@applicant], notice: 'Rating was successfully created.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Rating was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'An error occurred while rating applicant.' }
       end
     end
   end
@@ -77,7 +77,7 @@ class RatingsController < ApplicationController
     @rating.destroy
 
     respond_to do |format|
-      format.html { redirect_to job_applicant_ratings_url(@job,@applicant) }
+      format.html { redirect_to job_jobapp_applicant_ratings_url(@job,@job.jobapp,@applicant) }
     end
   end
 

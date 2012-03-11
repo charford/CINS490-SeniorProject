@@ -46,10 +46,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@job,@applicant], notice: 'Applicant comment was successfully created.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Applicant comment was successfully created.' }
       else
         # format.html { render action: "new" }
-        format.html { redirect_to [@job,@applicant], notice: 'Failed to save comment. Comment body must not be blank.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Failed to save comment. Comment body must not be blank.' }
       end
     end
   end

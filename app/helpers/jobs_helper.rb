@@ -17,6 +17,6 @@ module JobsHelper
   end
 
   def link_to_view_applicants(job)
-    link_to content_tag(:span,"View Applicants(#{job.applicants.where('published = ?', true).count})"), job_applicants_path(job)
+    link_to content_tag(:span,"View Applicants(#{job.applicants.where('published = ?', true).count})"), job_jobapp_applicants_path(job,job.jobapp)
   end
 end

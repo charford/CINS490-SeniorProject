@@ -6,8 +6,8 @@
   <%= link_to content_tag(:span, 'Overview'), @job %>
     <%= link_to content_tag(:span, 'Application'), job_jobapp_path(@job,@job.jobapp) %>
     <% if is_faculty? %>
-      <%= link_to content_tag(:span, 'Applicants'), job_applicants_path(@job) %>
+      <%= link_to content_tag(:span, 'Applicants'), job_jobapp_applicants_path(@job,@job.jobapp) %>
     <% end %>
-  <%= link_to content_tag(:span, 'Apply'), new_job_applicant_path(@job) %>
+  <%= link_to content_tag(:span, 'Apply'), new_job_jobapp_applicant_path(@job,@job.jobapp) %>
 <% end %>
 </nav>

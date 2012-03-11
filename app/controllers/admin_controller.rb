@@ -33,6 +33,21 @@ class AdminController < ApplicationController
     end
   end
 
+  def hiringmanagers
+    @hiring_manager = HiringManager.new
+    @hiringmanagers = HiringManager.all
+  end
+
+  def administrators
+    @administrator = Administrator.new
+    @administrators = Administrator.all
+  end
+
+  def evaluators
+    @evaluator = Evaluator.new
+    @evaluators = Evaluator.all
+  end
+
   private
     def is_admin?
       return if Administrator.find_by_user_id(current_user)

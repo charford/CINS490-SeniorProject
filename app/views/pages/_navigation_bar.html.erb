@@ -1,7 +1,8 @@
 <nav id="signed_in_nav">
-		
-		<span><%= link_to "Logout", logout_path %></span>
-		<span><%= link_to "Profile", current_user %></span>
-		<span><%= link_to "Jobs", jobs_path %></span>
-
+  <span><%= link_to "Logout", logout_path %></span>
+  <span><%= link_to "Profile", current_user %></span>
+  <span><%= link_to "Jobs", jobs_path %></span>
+  <% if is_an_administrator? %>
+    <span><%= link_to "Admin", "/admin" %></span>
+  <% end %>
 </nav>

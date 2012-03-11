@@ -1,8 +1,8 @@
 JobmeApp::Application.routes.draw do
 
-  resources :administrators, :only => [:create, :new, :destroy]
-  resources :hiring_managers, :only => [:create, :new, :destroy]
-  resources :evaluators, :only => [:create, :new, :destroy]
+  resources :administrators, :only => [:create, :destroy]
+  resources :hiring_managers, :only => [:create, :destroy]
+  resources :evaluators, :only => [:create, :destroy]
   #resources :pages
   # resources :admin
   
@@ -38,4 +38,7 @@ JobmeApp::Application.routes.draw do
   match '/admin/jobs', :to => 'admin#jobs'
   match '/admin/applications', :to => 'admin#applications'
   match '/admin/ratings', :to => 'admin#ratings'
+  match '/admin/hiringmanagers', :to => 'admin#hiringmanagers'
+  match '/admin/administrators', :to => 'admin#administrators'
+  match '/admin/evaluators', :to => 'admin#evaluators'
 end

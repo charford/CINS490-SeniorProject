@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.where("id NOT IN (SELECT user_id FROM hiring_managers)").order("email"), :id, :email %> 
   </div>
   <div class="actions">
     <%= f.submit %>

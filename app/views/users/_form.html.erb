@@ -23,6 +23,7 @@
     <%= f.label "Last Name" %><br />
     <%= f.text_field :lastname %>
   </div>
+  
   <div class="field">
     <%= f.label "Password" %><br />
     <%= f.password_field :password %>
@@ -31,7 +32,8 @@
     <%= f.label "Confirm Password" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit @submit_text %>
   </div>
 <% end %>

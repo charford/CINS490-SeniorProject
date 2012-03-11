@@ -15,9 +15,8 @@ class User < ActiveRecord::Base
                                       :confirmation => true
                                     
   validates   :password_confirmation, :presence => true
-
+  # validate    :password_must_be_present
   validates   :reference_hash,        :uniqueness => true
-
   has_many    :applicants
   has_many    :jobs,                  :through => :applicants
   belongs_to  :evaluator
@@ -69,5 +68,15 @@ class User < ActiveRecord::Base
 
     def generate_reference_hash
       self.reference_hash = secure_hash("#{Time.now.utc}--{firstname}--{lastname}--{email}")
+    end
+
+    def password_must_be_present
+      return if params[:action] == "edit"
+      if(self.password).blank?
+        errors.add(:password, "can't be blank.")
+      end
+      if(self.password_confirmation).blank?
+        errors.add(:password_confirmation, "can't be blank.")
+      end
     end
 end

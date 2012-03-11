@@ -1,37 +1,20 @@
 <p id="notice"><%= notice %></p>
 <div class="full_width_content">
   <h1>Profile</h1>
-  <%= "render 'pages/profile_tabs'" %>
+  <%= render 'pages/profile_tabs' %>
   <div class="fwc_body">
 
 <p>
-  <b>First Name:</b>
-  <%= @user.firstname %>
+  <b>Name:</b><br />
+  <%= @user.firstname %> <%= @user.lastname %>
 </p>
 <p>
-  <b>Last Name:</b>
-  <%= @user.lastname %>
-</p>
-<p>
-  <b>Email:</b>
+  <b>Email:</b><br />
   <%= @user.email %>
 </p>
-
-<p>
-	<b>Jobs applied for:</b>
-  <ul>
-	<% @user.jobs.each do |job| %>
-    <li><%= link_to_edit_job_app job %>, <%= time_ago_in_words(get_application_date @user, job.id) %> ago<br />Status: <%= get_app_status %></li>
-  <% end %>
-  </ul>
-</p>
-
 <p>
   <b>Reference Link:</b>
   <%= show_link_to_new_user_reference(@user) %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 </div>
 </div>

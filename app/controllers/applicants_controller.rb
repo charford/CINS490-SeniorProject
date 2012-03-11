@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
   before_filter :is_admin?, :except => [:index,:show,:new,:create,:update,:edit]
-  before_filter :is_faculty?, :except => [:new, :create,:edit]
+  before_filter :is_faculty?, :except => [:new, :create,:edit,:update]
   before_filter :is_signed_in?
   before_filter :get_job
   before_filter :is_the_applicant?, :only => [:edit,:update]
@@ -69,7 +69,7 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.save
         #format.html { redirect_to new_job_applicant_answers_path(@job,@applicant), notice: 'Applicant was successfully created.' }
-        format.html { redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'Applicant was successfully created.' }
+        format.html { redirect_to User.find(@applicant.user_id), notice: 'Application was successfully created.' }
       else
         #format.html { render action: "new" }
         format.html { redirect_to new_job_applicant_path(@job) }
@@ -84,7 +84,8 @@ class ApplicantsController < ApplicationController
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
-        format.html { redirect_to [@job,@applicant], notice: 'Applicant was successfully updated.' }
+        #format.html { redirect_to [@job,@applicant], notice: 'Applicant was successfully updated.' }
+        format.html { redirect_to User.find(@applicant.user_id), notice: 'Application was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

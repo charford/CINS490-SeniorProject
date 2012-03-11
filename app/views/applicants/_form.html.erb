@@ -16,7 +16,7 @@
 <% if builder.object.question.qtype == "short" %>
 <div class="fields">
   <h3>Short Answer</h3>
-  <%= builder.object.question.body.html_safe %><br />
+  <%= builder.object.question.body.html_safe unless builder.object.question.body.nil? %><br />
   <%= builder.hidden_field :question_id %>
   <%= builder.label :body %><br />
   <%= builder.text_area :body %>
@@ -25,7 +25,7 @@
 <% if builder.object.question.qtype == "file" %>
   <div class="field">
     <h3>File Attachment</h3>
-    <p><%= "#{builder.object.question.body}" %></p>
+    <p><%= builder.object.question.body.html_safe unless builder.object.question.body.nil? %></p>
     <%= builder.hidden_field :question_id %>
     <%= builder.file_field :photo %>
   </div>
@@ -33,7 +33,7 @@
   <% if builder.object.question.qtype == "multiple" %>
   <div class="field">
     <h3>Multiple Choice</h3>
-    <%= builder.object.question.body.html_safe %>
+    <%= builder.object.question.body.html_safe unless builder.object.question.body.nil? %>
     <ul>
       <%= builder.hidden_field :question_id %>
       <li>
@@ -56,8 +56,15 @@
   </div>
   <% end %>
 <% end %>
+<h3>Submit Application</h3>
+<div class="fields">
+  <%= f.label "Submit application?" %>
+  <%= f.check_box :published %> Yes
+</div>
+<p>Note: Once your application has been submitted, you will not be able to make changes. To submit your application, check the box above, then click Save Application. Your application will be submitted for evaluation.
+
+To save an application for completion at a later date, do not check the box above. Click Save Application. You may edit your saved application at any time by accessing it via your <%= link_to "profile", current_user %>.
   <div class="actions">
-    <h3>Submit Application</h3>
     <%= f.submit "Save Application" %>
   </div>
 <% end %>

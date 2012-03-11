@@ -1,10 +1,11 @@
 <div class="new_jobs_container">
   <h1>New Job Postings</h1>
   <ul>
-  <% Job.all.each do |job| %>
+  <% Job.find(:all, :order => 'updated_at DESC', :limit => '4').each do |job| %>
     <li>
-      <%= link_to job.position, job %>
+      <b><%= link_to job.position, job %></b><br /> Posted <%= time_ago_in_words(job.updated_at) %> ago.
     </li>
   <% end %>
+  	<li><b><%= link_to "Click here for more jobs.", jobs_path %></b></li>
   <ul>
 </div>

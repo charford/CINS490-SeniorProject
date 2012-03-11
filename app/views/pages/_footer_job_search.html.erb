@@ -2,7 +2,7 @@
 <%= form_tag jobs_path, :method => 'get' do %>
 
 <div class="fields">
-	<%= text_field_tag :search, params[:search], :placeholder => "Stop dreaming, start searching!" %>
+	<%= text_field_tag :search, params[:search], :placeholder => "Enter job search here" %>
 </div>
 <div class="actions">
 	<%= submit_tag "Find a job", :name => nil %>

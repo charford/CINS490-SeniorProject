@@ -1,8 +1,11 @@
 class ReferencesController < ApplicationController
-  before_filter :is_correct_user_and_hash?
+  before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
+  before_filter :correct_user, :except => [:new, :create]
+
   # GET /references
   def index
-    @references = Reference.all
+    @user = User.find(params[:user_id])
+    @references = @user.references
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,9 +65,9 @@ class ReferencesController < ApplicationController
   def destroy
     @reference = Reference.find(params[:id])
     @reference.destroy
-
+    @user = User.find(params[:user_id])
     respond_to do |format|
-      format.html { redirect_to references_url }
+      format.html { redirect_to user_references_url(@user) }
     end
   end
     private
@@ -76,5 +79,11 @@ class ReferencesController < ApplicationController
       if User.where("id = ? AND reference_hash = ?", params[:user_id], params[:reference_hash]).empty?
         redirect_to root_path
       end
+    end
+
+    def correct_user
+      return if Administrator.find_by_user_id(current_user)
+      return if User.find_by_id(params[:user_id]) == current_user
+      redirect_to root_path
     end
 end

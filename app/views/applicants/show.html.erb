@@ -44,7 +44,7 @@
           <li>
             <b>Question:</b><br />
             <p>
-              <%= answer.question.body.html_safe %>
+              <%= answer.question.body.html_safe unless answer.question.body.nil? %>
             </p>
             <b>Response:</b><br />
             <p>
@@ -57,6 +57,7 @@
         <% end %>
       </ul>
     </p>
+
     <h3>References (<%= User.find(@applicant.user_id).references.count %>)</h3>
       <% User.find(@applicant.user_id).references.each do |reference| %>
         <p><%= reference.letter.html_safe %></p>
@@ -64,6 +65,7 @@
       <% if User.find(@applicant.user_id).references.empty? %>
       <p>No references available.</p>
       <% end %>
+
     <h3>Evaluator Comments (<%= @applicant.comments.count %>)</h3>
       <% @applicant.comments.each do |comment| %>
       <p>Posted by: <%= User.find(comment.user_id) %> <%= time_ago_in_words(comment.created_at) %> ago.</p>

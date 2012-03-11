@@ -6,18 +6,19 @@
 
   <% @jobs.each do |job| %>
   <div class="job_container">
-    <% if signed_in? %>
-      <% if is_a_hiring_manager? %>
-        <nav>
+    <nav>
+      <% if signed_in? %>
+        <% if is_a_hiring_manager? %>
           <%= link_to_view_applicants job %>
           <%= link_to content_tag(:span,'Edit'), edit_job_path(job) %>
-          <% if is_an_administrator? %>
-            <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
-          <% end %>
-        </nav>
+        <% end %>
+        <% if is_an_administrator? %>
+          <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
+        <% end %>
       <% end %>
-      <% end %>
-      <h3><%= job.position %></h3>
+      <%= link_to content_tag(:span, 'Apply Now!'), new_job_applicant_path(job) %>
+    </nav>
+      <h3><%= link_to job.position, job %></h3>
       <ul> 
         <li><b>Description</b><br /> <%= job.description.html_safe %></li>
         <li><b>Minimum Qualifications</b><br /> <%= job.minimum_qualifications.html_safe %></li>

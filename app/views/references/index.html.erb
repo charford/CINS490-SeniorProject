@@ -1,33 +1,29 @@
-<h1>Listing references</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Letter</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @references.each do |reference| %>
-  <tr>
-    <td><%= reference.user_id %></td>
-    <td><%= reference.firstname %></td>
-    <td><%= reference.lastname %></td>
-    <td><%= reference.email %></td>
-    <td><%= reference.phone %></td>
-    <td><%= reference.letter %></td>
-    <td><%= link_to 'Show', reference %></td>
-    <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
-    <td><%= link_to 'Destroy', reference, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Reference', new_reference_path %>
+<p id="notice"><%= notice %></p>
+<div class="full_width_content">
+  <h1>References</h1>
+  <%= render 'pages/profile_tabs' %>
+  <div class="fwc_body">
+  <h3>References (<%= @user.references.count %>)</h3>
+  <% @user.references.each do |reference| %>
+    <p>
+      <b>Name:</b> <br />
+      <%= reference.firstname %> <%= reference.lastname %>
+    </p>
+    <p>
+      <b>Submitted:</b> <br />
+      <%= reference.created_at.strftime("%b %d, %Y") %>
+    </p>
+    <p>
+      <b>Message:</b>
+      <%= reference.letter.html_safe %>
+    </p>
+    <p>
+      <span id="destroy_link"><%= link_to 'Destroy Reference', user_reference_path(@user,reference), confirm: 'Are you sure?', method: :delete %></span>
+    </p>
+    <h3></h3>
+  <% end %>
+  <% if @user.references.empty? %>
+    <p>No references available.</p>
+  <% end %>
+  </div>
+</div>

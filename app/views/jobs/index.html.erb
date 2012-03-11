@@ -23,7 +23,7 @@
         <li><b>Description</b><br /> <%= job.description.html_safe %></li>
         <li><b>Minimum Qualifications</b><br /> <%= job.minimum_qualifications.html_safe %></li>
         <li>Hiring Manager: <%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></li>
-        <li><%= link_to "Apply", new_job_applicant_path(job) %> | <%= link_to 'Show', job %></li>
+        <li><%= link_to "Apply", new_job_jobapp_applicant_path(job,job.jobapp) %> | <%= link_to 'Show', job %></li>
       </ul>
     </div>
   <% end %>

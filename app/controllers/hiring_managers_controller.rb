@@ -8,9 +8,9 @@ class HiringManagersController < ApplicationController
 
     respond_to do |format|
       if @hiring_manager.save
-        format.html { redirect_to '/admin/hiringmanagers', notice: 'Hiring manager was successfully created.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Hiring manager was successfully created.' }
       else
-        format.html { redirect_to '/admin/hiringmanagers', notice: 'Error adding hiring manager.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Error adding hiring manager.' }
       end
     end
   end
@@ -22,7 +22,7 @@ class HiringManagersController < ApplicationController
     @hiring_manager.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/hiringmanagers', notice: 'Hiring manager destroyed.' }
+      format.html { redirect_to '/admin/permissions', notice: 'Hiring manager destroyed.' }
     end
   end
 

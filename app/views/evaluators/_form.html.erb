@@ -10,12 +10,8 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :user_id %><br />
     <%= f.collection_select :user_id, User.where("id NOT IN (SELECT user_id FROM evaluators)").order("email"), :id, :email %> 
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add" %>
   </div>
 <% end %>

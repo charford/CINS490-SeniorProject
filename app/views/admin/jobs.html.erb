@@ -10,7 +10,7 @@
           <th>Position</th>
           <th>Created on</th>
           <th>Last Updated</th>
-          <th></th>
+          <th>Published?</th>
           <th></th>
           <th></th>
         </tr>
@@ -18,10 +18,10 @@
       <tbody>
         <% @jobs.each do |job| %>
           <tr>
-            <td><%= job.position %></td>
+            <td><%= link_to job.position, job %></td>
             <td><%= job.created_at.strftime("%m/%d/%Y") %></td>
             <td><%= time_ago_in_words job.updated_at %> ago</td>
-            <td></td>
+            <td><%= job.published ? "Yes" : "No" %></td>
             <td></td>
             <td style='text-align: right'>Destroy</td>
           </tr>

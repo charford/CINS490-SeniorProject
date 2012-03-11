@@ -19,8 +19,8 @@ class AdminController < ApplicationController
     end
   end
 
-  def applications
-    @applications = Jobapp.find(:all, :order => ("created_at DESC"))
+  def applicants
+    @applicants = Applicant.find(:all, :order => ("created_at DESC"))
     respond_to do |format|
       format.html
     end
@@ -33,17 +33,13 @@ class AdminController < ApplicationController
     end
   end
 
-  def hiringmanagers
+  def permissions
     @hiring_manager = HiringManager.new
     @hiringmanagers = HiringManager.all
-  end
-
-  def administrators
+  
     @administrator = Administrator.new
     @administrators = Administrator.all
-  end
-
-  def evaluators
+  
     @evaluator = Evaluator.new
     @evaluators = Evaluator.all
   end

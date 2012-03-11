@@ -7,9 +7,9 @@ class AdministratorsController < ApplicationController
 
     respond_to do |format|
       if @administrator.save
-        format.html { redirect_to '/admin/administrators', notice: 'Administrator was successfully created.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Administrator was successfully created.' }
       else
-        format.html { redirect_to '/admin/administrators', notice: 'Error adding administrators.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Error adding administrators.' }
       end
     end
   end
@@ -17,10 +17,14 @@ class AdministratorsController < ApplicationController
   # DELETE /administrators/1
    def destroy
     @administrator = Administrator.find(params[:id])
+    if @administrator.user_id == current_user.id
+      redirect_to '/admin/permissions', notice: 'You cannot delete yourself as an Administrator.'
+      return
+    end
     @administrator.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/administrators', notice: 'Administrator destroyed.' }
+      format.html { redirect_to '/admin/permissions', notice: 'Administrator destroyed.' }
     end
   end
 

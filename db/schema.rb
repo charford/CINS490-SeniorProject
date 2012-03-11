@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218205258) do
+ActiveRecord::Schema.define(:version => 20120311091300) do
 
   create_table "administrators", :force => true do |t|
     t.integer  "user_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20120218205258) do
     t.text     "responsibilities"
     t.text     "salary"
     t.text     "department"
+    t.boolean  "published"
   end
 
   create_table "questions", :force => true do |t|

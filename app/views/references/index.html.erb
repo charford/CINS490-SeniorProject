@@ -18,7 +18,8 @@
       <%= reference.letter.html_safe %>
     </p>
     <p>
-      <span id="destroy_link"><%= link_to 'Destroy Reference', user_reference_path(@user,reference), confirm: 'Are you sure?', method: :delete %></span>
+      <span id="destroy_link">
+        <%= link_to 'Destroy Reference', user_reference_path(@user,reference), confirm: 'Are you sure?', method: :delete %></span>
     </p>
     <h3></h3>
   <% end %>

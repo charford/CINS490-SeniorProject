@@ -7,9 +7,9 @@ class EvaluatorsController < ApplicationController
 
     respond_to do |format|
       if @evaluator.save
-        format.html { redirect_to '/admin/evaluators', notice: 'Evaluator was successfully created.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Evaluator was successfully created.' }
       else
-        format.html { redirect_to '/admin/evaluators', notice: 'Error adding evaluator.' }
+        format.html { redirect_to '/admin/permissions', notice: 'Error adding evaluator.' }
       end
     end
   end
@@ -20,7 +20,7 @@ class EvaluatorsController < ApplicationController
     @evaluator.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/evaluators', notice: 'Evaluator destroyed.' }
+      format.html { redirect_to '/admin/permissions', notice: 'Evaluator destroyed.' }
     end
   end
 

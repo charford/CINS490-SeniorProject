@@ -30,33 +30,15 @@ class ReferencesController < ApplicationController
     end
   end
 
-  # GET /references/1/edit
-  def edit
-    @reference = Reference.find(params[:id])
-  end
-
   # POST /references
   def create
     @reference = Reference.new(params[:reference])
     return if !verify_hash_is_valid
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Reference was successfully created.' }
       else
         format.html { render action: "new" }
-      end
-    end
-  end
-
-  # PUT /references/1
-  def update
-    @reference = Reference.find(params[:id])
-
-    respond_to do |format|
-      if @reference.update_attributes(params[:reference])
-        format.html { redirect_to @reference, notice: 'Reference was successfully updated.' }
-      else
-        format.html { render action: "edit" }
       end
     end
   end

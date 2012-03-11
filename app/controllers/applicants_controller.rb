@@ -116,7 +116,7 @@ class ApplicantsController < ApplicationController
     @applicant.destroy
     @job = Job.find(params[:job_id])
     respond_to do |format|
-      format.html { redirect_to job_jobapp_applicants_path(@job,@job.jobapp), notice: 'Successfully deleted applicant.' }
+      format.html { redirect_to '/admin/applicants', notice: 'Successfully deleted applicant.' }
     end
   end
   private

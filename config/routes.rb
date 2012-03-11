@@ -36,9 +36,8 @@ JobmeApp::Application.routes.draw do
   match '/admin/users', :to => 'admin#users'
   match '/admin', :to => 'admin#index'
   match '/admin/jobs', :to => 'admin#jobs'
-  match '/admin/applications', :to => 'admin#applications'
+  match '/admin/applicants', :to => 'admin#applicants'
   match '/admin/ratings', :to => 'admin#ratings'
-  match '/admin/hiringmanagers', :to => 'admin#hiringmanagers'
-  match '/admin/administrators', :to => 'admin#administrators'
-  match '/admin/evaluators', :to => 'admin#evaluators'
+  match '/admin/permissions', :to => 'admin#permissions'
+
 end

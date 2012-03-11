@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_save :encrypt_password
   before_save :generate_reference_hash
+  before_destroy :remove_from_groups
   attr_accessor :password
   
   validates   :email,                 :presence => true,
@@ -78,5 +79,11 @@ class User < ActiveRecord::Base
       if(self.password_confirmation).blank?
         errors.add(:password_confirmation, "can't be blank.")
       end
+    end
+
+    def remove_from_groups
+      Administrator.find_by_user_id(self.id) ? Administrator.find_by_user_id(self.id).destroy : nil
+      HiringManager.find_by_user_id(self.id) ? HiringManager.find_by_user_id(self.id).destroy : nil
+      Evaluator.find_by_user_id(self.id) ? Evaluator.find_by_user_id(self.id).destroy : nil
     end
 end

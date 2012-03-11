@@ -17,32 +17,41 @@
     <h3>Position</h3>
     <%= f.text_field :position %>
   </div>
+
   <div class="field">
     <h3>Description</h3>
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
     <h3>Minimum Qualifications</h3>
     <%= f.text_area :minimum_qualifications %>
   </div>
 
   <div class="field">
-   <h3>Preferred Qualifications</h3>
-  <%= f.text_area :preferred_qualifications %>
+    <h3>Preferred Qualifications</h3>
+    <%= f.text_area :preferred_qualifications %>
   </div>
 
   <div class="field">
-  <h3>Responsibilities</h3>
-  <%= f.text_area :responsibilities %>
+    <h3>Responsibilities</h3>
+    <%= f.text_area :responsibilities %>
   </div>
 
   <div class="field">
-  <h3>Salary</h3>
-  <%= f.text_area :salary %>
+    <h3>Salary</h3>
+    <%= f.text_area :salary %>
   </div>
 
   <div class="field">
-  <h3>Department</h3>
-  <%= f.text_area :department %>
+    <h3>Department</h3>
+    <%= f.text_area :department %>
   </div>
+  
+  <h3>Publish Job</h3>
+  <p>Check the box below to make this job public.</p>
+  <div class="fields">
+    <%= f.label "Publish job post?" %>
+    <%= f.check_box :published %> Yes
+</div>
 <% end %>

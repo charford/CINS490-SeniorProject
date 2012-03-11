@@ -2,35 +2,6 @@ class CommentsController < ApplicationController
   before_filter :is_admin?, :except => [:show,:new,:create,:update]
   before_filter :is_faculty?
   before_filter :get_job_and_applicant
-  # GET /comments
-  # GET /comments.json
-  def index
-    @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
-  # GET /comments/new
-  # GET /comments/new.json
-  def new
-    @comment = Comment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
-  end
 
   # GET /comments/1/edit
   def edit
@@ -38,7 +9,6 @@ class CommentsController < ApplicationController
   end
 
   # POST /comments
-  # POST /comments.json
   def create
     params[:comment][:applicant_id] = @applicant.id
     params[:comment][:user_id] = current_user.id
@@ -55,7 +25,6 @@ class CommentsController < ApplicationController
   end
 
   # PUT /comments/1
-  # PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
 
@@ -69,7 +38,6 @@ class CommentsController < ApplicationController
   end
 
   # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy

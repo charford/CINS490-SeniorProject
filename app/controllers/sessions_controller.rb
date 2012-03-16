@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     clear_return_to
     sign_out
-    redirect_to root_path
+    redirect_to login_path, :notice => "You've been logged out."
   end 
 end

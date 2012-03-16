@@ -20,7 +20,7 @@
 	overflow: auto;
 }
 
-.main_content .signup_form form .actions input {
+.main_content .signup_form form .actions input, .main_content .login_form form .actions input {
 	background-color: #33cc99;
 	font-size: 22px;
 	font-weight: bold;
@@ -32,7 +32,7 @@
 	-moz-border-radius: 3px;
 	box-shadow: 0px 0px 10px 2px #ccc;
 }
-.main_content .signup_form form .actions input:hover {
+.main_content .signup_form form .actions input:hover,.main_content .login_form form .actions input:hover {
 	background-color: #E1F5A9;
 }
 header {
@@ -111,7 +111,7 @@ header nav span a {
 	font-weight: bold;
 }
 
-.main_content .signup_form {
+.main_content .signup_form,.main_content .login_form {
 	border: 0pt dashed black;
 	width: auto;
 	overflow: auto;
@@ -121,7 +121,10 @@ header nav span a {
 
 }
 
-.signup_form .field input, .fwc_body #new_reference .field input, .edit_form .field input {
+.login_form {
+	padding-top: 50px;
+}
+.signup_form .field input, .fwc_body #new_reference .field input, .edit_form .field input, .login_form .field input {
 	width: 350px;
 	border: 1pt solid #ccc;
 	height: 17pt;

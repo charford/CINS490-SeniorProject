@@ -141,7 +141,7 @@ class ApplicantsController < ApplicationController
     def is_signed_in?
       return if signed_in?
       job=Job.find(params[:job_id])
-      redirect_to job, notice: 'You must create an account before applying for a job.'
+      redirect_to job, notice: 'You must be signed in to apply for a job.'
     end
 
     # def is_the_hiring_manager?

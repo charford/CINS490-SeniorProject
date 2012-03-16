@@ -40,5 +40,6 @@ JobmeApp::Application.routes.draw do
   match '/admin/applicants', :to => 'admin#applicants'
   match '/admin/ratings', :to => 'admin#ratings'
   match '/admin/permissions', :to => 'admin#permissions'
+  match '/users/:user_id/deactivate', :to => 'users#deactivate'
 
 end

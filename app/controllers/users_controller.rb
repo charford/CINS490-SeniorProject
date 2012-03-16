@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :is_admin?, :only => [:destroy,:deactivate]
   before_filter :authenticate, :except => [:new, :create]
   before_filter :correct_user
 
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    @title = "Sign up"
     @user = User.new
     @submit_text = "Sign up"
     respond_to do |format|
@@ -74,6 +76,13 @@ class UsersController < ApplicationController
       format.html { redirect_to '/admin/users', notice: 'User was destroyed.' }
     end
   end
+
+  def deactivate
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      format.html { redirect_to '/admin/users', notice: 'User has been deactivated.' }
+    end
+  end
   
   private
   
@@ -81,5 +90,10 @@ class UsersController < ApplicationController
     return if Administrator.find_by_user_id(current_user)
     return if User.find_by_id(params[:id]) == current_user
     redirect_to root_path
+  end
+
+  def is_admin?
+    return if Administrator.find_by_user_id(current_user)
+    redirect_back_or root_path, notice: 'You must be an Administrator to perform this task.'
   end
 end

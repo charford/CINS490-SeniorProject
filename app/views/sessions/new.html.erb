@@ -1,5 +1,8 @@
-<div class="user_login_form">
-<h2><%= @title %></h2>
 <p id="notice"><%= notice %></p>
+<div class="welcome_message"><%= @title %></div>
+<div class="index_info">
+	<%= image_tag '/assets/job_listings.jpg' %>
+</div>
+<div class="login_form">
 <%= render 'login_form' %>
 </div>

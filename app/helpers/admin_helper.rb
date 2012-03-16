@@ -11,4 +11,8 @@ module AdminHelper
     link_to 'Destroy', job_jobapp_applicant_path(@job,@job.jobapp,applicant),
       confirm: 'Are you sure?', method: :delete
   end
+
+  def deactivate_user_path user_id
+    "/users/#{user_id}/deactivate"
+  end
 end

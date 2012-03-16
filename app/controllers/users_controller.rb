@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :is_admin?, :only => [:destroy,:deactivate]
+  before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
   before_filter :authenticate, :except => [:new, :create]
   before_filter :correct_user
 
@@ -77,23 +77,43 @@ class UsersController < ApplicationController
     end
   end
 
-  def deactivate
-    @user = User.find(params[:user_id])
+  def activate
+    user_id = params[:id]
+    @activeuser = Activeuser.new
+    @activeuser.user_id = user_id
+
     respond_to do |format|
-      format.html { redirect_to '/admin/users', notice: 'User has been deactivated.' }
+      if @activeuser.save
+        format.html { redirect_to '/admin/users', notice: 'User has been activated.' }
+      else
+        format.html { redirect_to '/admin/users', notice: 'Failed activating user. Is this user already active?' }
+      end
+    end
+  end
+
+  def deactivate
+    user_id = params[:id]
+    @activeuser = Activeuser.find_by_user_id(user_id)
+
+    respond_to do |format|
+      if @activeuser.destroy
+        format.html { redirect_to '/admin/users', notice: 'User has been deactivated.' }
+      else
+        format.html { redirect_to '/admin/users', notice: 'Failed deactivating user.' }
+      end
     end
   end
   
   private
   
-  def correct_user
-    return if Administrator.find_by_user_id(current_user)
-    return if User.find_by_id(params[:id]) == current_user
-    redirect_to root_path
-  end
+    def correct_user
+      return if Administrator.find_by_user_id(current_user)
+      return if User.find_by_id(params[:id]) == current_user
+      redirect_to root_path
+    end
 
-  def is_admin?
-    return if Administrator.find_by_user_id(current_user)
-    redirect_back_or root_path, notice: 'You must be an Administrator to perform this task.'
-  end
+    def is_admin?
+      return if Administrator.find_by_user_id(current_user)
+      redirect_back_or root_path, notice: 'You must be an Administrator to perform this task.'
+    end
 end

@@ -25,7 +25,12 @@
         <td><%= user.applicants.count %></td>
         <td><%= user.references.count %></td>
         <td style='text-align: right'>
-          <%= link_to 'Deactivate', deactivate_user_path(user.id), confirm: 'Performing this action will keep all related data, but prevent user from logging in. Are you sure?' %> ||  
+          <% if user_active? user.id %>
+            <%= link_to 'Deactivate', deactivate_user_path(user.id), confirm: 'Performing this action will keep all related data, but prevent user from logging in. Are you sure?' %>
+          <% else %>
+            <%= link_to 'Activate', activate_user_path(user.id), confirm: 'Performing this action will keep all related data, but prevent user from logging in. Are you sure?' %>
+          <% end %>
+           ||  
           <%= link_to 'Destroy', user, confirm: 'Performing this action will remove all related data, including job applications that belong to this user. Are you sure?', method: :delete %>
         </td>
       </tr>

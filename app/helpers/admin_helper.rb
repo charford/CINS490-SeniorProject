@@ -15,4 +15,13 @@ module AdminHelper
   def deactivate_user_path user_id
     "/users/#{user_id}/deactivate"
   end
+
+  def activate_user_path user_id
+    "/users/#{user_id}/activate"
+  end
+
+  def user_active? user_id
+    return true if Activeuser.find_by_user_id(user_id)
+    return false
+  end
 end

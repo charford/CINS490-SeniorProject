@@ -17,7 +17,7 @@ class ApplicantsController < ApplicationController
   def index
     if Administrator.find_by_user_id(current_user)
       @evaluator_id = Administrator.find_by_user_id(current_user).user_id
-    else
+    elsif Evaluator.find_by_user_id(current_user)
       @evaluator_id = Evaluator.find_by_user_id(current_user).user_id
     end
     @applicants = 

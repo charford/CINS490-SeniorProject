@@ -15,7 +15,9 @@
   <h1><span>Job</span><i>Me</i></h1>
 	<%= render 'pages/header' %>
 <% if signed_in? %>
-	<%= render 'pages/navigation_bar' %>
+	<%= render 'pages/signed_in_navigation' %>
+<% else %>
+	<%= render 'pages/signed_out_navigation' %>
 <% end %>
 </header>
 

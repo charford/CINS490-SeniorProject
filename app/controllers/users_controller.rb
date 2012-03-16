@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:new, :create]
-  #before_filter :correct_user
+  before_filter :correct_user
 
   def jobapps
     @user = User.find(params[:id])
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @submit_text = "Sign up"
     respond_to do |format|
       format.html # new.html.erb
     end

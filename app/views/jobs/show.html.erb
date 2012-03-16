@@ -3,7 +3,7 @@
 <%= render 'pages/tabs' %>
 <div class="fwc_body">
 
-  <% if is_a_hiring_manager? %>
+  <% if is_the_hiring_manager? @job %>
     <%= link_to image_tag('/assets/pencil_edit.png'), edit_job_path(@job), :class => "edit_button" %>
   <% end %>
 
@@ -27,7 +27,7 @@
   <%= BlueCloth.new(@job.department).to_html.html_safe %>
 
   <h3>Hiring manager</h3>
-  <%= BlueCloth.new(display_hiring_manager(@job.hiring_manager_id)).to_html.html_safe %>
+  <%= BlueCloth.new(User.find(@job.hiring_manager_id)).to_html.html_safe %>
 
 </div>
 </div>

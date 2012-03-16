@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-  before_filter :validate_hiring_manager, :except => [:search,:show, :index]
-  before_filter :validate_administrator, :except => [:search,:show, :index, :update, :new, :edit]
-
+  before_filter :validate_hiring_manager, :except => [:search,:show,:index]
+  before_filter :validate_administrator, :except => [:create,:search,:show, :index, :update, :new, :edit]
+  before_filter :validate_is_the_hiring_manager, :only => [:edit, :update]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -40,9 +40,9 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    hiring_manager = HiringManager.find_by_user_id(current_user.id)
-    hiring_manager.nil? ? hiring_manager = Administrator.find_by_user_id(current_user.id) : nil
-    params[:job][:hiring_manager_id] = hiring_manager.id
+    hiring_manager = HiringManager.find_by_user_id(current_user.id).user_id
+    hiring_manager.nil? ? hiring_manager = Administrator.find_by_user_id(current_user.id).user_id : nil
+    params[:job][:hiring_manager_id] = hiring_manager
     
     @job = Job.new(params[:job])
 
@@ -79,7 +79,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url }
+      format.html { redirect_to '/admin/jobs', notice: 'Job destroyed.' }
     end
   end
 
@@ -94,5 +94,12 @@ class JobsController < ApplicationController
       return if Administrator.find_by_user_id(current_user)
       return if HiringManager.find_by_user_id(current_user)
       redirect_to Job.find(params[:id]), notice: 'You must be a hiring manager to post/edit a job.'
+    end
+
+    def validate_is_the_hiring_manager
+      @job = Job.find(params[:id])
+      return if Administrator.find_by_user_id(current_user)
+      return if current_user.id == @job.hiring_manager_id
+      redirect_to @job,notice: 'You must be the hiring manager to edit this job.'
     end
 end

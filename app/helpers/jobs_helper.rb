@@ -11,9 +11,10 @@ module JobsHelper
 	  return false
   end
 
-  def is_the_hiring_manager?
-    return true if !Administrator.find_by_user_id(current_user).nil?
-    return true if !HiringManager.find_by_user_id(current_user).nil?
+  def is_the_hiring_manager? job
+    return true if Administrator.find_by_user_id(current_user)
+    return false if HiringManager.find_by_user_id(current_user).nil?
+    return true if HiringManager.find_by_user_id(current_user).user_id == job.hiring_manager_id
   end
 
   def link_to_view_applicants(job)

@@ -12,21 +12,22 @@
             <thead>
               <tr>
                 <th>User</th>
-                <th>Position</th>
                 <th>Created on</th>
                 <th>Last Updated</th>
-                <th></th>
+                <th>Submitted?</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <% job.applicants.each do |applicant| %>
                 <tr>
-                  <td><%= User.find(applicant.user_id) %></td>
-                  <td><%= Job.find(applicant.job_id).position %></td>
+                  <td>
+                    <%= link_to User.find(applicant.user_id), 
+                        job_jobapp_applicant_path(job,job.jobapp,applicant) %>
+                  </td>
                   <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
                   <td><%= time_ago_in_words applicant.updated_at %> ago</td>
-                  <td></td>
+                  <td><%= applicant.published? ? "Yes" : "No" %></td>
                   <td style='text-align: right'><%= link_to_destroy_applicant applicant %></td>
                 </tr>
               <% end %>

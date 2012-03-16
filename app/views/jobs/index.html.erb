@@ -8,22 +8,22 @@
   <div class="job_container">
     <nav>
       <% if signed_in? %>
-        <% if is_a_hiring_manager? %>
+        <% if is_faculty? %>
           <%= link_to_view_applicants job %>
+        <% end %>
+        <% if is_the_hiring_manager? job %>
           <%= link_to content_tag(:span,'Edit'), edit_job_path(job) %>
         <% end %>
-        <% if is_an_administrator? %>
-          <%= link_to content_tag(:span,'Destroy'), job, confirm: 'Are you sure?', method: :delete %>
-        <% end %>
       <% end %>
+      <%= link_to content_tag(:span, 'Details'), job %>
       <%= link_to content_tag(:span, 'Apply Now!'), new_job_jobapp_applicant_path(job,job.jobapp) %>
     </nav>
       <h3><%= link_to job.position, job %></h3>
       <ul> 
         <li><b>Description</b><br /> <%= job.description.html_safe %></li>
         <li><b>Minimum Qualifications</b><br /> <%= job.minimum_qualifications.html_safe %></li>
-        <li>Hiring Manager: <%= display_hiring_manager(job.hiring_manager_id) %><% job.hiring_manager_id %></li>
-        <li><%= link_to "Apply", new_job_jobapp_applicant_path(job,job.jobapp) %> | <%= link_to 'Show', job %></li>
+        <li>Hiring Manager: <%= User.find(job.hiring_manager_id) %>
+        </li>
       </ul>
     </div>
   <% end %>

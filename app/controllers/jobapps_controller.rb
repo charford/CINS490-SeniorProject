@@ -1,6 +1,7 @@
 class JobappsController < ApplicationController
   before_filter :get_job
-  before_filter :is_hiring_manager?, :except => [:show]
+  #before_filter :is_hiring_manager?, :except => [:show]
+  before_filter :validate_is_the_hiring_manager, :only => [:edit, :update]
 
   def add_question
     #jobapp = Jobapp.find(params[:jobapp_id])
@@ -117,10 +118,16 @@ class JobappsController < ApplicationController
     end
   end
   private
-    def is_hiring_manager?
+    # def is_hiring_manager?
+    #   @job = Job.find(params[:job_id])
+    #   return if Administrator.find_by_user_id(current_user)
+    #   return if HiringManager.find(current_user)
+    #   redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be a hiring manager to edit a job application.'
+    # end
+    def validate_is_the_hiring_manager
       @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)
-      return if HiringManager.find(@job.hiring_manager_id).user_id == current_user.id
-      redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be the hiring manager to edit a job application.'
+      return if current_user.id == @job.hiring_manager_id
+      redirect_to [@job,@job.jobapp], notice: 'You must be the hiring manager to edit this job application.'
     end
 end

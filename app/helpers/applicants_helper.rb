@@ -5,7 +5,7 @@ module ApplicantsHelper
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
 
-    if applicant.ratings.where("evaluator_id = ?", evaluator.user_id).empty?
+    if applicant.ratings.where("evaluator_id = ?", current_user).empty?
       render 'ratings/rate_applicant'
     else
       !applicant.ratings.empty? ? "#{applicant.avgrating} / 5" : "None"
@@ -13,14 +13,15 @@ module ApplicantsHelper
   end
 
   def has_rated_applicant?(applicant)
-    evaluator = Evaluator.find_by_user_id(current_user)
-    evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
-    return false if evaluator.nil?
-    if applicant.ratings.where("evaluator_id = ?", evaluator.id).nil?
-      return false
-    else
-      return true
-    end
+    return true if !applicant.ratings.where("user_id = ?", current_user.id).nil?
+    # evaluator = Evaluator.find_by_user_id(current_user)
+    # evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
+    # return false if evaluator.nil?
+    # if applicant.ratings.where("evaluator_id = ?", evaluator.id).nil?
+    #   return false
+    # else
+    #   return true
+    # end
   end
 
   def get_attachment(answer_id)

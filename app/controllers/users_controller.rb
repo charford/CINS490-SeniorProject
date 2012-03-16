@@ -95,6 +95,11 @@ class UsersController < ApplicationController
     user_id = params[:id]
     @activeuser = Activeuser.find_by_user_id(user_id)
 
+    if Administrator.find_by_user_id(user_id)
+      redirect_to '/admin/users', notice: 'Unable to deactive an administrator.'
+      return
+    end
+
     respond_to do |format|
       if @activeuser.destroy
         format.html { redirect_to '/admin/users', notice: 'User has been deactivated.' }

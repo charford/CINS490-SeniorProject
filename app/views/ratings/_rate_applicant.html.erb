@@ -2,7 +2,6 @@
   <% if @rating.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
-
       <ul>
       <% @rating.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,29 +9,35 @@
       </ul>
     </div>
   <% end %>
+  <h3>Rate Applicant</h3>
   <div class="rating_scale">
-    <div class="field">
-    <%= f.radio_button :rating, '1' %>
-    <%= f.label "1: Unacceptable" %>
+    <div class="field" id="rate_1">
+      <%= f.radio_button :rating, '1' %>
+      <%= f.label "1: Unacceptable" %>
     </div>
-    <div class="field">
-    <%= f.radio_button :rating, '2' %>
-    <%= f.label "2: Below Average" %>
+    <div class="field" id="rate_2">
+      <%= f.radio_button :rating, '2' %>
+      <%= f.label "2: Below Average" %>
     </div>
-    <div class="field">
+    <div class="field" id="rate_3">
       <%= f.radio_button :rating, '3' %>
       <%= f.label "3: Average" %>
     </div>
-    <div class="field">
+    <div class="field" id="rate_4">
       <%= f.radio_button :rating, '4' %>
       <%= f.label "4: Above Average" %>
     </div>
-    <div class="field">
-    <%= f.radio_button :rating, '5' %>
-    <%= f.label "5: Outstanding" %>
+    <div class="field" id="rate_5">
+      <%= f.radio_button :rating, '5' %>
+      <%= f.label "5: Outstanding" %>
     </div>
+    <div id="clearfloats"></div>
   </div>
+  
+  <p>
+    <%= f.text_area :comment %>
+  </p>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @submit_text %>
   </div>
 <% end %>

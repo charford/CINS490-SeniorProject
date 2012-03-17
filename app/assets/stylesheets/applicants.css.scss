@@ -15,28 +15,45 @@
   padding-bottom: 4px;
 }
 
-.rating_1_row {
+.rating_1_row, #rate_1 {
 	/*background-color: #ff6600;*/
   background-image: url('/assets/1_rating.png');
 }
-.rating_2_row {
+.rating_2_row, #rate_2 {
 	/*background-color: #cccc33;*/
   background-image: url('/assets/2_rating.png');
 }
-.rating_3_row {
+.rating_3_row, #rate_3 {
 	/*background-color: #99cc33;*/
   background-image: url('/assets/3_rating.png');
 
 }
-.rating_4_row {
+.rating_4_row, #rate_4 {
   /*background-color: #66cc33;*/
 	background-image: url('/assets/4_rating.png');
 }
-.rating_5_row {
+.rating_5_row, #rate_5 {
 	/*background-color: #33cc33;*/
 	background-image: url('/assets/5_rating.png');
 }
 #table_border {
   border: 3px solid #ccc;
   border-radius: 5px;
+}
+
+.fwc_body .applicant_left {
+  border: 1pt dashed #ccc;
+  width: 180px; 
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  float: left;
+}
+.fwc_body .applicant_right {
+  width: 640px;
+  float: right;
+  border: 1pt dashed #ccc;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }

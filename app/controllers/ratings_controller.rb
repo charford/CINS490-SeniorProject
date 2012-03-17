@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
     params[:rating][:applicant_id] = params[:applicant_id]
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
-    params[:rating][:evaluator_id] = evaluator.user_id
+    params[:rating][:evaluator_id] = User.find(evaluator.user_id).id
 
     @rating = Rating.new(params[:rating])
 
@@ -26,6 +26,25 @@ class RatingsController < ApplicationController
         format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Rating was successfully created.' }
       else
         format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'An error occurred while rating applicant.' }
+      end
+    end
+  end
+
+  # GET /ratings/1/edit
+  def edit
+    @rating = Rating.find(params[:id])
+    @submit_text = "Save Evaluation"
+  end
+
+  # PUT /ratings/1
+  def update
+    @rating = Rating.find(params[:id])
+
+    respond_to do |format|
+      if @comment.update_attributes(params[:applicant_comment])
+        format.html { redirect_to @comment, notice: 'Applicant comment was successfully updated.' }
+      else
+        format.html { render action: "edit" }
       end
     end
   end

@@ -15,7 +15,7 @@ JobmeApp::Application.routes.draw do
       resources :applicants do
         resources :answers, :only => [:destroy]
         resources :comments, :only => [:create, :edit, :update, :destroy]
-        resources :ratings, :only => [:create, :destroy]
+        resources :ratings, :only => [:create, :destroy, :edit]
       end
     end
   end

@@ -11,8 +11,6 @@
         No applicants with ratings to display.
     <% end %>
 
-
-
     <h4>Total Applicants: <%= @job.applicants.where("published = ?", true).count %></h4>
     <h4>Total Comments: <%= get_total_comments(@job.applicants.where("published = ?", true)) %></h4>
     <h4>Total Ratings: <%= get_total_ratings(@job.applicants.where("published = ?", true)) %></h4>

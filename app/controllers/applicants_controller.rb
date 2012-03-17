@@ -40,7 +40,7 @@ class ApplicantsController < ApplicationController
     @job = Job.find(params[:job_id])
     @rating = Rating.new
     @comment = Comment.new
-
+    @submit_text = "Submit Evaluation"
     respond_to do |format|
       format.html # show.html.erb
     end

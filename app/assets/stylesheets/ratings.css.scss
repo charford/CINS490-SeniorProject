@@ -4,3 +4,35 @@
 .rating_scale span {
 	border: 1px solid black;
 }
+
+.rating_scale .field,#eval_container .rating {
+	float: left;
+	margin-right: 10px;
+	border: 1px solid black;
+	padding: 5px;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+#clearfloats {
+	clear: both;
+}
+
+#eval_container {
+	border: 1pt solid #ccc;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: white;
+	box-shadow: 0px 0px 10px 0px #ccc;
+	margin-top: 25px;
+}
+
+#eval_container .rating {
+	float: right;
+}
+
+#eval_container #edit_button {
+	position: relative;
+	float: right;
+}
+

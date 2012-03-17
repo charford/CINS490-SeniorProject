@@ -8,12 +8,43 @@ module ApplicantsHelper
     if applicant.ratings.where("evaluator_id = ?", current_user).empty?
       render 'ratings/rate_applicant'
     else
-      !applicant.ratings.empty? ? "#{applicant.avgrating} / 5" : "None"
+      rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
+      !applicant.ratings.empty? ? "
+      <div class='field' id='#{rating_styles[applicant.avgrating]}'>
+      <label>Average:</label>
+        #{applicant.avgrating} / 5
+      </div>
+      <div class='field'>
+        <label>Max:</label>
+        #{@applicant.ratings.order("rating").last.rating}
+      </div>
+      <div class='field'>
+        <label>Min:</label>
+        #{@applicant.ratings.order("rating").first.rating}
+      </div>
+      <div class='field'>
+        <label>Responses:</label>
+        #{@applicant.ratings.count}
+      </div>
+      <div id='clearfloats'></div>
+      ".html_safe : "None"
     end
   end
 
+  def get_evaluator_rating(rating)
+    rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
+    rating_text = ['Unacceptable', 'Below Average', 'Acceptable', ]
+    "
+    <div class='rating' id='#{rating_styles[rating]}'>
+      <label>Rated:</label>
+      #{rating}
+    </div>
+    ".html_safe
+  end
+
   def has_rated_applicant?(applicant)
-    return true if !applicant.ratings.where("user_id = ?", current_user.id).nil?
+    return true if applicant.ratings.where("user_id = ?", current_user.id)
+    return false
   end
 
   def get_attachment(answer_id)

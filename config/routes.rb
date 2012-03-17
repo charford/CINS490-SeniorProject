@@ -1,5 +1,5 @@
 JobmeApp::Application.routes.draw do
-
+  resources :references
   resources :administrators, :only => [:create, :destroy]
   resources :hiring_managers, :only => [:create, :destroy]
   resources :evaluators, :only => [:create, :destroy]

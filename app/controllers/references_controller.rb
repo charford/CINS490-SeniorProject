@@ -24,7 +24,6 @@ class ReferencesController < ApplicationController
   # GET /references/new
   def new
     @reference = Reference.new
-
     respond_to do |format|
       format.html # new.html.erb
     end

@@ -1,0 +1,20 @@
+<h3>Survey Answers</h3>
+<p>
+  <ul>
+    <% @applicant.answers.each do |answer| %>
+      <li>
+        <b>Question:</b><br />
+        <p>
+          <%= answer.question.body.html_safe unless answer.question.body.nil? %>
+        </p>
+        <b>Response:</b><br />
+        <p>
+          <%= !answer.body.nil? ? answer.body.html_safe : "" %>
+          <% if answer.question.qtype == "file" %>
+            <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
+          <% end %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</p>

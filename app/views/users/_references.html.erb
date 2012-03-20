@@ -1,0 +1,22 @@
+<h3>References (<%= @user.references.count %>)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date Submitted</th>
+      <th># Words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.references.each do |reference| %>
+    <tr>
+      <td><%= reference.firstname %> <%= reference.lastname %></td>
+      <td><%= reference.created_at.strftime("%b %d, %Y") %></td>
+      <td><%= reference.letter.split.size %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @user.references.empty? %>
+  <p>No references available.</p>
+<% end %>

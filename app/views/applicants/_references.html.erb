@@ -1,0 +1,7 @@
+ <h3>References (<%= User.find(@applicant.user_id).references.count %>)</h3>
+      <% User.find(@applicant.user_id).references.each do |reference| %>
+        <p><%= reference.letter.html_safe %></p>
+      <% end %>
+      <% if User.find(@applicant.user_id).references.empty? %>
+      <p>No references available.</p>
+      <% end %>

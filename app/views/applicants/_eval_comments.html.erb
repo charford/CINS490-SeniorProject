@@ -1,0 +1,5 @@
+ <h3>Evaluator Comments (<%= @applicant.comments.count %>)</h3>
+      <% @applicant.comments.each do |comment| %>
+      <p>Posted by: <%= User.find(comment.user_id) %> <%= time_ago_in_words(comment.created_at) %> ago.</p>
+      <p><%= comment.body.html_safe %></p>
+      <% end %>

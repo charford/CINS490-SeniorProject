@@ -47,13 +47,19 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
   float: left;
 }
 .fwc_body .applicant_right {
-  width: 640px;
+  width: 668px;
   float: right;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.fwc_body .applicant_right .container {
   border: 1pt dashed #ccc;
+  border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 15px;
 }

@@ -4,13 +4,25 @@
     <div class="fwc_body">
       <div class="applicant_left">
       <%= render 'general_info.html.erb' %>
-      <%= render 'average_rating' if has_rated_applicant?(@applicant) %>
+      <%= render "average_rating" %>
     </div>
     <div class="applicant_right">
-      <%= render 'survey_responses' %>
-      <%= render 'references' %>
-      <%= render 'ratings/rate_applicant' if !has_rated_applicant?(@applicant) %>
-      <%= render 'ratings' if has_rated_applicant?(@applicant) %>      
+      <div class="container">
+        <%= render 'survey_responses' %>
+      </div>
+      <div class="container">
+        <%= render 'references' %>
+      </div>
+      <% if !has_rated_applicant?(@applicant) %>
+      <div class="container">
+        <%= render 'ratings/rate_applicant' %>
+      </div>
+      <% end %>
+      <% if has_rated_applicant?(@applicant) %>
+      <div class="container">
+        <%= render 'ratings' %>      
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

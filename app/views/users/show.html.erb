@@ -3,18 +3,30 @@
   <h1>Profile</h1>
   <%= render 'pages/profile_tabs' %>
   <div class="fwc_body">
-
-<p>
-  <b>Name:</b><br />
-  <%= @user.firstname %> <%= @user.lastname %>
-</p>
-<p>
-  <b>Email:</b><br />
-  <%= @user.email %>
-</p>
-<p>
-  <b>Reference Link:</b>
-  <%= show_link_to_new_user_reference(@user) %>
-</p>
-</div>
+    <div class="applicant_left">
+      <h3>Name</h3>
+      <p>
+        <%= @user.firstname.capitalize %> <%= @user.lastname.capitalize %>
+      </p>
+      <h3>Email</h3>
+      <p>
+        <%= mail_to @user.email, @user.email %>
+      </p>
+    </div>
+    <div class="applicant_right">
+      <div class="container">
+        <h3>My Jobs</h3>
+        <%= render "jobapps" %>
+      </div>
+      <div class="container">
+        <p>
+          <h3>Reference Link</h3>
+          <%= show_link_to_new_user_reference(@user) %>
+        </p>
+      </div>
+      <div class="container">
+        <%= render "references" %>
+      </div>
+    </div>
+  </div>
 </div>

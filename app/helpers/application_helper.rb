@@ -31,6 +31,13 @@ module ApplicationHelper
     end
   end
 
+  def is_current_job_page? tab
+    return "current_page_tab" if tab == 'Overview' and params[:controller] = 'jobs' and params[:action] == 'show'
+    return "current_page_tab" if tab == 'Applicants' and params[:controller] == 'jobs' and params[:action] == 'index'
+    return "current_page_tab" if tab == 'Application' and params[:controller] == 'jobapps'
+    return "current_page_tab" if tab == 'Apply' and params[:controller] == 'applicants' and params[:action] == 'new'
+  end
+
   #########################################################################
   # THIS CODE WAS NOT WRITTEN ENTIRELY BY ME. I RECIEVED THIS CODE        #
   # FROM TYSON HENRY's PROJECT FOR "GROUPS" IT HAS BEEN MODIFIED.         # => TODO REMOVE thiS, i'm not using it

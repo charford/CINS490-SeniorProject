@@ -5,9 +5,9 @@ module ApplicantsHelper
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
 
-    if applicant.ratings.where("evaluator_id = ?", current_user).empty?
-      render 'ratings/rate_applicant'
-    else
+    # if applicant.ratings.where("evaluator_id = ?", current_user).empty?
+    #   render 'ratings/rate_applicant'
+    # else
       rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
       !applicant.ratings.empty? ? "
       <div class='field' id='#{rating_styles[applicant.avgrating]}'>
@@ -28,7 +28,7 @@ module ApplicantsHelper
       </div>
       <div id='clearfloats'></div>
       ".html_safe : "None"
-    end
+    # end
   end
 
   def get_evaluator_rating(rating)

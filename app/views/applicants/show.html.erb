@@ -13,16 +13,13 @@
       <div class="container">
         <%= render 'references' %>
       </div>
-      <% if !has_rated_applicant?(@applicant) %>
       <div class="container">
-        <%= render 'ratings/rate_applicant' %>
+        <% if has_rated_applicant?(@applicant) %>
+          <%= render 'ratings/rate_applicant' %>
+        <% else %>
+          <%= render 'ratings' %>
+        <% end %>
       </div>
-      <% end %>
-      <% if has_rated_applicant?(@applicant) %>
-      <div class="container">
-        <%= render 'ratings' %>      
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

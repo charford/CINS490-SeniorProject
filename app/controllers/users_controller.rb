@@ -1,7 +1,29 @@
 class UsersController < ApplicationController
   before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
-  before_filter :authenticate, :except => [:new, :create]
-  before_filter :correct_user
+  before_filter :authenticate, :except => [:new, :create, :confirm]
+  before_filter :correct_user, :except => [:confirm]
+
+  def confirm
+    @user = User.find(params[:id])
+    @confirm_hash = params[:confirm_hash]
+    @confirmation = Confirmation.find_by_user_id(@user.id)
+    if @confirmation.nil?
+      redirect_to login_path, notice: "Failed to activate account."
+      return
+    end
+    if @confirmation.confirm_hash == @confirm_hash
+      @activeuser = Activeuser.new
+      @activeuser.user_id = @user.id
+      if @activeuser.save
+        @user.confirmation.destroy
+        redirect_to login_path, notice: "Successfully activated account. Please login to continue."
+      else
+        redirect_to login_path, notice: "Failed to activate user. Please contact the system administrator."
+      end
+    else
+      redirect_to login_path, notice: "Failed to activate account."
+    end
+  end
 
   def jobapps
     @user = User.find(params[:id])
@@ -45,9 +67,9 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
-
     respond_to do |format|
       if @user.save
+        UserMailer.welcome_email(@user).deliver
         format.html { redirect_to login_path, notice: 'User was successfully created.' }
       else
         #format.html { render action: "new" }

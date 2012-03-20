@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   def is_current_job_page? tab
+    return nil
     return "current_page_tab" if tab == 'Overview' and params[:controller] = 'jobs' and params[:action] == 'show'
     return "current_page_tab" if tab == 'Applicants' and params[:controller] == 'jobs' and params[:action] == 'index'
     return "current_page_tab" if tab == 'Application' and params[:controller] == 'jobapps'

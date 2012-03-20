@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   belongs_to  :hiringmanager
   belongs_to  :administrator
   has_many    :references, :dependent => :destroy
+  has_one     :confirmation
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

@@ -39,10 +39,11 @@ class RatingsController < ApplicationController
   # PUT /ratings/1
   def update
     @rating = Rating.find(params[:id])
-
+    @job = Job.find(params[:job_id])
+    @applicant = Applicant.find(params[:applicant_id])
     respond_to do |format|
-      if @comment.update_attributes(params[:applicant_comment])
-        format.html { redirect_to @comment, notice: 'Applicant comment was successfully updated.' }
+      if @rating.update_attributes(params[:rating])
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Applicant comment was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

@@ -1,4 +1,6 @@
 JobmeApp::Application.routes.draw do
+  resources :confirmations
+
   resources :references
   resources :administrators, :only => [:create, :destroy]
   resources :hiring_managers, :only => [:create, :destroy]
@@ -15,7 +17,7 @@ JobmeApp::Application.routes.draw do
       resources :applicants do
         resources :answers, :only => [:destroy]
         resources :comments, :only => [:create, :edit, :update, :destroy]
-        resources :ratings, :only => [:create, :destroy, :edit]
+        resources :ratings, :only => [:create, :destroy, :edit,:update]
       end
     end
   end
@@ -38,5 +40,6 @@ JobmeApp::Application.routes.draw do
   match '/admin/permissions', :to => 'admin#permissions'
   match '/users/:id/deactivate', :to => 'users#deactivate'
   match '/users/:id/activate', :to => 'users#activate'
+  match '/users/:id/confirm/:confirm_hash', :to => 'users#confirm'
 
 end

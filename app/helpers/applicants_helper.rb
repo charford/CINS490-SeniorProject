@@ -5,26 +5,24 @@ module ApplicantsHelper
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
 
-    # if applicant.ratings.where("evaluator_id = ?", current_user).empty?
-    #   render 'ratings/rate_applicant'
-    # else
+    average = applicant.ratings.average('rating')
       rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
       !applicant.ratings.empty? ? "
-      <div class='field' id='#{rating_styles[applicant.avgrating]}'>
+      <div class='field' id='#{rating_styles[average]}'>
       <label>Average:</label>
-        #{applicant.avgrating} / 5
+        #{average} / 5
       </div>
       <div class='field'>
         <label>Max:</label>
-        #{@applicant.ratings.order("rating").last.rating}
+        #{applicant.ratings.order("rating").last.rating}
       </div>
       <div class='field'>
         <label>Min:</label>
-        #{@applicant.ratings.order("rating").first.rating}
+        #{applicant.ratings.order("rating").first.rating}
       </div>
       <div class='field'>
         <label>Responses:</label>
-        #{@applicant.ratings.count}
+        #{applicant.ratings.count}
       </div>
       <div id='clearfloats'></div>
       ".html_safe : "None"
@@ -43,7 +41,7 @@ module ApplicantsHelper
   end
 
   def has_rated_applicant?(applicant)
-    return true if applicant.ratings.where("user_id = ?", current_user.id)
+    return true if applicant.ratings.where("user_id = ? and applicant_id = ?", current_user.id, applicant.id)
     return false
   end
 

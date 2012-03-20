@@ -14,7 +14,7 @@
         <%= set_row_color(applicant).html_safe %>
           <td><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
           <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
-          <td><%= applicant.avgrating %></td>
+          <td><%= applicant.ratings.average('rating') %></td>
           <td><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
           <td>
             <span  class="rating_text_row"><%= link_to 'Destroy', job_jobapp_applicant_path(@job,@job.jobapp,applicant), 

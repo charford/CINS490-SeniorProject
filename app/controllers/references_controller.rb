@@ -42,6 +42,10 @@ class ReferencesController < ApplicationController
     end
   end
 
+  def request_reference
+    
+  end
+
   # DELETE /references/1
   def destroy
     @reference = Reference.find(params[:id])

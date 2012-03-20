@@ -1,9 +1,18 @@
 class Reference < ActiveRecord::Base
-	belongs_to :user
-	validates  :user_id,        :presence => true
-	validates	 :firstname,      :presence => true
-	validates  :lastname,       :presence => true
-	validates	 :letter,         :presence => true
+  belongs_to :user
+  validates  :user_id,        :presence => true
+  validates	 :firstname,      :presence => true
+  validates  :lastname,       :presence => true
+  validates	 :letter,         :presence => true
   validates  :reference_hash, :presence => true
 	#email and phone not required
+
+  def request_for_reference
+    @subject = "Email sent via your website"
+    @body['message'] = "hello world"
+    @recipients = "casey@caseyharford.com"
+    @from = "user@joe.com"
+    @sent_on = Time.now
+    @headers = {}
+  end	
 end

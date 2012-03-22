@@ -1,0 +1,28 @@
+<div class="full_width_content">
+  <h1>Reset Password</h1>
+<!--   <%= render 'pages/profile_tabs' %> -->
+  <div class="fwc_body">
+<%= form_for "" :url => { :action => "doresetpw", :controller => "users" } do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Password" %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Confirm Password" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @reset_request.user_id %>
+</p>
+
+<p>
+  <b>Request hash:</b>
+  <%= @reset_request.request_hash %>
+</p>
+
+
+<%= link_to 'Edit', edit_reset_request_path(@reset_request) %> |
+<%= link_to 'Back', reset_requests_path %>

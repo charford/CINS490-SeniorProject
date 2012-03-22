@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
   before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
-  before_filter :authenticate, :except => [:new, :create, :confirm]
+  before_filter :authenticate, :except => [:new, :create, :confirm, :resetpw]
   before_filter :correct_user, :except => [:confirm]
+
+  def resetpw
+    @request_hash = params[:request_hash]
+  end
+
+  def doresetpw
+    redirect_to root_path
+  end
 
   def confirm
     @user = User.find(params[:id])

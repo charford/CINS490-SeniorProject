@@ -9,22 +9,21 @@ class User < ActiveRecord::Base
                                       :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }
                                     
   validates   :firstname,             :presence => true
-  
   validates   :lastname,              :presence => true
-  
   validates   :password,              :presence => true,
                                       :confirmation => true
                                     
   validates   :password_confirmation, :presence => true
   # validate    :password_must_be_present
   validates   :reference_hash,        :uniqueness => true
-  has_many    :applicants, :dependent => :destroy
+  has_many    :applicants,            :dependent => :destroy
   has_many    :jobs,                  :through => :applicants
   belongs_to  :evaluator
   belongs_to  :hiringmanager
   belongs_to  :administrator
-  has_many    :references, :dependent => :destroy
+  has_many    :references,            :dependent => :destroy
   has_one     :confirmation
+  has_one     :reset_request  #pw reset
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

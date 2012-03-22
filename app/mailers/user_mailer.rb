@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
   	@url = "#{con_type}localhost/users/#{@confirmation.user_id}/confirm/#{@confirmation.confirm_hash}"
   	mail(:to => user.email, :subject => "Welcome to My Awesome Site")
   end
-
+  
   private
    def secure_hash(string)
       Digest::SHA2.hexdigest(string)

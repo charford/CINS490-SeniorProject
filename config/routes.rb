@@ -1,4 +1,6 @@
 JobmeApp::Application.routes.draw do
+  resources :reset_requests
+
   resources :confirmations
 
   resources :references, :only => [:new,:create]
@@ -41,5 +43,6 @@ JobmeApp::Application.routes.draw do
   match '/users/:id/deactivate', :to => 'users#deactivate'
   match '/users/:id/activate', :to => 'users#activate'
   match '/users/:id/confirm/:confirm_hash', :to => 'users#confirm'
+  match '/reset/:request_hash', :to => 'users#resetpw'
 
 end

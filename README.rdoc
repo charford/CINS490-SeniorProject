@@ -1,2 +1,4 @@
 == JobApp
 An application to post and find jobs.
+
+By Casey Harford

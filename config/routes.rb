@@ -1,14 +1,14 @@
 JobmeApp::Application.routes.draw do
   resources :confirmations
 
-  resources :references
+  resources :references, :only => [:new,:create]
   resources :administrators, :only => [:create, :destroy]
   resources :hiring_managers, :only => [:create, :destroy]
   resources :evaluators, :only => [:create, :destroy]
   resources :sessions, :only => [:create, :new, :destroy]
 
   resources :users, :only => [:new, :create, :edit, :update, :destroy, :show] do
-    resources :references, :only => [:index, :create, :new, :show, :destroy]
+    resources :references, :only => [:index, :show, :destroy]
   end
 
   resources :jobs do

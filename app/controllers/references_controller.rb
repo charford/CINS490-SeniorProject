@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
-  before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
-  before_filter :correct_user, :except => [:new, :create]
+ # before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
+  #before_filter :correct_user, :except => [:new, :create]
 
   # GET /references
   def index

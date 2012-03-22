@@ -1,5 +1,5 @@
 <%= render 'pages/fancy_textarea' %>
-<%= form_for(Reference.new) do |f| %>
+<%= form_for @reference, :url => { :action => "create" } do |f| %>
   <% if @reference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reference.errors.count, "error") %> prohibited this reference from being saved:</h2>

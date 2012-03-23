@@ -1,12 +1,13 @@
 <h3>Evaluator Responses</h3>
 <% @applicant.ratings.each do |rating| %>
   <div id="eval_container">
-        <%= link_to image_tag('/assets/pencil_edit.png'), 
-      edit_job_jobapp_applicant_rating_path(@job,@job.jobapp,@applicant,rating),
+    <% if current_user == User.find(rating.evaluator_id) %>
+      <%= link_to image_tag('/assets/pencil_edit.png'), 
+        edit_job_jobapp_applicant_rating_path(@job,@job.jobapp,@applicant,rating),
         :id => "edit_button" %>
+    <% end %>
     <p>Evaluator: <%= User.find(rating.evaluator_id) %></p>
     <%= get_evaluator_rating(rating.rating) %>
     <p>Comments: <%= rating.comment.html_safe %></p>
-
   </div>
 <% end %>

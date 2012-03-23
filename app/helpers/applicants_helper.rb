@@ -6,7 +6,7 @@ module ApplicantsHelper
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
 
     average = applicant.ratings.average('rating')
-      rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
+      rating_styles = ['','rate_1','rate_2','rate_3','rate_4','rate_5']
       !applicant.ratings.empty? ? "
       <div class='field' id='#{rating_styles[average]}'>
       <label>Average:</label>
@@ -30,7 +30,7 @@ module ApplicantsHelper
   end
 
   def get_evaluator_rating(rating)
-    rating_styles = ['rate_1','rate_2','rate_3','rate_4','rate_5']
+    rating_styles = ['','rate_1','rate_2','rate_3','rate_4','rate_5']
     rating_text = ['Unacceptable', 'Below Average', 'Acceptable', ]
     "
     <div class='rating' id='#{rating_styles[rating]}'>
@@ -41,8 +41,7 @@ module ApplicantsHelper
   end
 
   def has_rated_applicant?(applicant)
-    return true if applicant.ratings.where("user_id = ? and applicant_id = ?", current_user.id, applicant.id)
-    return false
+    applicant.ratings.where("evaluator_id = ? and applicant_id = ?", current_user.id, applicant.id).empty? ? false : true
   end
 
   def get_attachment(answer_id)

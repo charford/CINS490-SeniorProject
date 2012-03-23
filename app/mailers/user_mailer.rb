@@ -11,9 +11,9 @@ class UserMailer < ActionMailer::Base
   	@confirmation.save
   	#@url = "#{con_type}#{request.env['HTTP_HOST']}/users/#{@confirmation.user_id}/confirm/#{@confirmation.confirm_hash}"
   	@url = "#{con_type}localhost/users/#{@confirmation.user_id}/confirm/#{@confirmation.confirm_hash}"
-  	mail(:to => user.email, :subject => "Welcome to My Awesome Site")
+  	mail(:to => user.email, :subject => "Welcome to JobMe! Account activation required.")
   end
-  
+
   private
    def secure_hash(string)
       Digest::SHA2.hexdigest(string)

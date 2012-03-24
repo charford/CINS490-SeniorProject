@@ -15,6 +15,9 @@
         <%= render 'references' %>
       </div>
       <div class="container">
+        <%= render 'additional_facts' %>
+      </div>
+      <div class="container">
         <% if !has_rated_applicant?(@applicant) %>
           <%= render 'ratings/rate_applicant' %>
         <% else %>

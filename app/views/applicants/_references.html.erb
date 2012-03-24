@@ -1,6 +1,13 @@
  <h3>References (<%= User.find(@applicant.user_id).references.count %>)</h3>
       <% User.find(@applicant.user_id).references.each do |reference| %>
-        <p><%= reference.letter.html_safe %></p>
+      	<p>
+      	Name: <%= reference.firstname %> <%= reference.lastname %><br />
+      	Phone: <%= reference.phone.nil? ? "Not provided" : reference.phone %><br />
+      	Email: <%= reference.email.nil? ? "Not provided" : mail_to(reference.email, reference.email)  %>
+        <%= reference.letter.html_safe %></p>
+        <% if !User.find(@applicant.user_id).references.last == reference %>
+        <h3></h3>
+        <% end %>
       <% end %>
       <% if User.find(@applicant.user_id).references.empty? %>
       <p>No references available.</p>

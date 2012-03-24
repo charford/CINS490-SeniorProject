@@ -1,4 +1,6 @@
 JobmeApp::Application.routes.draw do
+  resources :additional_facts
+
   resources :reset_requests
 
   resources :confirmations

@@ -1,0 +1,27 @@
+<h1>Listing additional_facts</h1>
+
+<table>
+  <tr>
+    <th>Evaluator</th>
+    <th>Applicant</th>
+    <th>Fact</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @additional_facts.each do |additional_fact| %>
+  <tr>
+    <td><%= additional_fact.evaluator_id %></td>
+    <td><%= additional_fact.applicant_id %></td>
+    <td><%= additional_fact.fact %></td>
+    <td><%= link_to 'Show', additional_fact %></td>
+    <td><%= link_to 'Edit', edit_additional_fact_path(additional_fact) %></td>
+    <td><%= link_to 'Destroy', additional_fact, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Additional fact', new_additional_fact_path %>

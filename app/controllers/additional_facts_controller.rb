@@ -1,30 +1,4 @@
 class AdditionalFactsController < ApplicationController
-  # GET /additional_facts
-  def index
-    @additional_facts = AdditionalFact.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
-  # GET /additional_facts/1
-  def show
-    @additional_fact = AdditionalFact.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
-  # GET /additional_facts/new
-  def new
-    @additional_fact = AdditionalFact.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
-  end
 
   # GET /additional_facts/1/edit
   def edit
@@ -45,7 +19,7 @@ class AdditionalFactsController < ApplicationController
       if @additional_fact.save
         format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Additional fact was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'An error occurred adding additional fact. The fact cannot be blank.' }
       end
     end
   end

@@ -9,6 +9,7 @@
         <tr>
           <th>Last name</th>
           <th>First name</th>
+          <th>Email</th>
           <th>Signup Date</th>
           <th># Applications</th>
           <th># References</th>
@@ -18,8 +19,9 @@
       <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.lastname %></td>
-        <td><%= user.firstname %></td>
+        <td><%= link_to user.lastname, user %></td>
+        <td><%= link_to user.firstname, user %></td>
+        <td><%= link_to user.email, user %></td>
         <td><%= user.created_at.strftime("%m/%d/%Y") %></td>
         <td><%= user.applicants.count %></td>
         <td><%= user.references.count %></td>

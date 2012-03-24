@@ -14,6 +14,10 @@ class UserMailer < ActionMailer::Base
   	mail(:to => user.email, :subject => "Welcome to JobMe! Account activation required.")
   end
 
+  def request_reference
+    con_type = "http://"
+  end
+
   private
    def secure_hash(string)
       Digest::SHA2.hexdigest(string)

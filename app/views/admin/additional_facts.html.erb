@@ -1,0 +1,35 @@
+<div class="full_width_content">
+  <h1>Administration</h1>
+  <%= render 'pages/admin_tabs' %>
+  <div class="fwc_body">
+    <h3>Additional Facts</h3>
+    <div id="table_border">
+    <table>
+      <thead>
+        <tr>
+          <th>Applicant</th>
+          <th>Position</th>
+          <th>Fact</th>
+          <th>Evaluator</th>
+          <th>Created</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @additional_facts.each do |fact| %>
+          <tr>
+            <td><%= User.find(fact.applicant_id) %></td>
+            <td><%= Job.find(Applicant.find(fact.applicant_id).job_id).position %></td>
+            <td><%= strip_tags(fact.fact.html_safe) %></td>
+            <td><%= User.find(fact.evaluator_id) %></td>
+            <td><%= fact.created_at.strftime("%m/%d/%Y") %></td>
+            <td style='text-align: right'>      
+              <%= link_to 'Destroy', fact, confirm: 'Performing this action will remove all related data, including job applications that belong to this user. Are you sure?', method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>   
+    </table> 
+  </div>
+ </div>
+</div>

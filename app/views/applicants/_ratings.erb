@@ -9,5 +9,8 @@
     <p>Evaluator: <%= User.find(rating.evaluator_id) %></p>
     <%= get_evaluator_rating(rating.rating) %>
     <p>Comments: <%= rating.comment.html_safe %></p>
+    <% if @applicant.ratings.last != rating %>
+    <h3></h3>
+    <% end %>
   </div>
 <% end %>

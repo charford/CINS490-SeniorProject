@@ -13,7 +13,6 @@ class ApplicantsController < ApplicationController
     @job = Job.find(params[:job_id])
   end
   # GET /applicants
-  # GET /applicants.json
   def index
     if Administrator.find_by_user_id(current_user)
       @evaluator_id = Administrator.find_by_user_id(current_user).user_id
@@ -34,7 +33,6 @@ class ApplicantsController < ApplicationController
   end
 
   # GET /applicants/1
-  # GET /applicants/1.json
   def show
     @applicant = Applicant.find(params[:id])
     @job = Job.find(params[:job_id])
@@ -48,7 +46,6 @@ class ApplicantsController < ApplicationController
   end
 
   # GET /applicants/new
-  # GET /applicants/new.json
   def new
     @applicant = Applicant.new
     @job = Job.find(params[:job_id])
@@ -69,7 +66,6 @@ class ApplicantsController < ApplicationController
   end
 
   # POST /applicants
-  # POST /applicants.json
   def create
     @job = Job.find(params[:job_id])
    
@@ -89,7 +85,6 @@ class ApplicantsController < ApplicationController
   end
 
   # PUT /applicants/1
-  # PUT /applicants/1.json
   def update
     @applicant = Applicant.find(params[:id])
     @job = Job.find(params[:job_id])
@@ -111,7 +106,6 @@ class ApplicantsController < ApplicationController
   end
 
   # DELETE /applicants/1
-  # DELETE /applicants/1.json
   def destroy
     @applicant = Applicant.find(params[:id])
     @applicant.destroy

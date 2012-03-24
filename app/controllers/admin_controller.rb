@@ -7,16 +7,10 @@ class AdminController < ApplicationController
 
   def users
     @users = User.find(:all, :order => ("lastname,firstname"))
-    respond_to do |format|
-      format.html
-    end
   end
 
   def jobs
     @jobs = Job.find(:all, :order => ("position"))
-    respond_to do |format|
-      format.html
-    end
   end
 
   def applicants
@@ -27,11 +21,12 @@ class AdminController < ApplicationController
     end
   end
 
+  def additional_facts
+    @additional_facts = AdditionalFact.all
+  end
+
   def ratings
     @ratings = Rating.find(:all, :order => ("created_at DESC"))
-    respond_to do |format|
-      format.html
-    end
   end
 
   def permissions

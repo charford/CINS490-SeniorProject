@@ -66,3 +66,16 @@
 .fwc_body .container textarea {
   width: 635px;
 }
+#add_fact_container {
+  border: 1pt solid black;
+  position: fixed;
+  width: 100%;
+  z-index: 102;
+  background-color: white;
+  border-radius: 10px;
+}
+#add_fact {
+  border: 1pt solid black;
+  width: 200px;
+  height: 200px;
+}

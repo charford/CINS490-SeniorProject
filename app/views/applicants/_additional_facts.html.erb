@@ -1,4 +1,12 @@
 <h3>Additional Facts</h3>
 <p>
-  Facts about applicant go here.
+  <% @applicant.additional_facts.each do |fact| %>
+      <%= fact.fact.html_safe %>
+      Added <%= time_ago_in_words(fact.created_at) %> ago, by <%= User.find(fact.evaluator_id) %>
+  <% end %>
+  <% if @applicant.additional_facts.count == 0 %>
+    <p>None</p>
+  <% end %>
+  <h3></h3>
+  <%= render 'additional_facts/form' %>
 </p>

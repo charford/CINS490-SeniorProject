@@ -8,6 +8,7 @@ class Applicant < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => :job_id},
                       :presence   => true
   validates :job_id,  :presence => true
+  has_many :additional_facts
 
    def to_param
     @user = User.find(user_id)

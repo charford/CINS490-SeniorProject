@@ -41,6 +41,7 @@ class ApplicantsController < ApplicationController
     @rating = Rating.new
     @comment = Comment.new
     @submit_text = "Submit Evaluation"
+    @additional_fact = AdditionalFact.new
     respond_to do |format|
       format.html # show.html.erb
     end

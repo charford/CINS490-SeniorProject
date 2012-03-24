@@ -1,4 +1,5 @@
-<%= form_for(@additional_fact) do |f| %>
+<%= render 'pages/fancy_textarea_small' %>
+<%= form_for([@job,@job.jobapp,@applicant,@additional_fact]) do |f| %>
   <% if @additional_fact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@additional_fact.errors.count, "error") %> prohibited this additional_fact from being saved:</h2>
@@ -12,18 +13,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :evaluator_id %><br />
-    <%= f.number_field :evaluator_id %>
-  </div>
-  <div class="field">
-    <%= f.label :applicant_id %><br />
-    <%= f.number_field :applicant_id %>
-  </div>
-  <div class="field">
-    <%= f.label :fact %><br />
-    <%= f.text_field :fact %>
+    <%= f.text_area :fact %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Fact" %>
   </div>
 <% end %>

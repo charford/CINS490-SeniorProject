@@ -1,5 +1,5 @@
 JobmeApp::Application.routes.draw do
-  resources :additional_facts
+  #resources :additional_facts
 
   resources :reset_requests
 
@@ -21,6 +21,7 @@ JobmeApp::Application.routes.draw do
       resources :applicants do
         resources :answers, :only => [:destroy]
         resources :comments, :only => [:create, :edit, :update, :destroy]
+        resources :additional_facts, :only => [:create, :edit, :update, :destroy]
         resources :ratings, :only => [:create, :destroy, :edit,:update]
       end
     end

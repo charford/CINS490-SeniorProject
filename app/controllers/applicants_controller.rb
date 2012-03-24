@@ -37,7 +37,6 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     @job = Job.find(params[:job_id])
     @rating = Rating.new
-    @comment = Comment.new
     @submit_text = "Submit Evaluation"
     @additional_fact = AdditionalFact.new
     respond_to do |format|

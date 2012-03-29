@@ -5,13 +5,19 @@
       <li>
         <b>Question:</b><br />
         <p>
-          <%= answer.question.body.html_safe unless answer.question.body.nil? %>
+          <% if answer.question.nil? %>
+            This question is missing.
+          <% else %>
+            <%= answer.question.body.html_safe if answer.question.body.nil? %>
+          <% end %>
         </p>
         <b>Response:</b><br />
         <p>
           <%= !answer.body.nil? ? answer.body.html_safe : "" %>
-          <% if answer.question.qtype == "file" %>
-            <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
+          <% if !answer.question.nil? %>
+            <% if answer.question.qtype == "file" %>
+              <%= link_to "View Attachment", show_attachment_url(@applicant.id,answer.id) %>
+            <% end %>
           <% end %>
         </p>
       </li>

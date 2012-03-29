@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
   before_filter :authenticate, :except => [:new, :create, :confirm, :resetpw]
-  before_filter :correct_user, :except => [:confirm]
+  before_filter :correct_user, :except => [:confirm,:request_reference]
 
   def resetpw
     @request_hash = params[:request_hash]
@@ -9,6 +9,13 @@ class UsersController < ApplicationController
 
   def doresetpw
     redirect_to root_path
+  end
+
+  def request_reference
+    user = User.find(current_user.id)
+    ref_email = params[:email]
+    UserMailer.request_reference(user,ref_email).deliver
+    redirect_to root_path, notice: "Successfully sent reference request to #{ref_email}"
   end
 
   def confirm

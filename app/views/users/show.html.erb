@@ -23,9 +23,15 @@
         <%= render "jobapps" %>
       </div>
       <div class="container">
+        <h3>Request a reference</h3>
         <p>
-          <h3>Reference Link</h3>
-          <%= show_link_to_new_user_reference(@user) %>
+          Fill out the email address of your referral below.
+        </p>
+        <p>
+          <%= form_tag("/#{current_user.id}/request_reference", :id => "request_reference_form") do |f| %>
+            <%= text_field_tag :email, params[:email], :placeholder => "Enter email here" %>
+            <%= submit_tag "Request Reference" %>
+          <% end %>
         </p>
       </div>
       <div class="container">

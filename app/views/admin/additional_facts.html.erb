@@ -18,7 +18,7 @@
       <tbody>
         <% @additional_facts.each do |fact| %>
           <tr>
-            <td><%= User.find(fact.applicant_id) %></td>
+            <td><%= User.find(Applicant.find(fact.applicant_id).user_id) %></td>
             <td><%= Job.find(Applicant.find(fact.applicant_id).job_id).position %></td>
             <td><%= strip_tags(fact.fact.html_safe) %></td>
             <td><%= User.find(fact.evaluator_id) %></td>

@@ -2,31 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .rating_scale span {
-	border: 1px solid black;
+  border: 1px solid black;
 }
 
 .rating_scale .field,#eval_container .rating {
-	float: left;
-	margin-right: 10px;
-	border: 1px solid black;
-	padding: 5px;
-	border-radius: 10px;
-	font-weight: bold;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 #clearfloats {
-	clear: both;
+  clear: both;
 }
 
 #eval_container {
 }
 
 #eval_container .rating {
-	float: right;
+  float: right;
 }
 
 #eval_container #edit_button {
-	position: relative;
-	float: right;
+  position: relative;
+  float: right;
+}
+  #edit_button img {
+  width: 20px;
 }
 

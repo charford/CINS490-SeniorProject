@@ -1,8 +1,3 @@
-group :development do
-  gem "rails-erd"
-  gem "railroady"
-end
-
 source 'https://rubygems.org'
 gem 'bluecloth'
 gem 'rails', '3.2.1'

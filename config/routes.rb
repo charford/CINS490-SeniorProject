@@ -11,7 +11,8 @@ JobmeApp::Application.routes.draw do
   resources :evaluators, :only => [:create, :destroy]
   resources :sessions, :only => [:create, :new, :destroy]
 
-  resources :users, :only => [:new, :create, :edit, :update, :destroy, :show] do
+  #resources :users, :only => [:new, :create, :edit, :update, :destroy, :show] do
+  resources :users do
     resources :references, :only => [:index, :show, :destroy]
   end
 

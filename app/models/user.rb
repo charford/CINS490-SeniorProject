@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
     end
 
     def generate_reference_hash
-      self.reference_hash = secure_hash("#{Time.now.utc}--{firstname}--{lastname}--{email}")
+      self.reference_hash.nil? ? self.reference_hash = secure_hash("#{Time.now.utc}--{firstname}--{lastname}--{email}") : nil
     end
 
     def password_must_be_present

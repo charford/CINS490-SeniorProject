@@ -15,15 +15,27 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+
   <div class="field">
     <%= f.label "First Name" %><br />
     <%= f.text_field :firstname %>
   </div>
+
 	<div class="field">
     <%= f.label "Last Name" %><br />
     <%= f.text_field :lastname %>
   </div>
   
+ <div class="field">
+    <%= f.label "Address" %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Phone" %><br />
+    <%= f.text_field :phone %>
+  </div>
+
   <div class="field">
     <%= f.label "Password" %><br />
     <%= f.password_field :password %>
@@ -34,6 +46,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit @submit_text %>
+    <%= f.submit %>
   </div>
 <% end %>

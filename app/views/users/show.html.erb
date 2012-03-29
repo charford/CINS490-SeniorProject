@@ -13,9 +13,12 @@
       </p>
       <h3>Phone</h3>
       <p>
+        <%= @user.phone.nil? ? "None provided" : @user.phone %>
       </p>
       <h3>Address</h3>
-      <p></p>
+      <p>
+        <%=  @user.address.nil? ? "None provided" : @user.address %>
+      </p>
     </div>
     <div class="applicant_right">
       <div class="container">

@@ -84,6 +84,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
+        if @user.id == 1
+          admin = Administrator.new
+          admin.user_id = @user.id
+          admin.save
+        end
         UserMailer.welcome_email(@user).deliver
         format.html { redirect_to login_path, notice: 'User was successfully created.' }
       else

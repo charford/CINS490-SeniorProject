@@ -23,9 +23,9 @@ class RatingsController < ApplicationController
       if @rating.save
         applicant = Applicant.find(@rating.applicant_id)
         applicant.update_attribute(:avgrating, applicant.ratings.average('rating'))
-        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Rating was successfully created.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], :only_path => true, notice: 'Rating was successfully created.' }
       else
-        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'An error occurred while rating applicant.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], :only_path => true, notice: 'An error occurred while rating applicant.' }
       end
     end
   end
@@ -43,7 +43,7 @@ class RatingsController < ApplicationController
     @applicant = Applicant.find(params[:applicant_id])
     respond_to do |format|
       if @rating.update_attributes(params[:rating])
-        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Applicant comment was successfully updated.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], :only_path => true, notice: 'Applicant comment was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -56,7 +56,7 @@ class RatingsController < ApplicationController
     @rating.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/ratings', notice: 'Destroyed rating.' }
+      format.html { redirect_to '/admin/ratings', :only_path => true, notice: 'Destroyed rating.' }
     end
   end
 

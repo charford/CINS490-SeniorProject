@@ -35,7 +35,7 @@ class ReferencesController < ApplicationController
     return if !verify_hash_is_valid
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to root_path, notice: 'Reference was successfully created.' }
+        format.html { redirect_to root_path, :only_path => true, notice: 'Reference was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -52,7 +52,7 @@ class ReferencesController < ApplicationController
     @reference.destroy
     @user = User.find(params[:user_id])
     respond_to do |format|
-      format.html { redirect_to user_references_url(@user) }
+      format.html { redirect_to user_references_url(@user), :only_path => true }
     end
   end
     private
@@ -62,13 +62,13 @@ class ReferencesController < ApplicationController
 
     def is_correct_user_and_hash?
       if User.where("id = ? AND reference_hash = ?", params[:user_id], params[:reference_hash]).empty?
-        redirect_to root_path
+        redirect_to root_path, :only_path => true
       end
     end
 
     def correct_user
       return if Administrator.find_by_user_id(current_user)
       return if User.find_by_id(params[:user_id]) == current_user
-      redirect_to root_path
+      redirect_to root_path, :only_path => true
     end
 end

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   before_save :generate_reference_hash
   before_destroy :remove_from_groups
   attr_accessor :password
+  attr_accessible :email, :firstname, :lastname, :password_confirmation, :password, :address, :phone
   
   validates   :email,                 :presence => true,
                                       :uniqueness => true,

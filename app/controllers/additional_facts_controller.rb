@@ -17,9 +17,9 @@ class AdditionalFactsController < ApplicationController
 
     respond_to do |format|
       if @additional_fact.save
-        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'Additional fact was successfully created.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], :only_path => true, notice: 'Additional fact was successfully created.' }
       else
-        format.html { redirect_to [@job,@job.jobapp,@applicant], notice: 'An error occurred adding additional fact. The fact cannot be blank.' }
+        format.html { redirect_to [@job,@job.jobapp,@applicant], :only_path => true, notice: 'An error occurred adding additional fact. The fact cannot be blank.' }
       end
     end
   end
@@ -30,7 +30,7 @@ class AdditionalFactsController < ApplicationController
 
     respond_to do |format|
       if @additional_fact.update_attributes(params[:additional_fact])
-        format.html { redirect_to @additional_fact, notice: 'Additional fact was successfully updated.' }
+        format.html { redirect_to @additional_fact, :only_path => true, notice: 'Additional fact was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

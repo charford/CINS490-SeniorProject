@@ -4,4 +4,5 @@ class Confirmation < ActiveRecord::Base
                       :uniqueness => true
   validates :confirm_hash, :presence => true,
                            :uniqueness => true
+  attr_accessible
 end

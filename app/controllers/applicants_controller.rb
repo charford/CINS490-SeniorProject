@@ -75,10 +75,10 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.save
         #format.html { redirect_to new_job_applicant_answers_path(@job,@applicant), notice: 'Applicant was successfully created.' }
-        format.html { redirect_to User.find(@applicant.user_id), notice: 'Application was successfully created.' }
+        format.html { redirect_to User.find(@applicant.user_id), :only_path => true, notice: 'Application was successfully created.' }
       else
         #format.html { render action: "new" }
-        format.html { redirect_to new_job_jobapp_applicant_path(@job,@job.jobapp) }
+        format.html { redirect_to new_job_jobapp_applicant_path(@job,@job.jobapp), :only_path => true }
       end
     end
   end
@@ -88,7 +88,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     @job = Job.find(params[:job_id])
     if @applicant.published?
-      redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp,@applicant), 
+      redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp,@applicant), :only_path => true, 
         notice: 'This application has already been submitted. Changes cannot be made at this time.'
       return
     end
@@ -97,9 +97,9 @@ class ApplicantsController < ApplicationController
       if @applicant.update_attributes(params[:applicant])
         #format.html { redirect_to [@job,@applicant], notice: 'Applicant was successfully updated.' }
         #format.html { redirect_to user_jobapps_path(@applicant.user_id), notice: 'Application was successfully updated.' }
-        format.html { redirect_to user_job_apps_path(User.find(@applicant.user_id)), notice: 'Application was successfully updated.' }
+        format.html { redirect_to user_job_apps_path(User.find(@applicant.user_id)), :only_path => true, notice: 'Application was successfully updated.' }
       else
-        format.html { redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp) }
+        format.html { redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp), :only_path => true }
       end
     end
   end
@@ -110,7 +110,7 @@ class ApplicantsController < ApplicationController
     @applicant.destroy
     @job = Job.find(params[:job_id])
     respond_to do |format|
-      format.html { redirect_to '/admin/applicants', notice: 'Successfully deleted applicant.' }
+      format.html { redirect_to '/admin/applicants', :only_path => true, notice: 'Successfully deleted applicant.' }
     end
   end
   private
@@ -122,7 +122,7 @@ class ApplicantsController < ApplicationController
     def is_admin?
       @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)
-      redirect_to job_jobapp_applicants_path(@job,@job.jobapp), notice: 'You must be an administrator for this action.'
+      redirect_to job_jobapp_applicants_path(@job,@job.jobapp), :only_path => true, notice: 'You must be an administrator for this action.'
     end
 
     def is_faculty?
@@ -135,7 +135,7 @@ class ApplicantsController < ApplicationController
     def is_signed_in?
       return if signed_in?
       job=Job.find(params[:job_id])
-      redirect_to job, notice: 'You must be signed in to apply for a job.'
+      redirect_to job, :only_path => true, notice: 'You must be signed in to apply for a job.'
     end
 
     # def is_the_hiring_manager?
@@ -158,6 +158,6 @@ class ApplicantsController < ApplicationController
         applicant = Applicant.find(params[:applicant_id])
       end
       return if applicant.user_id == current_user.id
-      redirect_to root_path
+      redirect_to root_path, :only_path => true
     end
 end

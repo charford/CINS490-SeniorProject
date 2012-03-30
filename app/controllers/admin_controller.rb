@@ -43,6 +43,6 @@ class AdminController < ApplicationController
   private
     def is_admin?
       return if Administrator.find_by_user_id(current_user)
-      redirect_to root_path
+      redirect_to root_path, :only_path => true
     end
 end

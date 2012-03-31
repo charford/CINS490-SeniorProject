@@ -1,0 +1,10 @@
+<div class="full_width_content">
+  <h1>Reset Password</h1>
+
+  <div class="fwc_body">
+    <%= form_tag("", :id => "forgotpw_form") do |f| %>
+      <%= text_field_tag :email, params[:email], :placeholder => "Enter email here" %>
+      <%= submit_tag "Send Password Reset Link" %>
+    <% end %>
+  </div>
+</div>

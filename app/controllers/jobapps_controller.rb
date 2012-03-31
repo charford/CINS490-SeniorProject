@@ -128,6 +128,6 @@ class JobappsController < ApplicationController
       @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)
       return if current_user.id == @job.hiring_manager_id
-      redirect_to [@job,@job.jobapp], notice: 'You must be the hiring manager to edit this job application.'
+      redirect_to [@job,@job.jobapp], :only_path => true, notice: 'You must be the hiring manager to edit this job application.'
     end
 end

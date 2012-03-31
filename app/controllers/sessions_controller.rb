@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email], params[:session][:password]);
     if user.nil?
       @title = "Login"
-      redirect_to login_path, :notice =>  "Unable to authenticate, please try again."
+      redirect_to login_path, :only_path => true, :notice =>  "Unable to authenticate, please try again."
     else
       sign_in user
       redirect_back_or root_path
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     clear_return_to
     sign_out
-    redirect_to login_path, :notice => "You've been logged out."
+    redirect_to login_path, :only_path => true, :notice => "You've been logged out."
   end 
 end

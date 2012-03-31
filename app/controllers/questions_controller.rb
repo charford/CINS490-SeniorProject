@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
     @question.jobapp_id = @jobapp.id
     respond_to do |format|
       if @question.save
-        format.html { redirect_to [@job,@jobapp,@question], notice: 'Question was successfully created.' }
+        format.html { redirect_to [@job,@jobapp,@question], :only_path => true, notice: 'Question was successfully created.' }
         format.js
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.html { redirect_to [@job,@question], notice: 'Question was successfully updated.' }
+        format.html { redirect_to [@job,@question], :only_path => true, notice: 'Question was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -74,7 +74,7 @@ class QuestionsController < ApplicationController
       @question.destroy
     end
     respond_to do |format|
-      format.html { redirect_to edit_job_jobapp_path(@job,@job.jobapp) }
+      format.html { redirect_to edit_job_jobapp_path(@job,@job.jobapp), :only_path => true }
       format.js
     end
   end

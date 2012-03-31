@@ -6,7 +6,6 @@ class ResetRequestsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @reset_requests }
     end
   end
 
@@ -17,7 +16,6 @@ class ResetRequestsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @reset_request }
     end
   end
 
@@ -28,7 +26,6 @@ class ResetRequestsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @reset_request }
     end
   end
 
@@ -44,11 +41,9 @@ class ResetRequestsController < ApplicationController
 
     respond_to do |format|
       if @reset_request.save
-        format.html { redirect_to @reset_request, notice: 'Reset request was successfully created.' }
-        format.json { render json: @reset_request, status: :created, location: @reset_request }
+        format.html { redirect_to @reset_request, :only_path => true, notice: 'Reset request was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @reset_request.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,11 +55,9 @@ class ResetRequestsController < ApplicationController
 
     respond_to do |format|
       if @reset_request.update_attributes(params[:reset_request])
-        format.html { redirect_to @reset_request, notice: 'Reset request was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @reset_request, :only_path => true, notice: 'Reset request was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @reset_request.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,8 +69,7 @@ class ResetRequestsController < ApplicationController
     @reset_request.destroy
 
     respond_to do |format|
-      format.html { redirect_to reset_requests_url }
-      format.json { head :no_content }
+      format.html { redirect_to reset_requests_url, :only_path => true }
     end
   end
 end

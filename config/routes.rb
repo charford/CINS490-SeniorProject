@@ -48,6 +48,7 @@ JobmeApp::Application.routes.draw do
   match '/users/:id/activate', :to => 'users#activate'
   match '/users/:id/confirm/:confirm_hash', :to => 'users#confirm'
   match '/reset/:request_hash', :to => 'users#resetpw'
+  match '/forgotpw', :to => 'users#forgotpw'
   match '/:user_id/request_reference', :to => 'users#request_reference'
 
 end

@@ -8,7 +8,7 @@ class Applicant < ActiveRecord::Base
                       :presence   => true
   validates :job_id,  :presence => true
   has_many :additional_facts
-
+  attr_accessible :user_id, :job_id, :published
    def to_param
     @user = User.find(user_id)
     "#{id}-#{@user.firstname.parameterize}-#{@user.lastname.parameterize}"

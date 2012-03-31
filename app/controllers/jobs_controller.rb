@@ -51,7 +51,7 @@ class JobsController < ApplicationController
         @jobapp = Jobapp.new
         @jobapp.job_id = @job.id
         @jobapp.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, :only_path => true, notice: 'Job was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -65,7 +65,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to @job, :only_path => true, notice: 'Job was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -79,7 +79,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/jobs', notice: 'Job destroyed.' }
+      format.html { redirect_to '/admin/jobs', :only_path => true, notice: 'Job destroyed.' }
     end
   end
 
@@ -87,19 +87,19 @@ class JobsController < ApplicationController
 
     def validate_administrator
       return if Administrator.find_by_user_id(current_user)
-      redirect_to jobs_path, notice: 'You must be an Administrator to perform this task.'
+      redirect_to jobs_path, :only_path => true, notice: 'You must be an Administrator to perform this task.'
     end
 
     def validate_hiring_manager
       return if Administrator.find_by_user_id(current_user)
       return if HiringManager.find_by_user_id(current_user)
-      redirect_to Job.find(params[:id]), notice: 'You must be a hiring manager to post/edit a job.'
+      redirect_to Job.find(params[:id]), :only_path => true, notice: 'You must be a hiring manager to post/edit a job.'
     end
 
     def validate_is_the_hiring_manager
       @job = Job.find(params[:id])
       return if Administrator.find_by_user_id(current_user)
       return if current_user.id == @job.hiring_manager_id
-      redirect_to @job,notice: 'You must be the hiring manager to edit this job.'
+      redirect_to @job, :only_path => true, notice: 'You must be the hiring manager to edit this job.'
     end
 end

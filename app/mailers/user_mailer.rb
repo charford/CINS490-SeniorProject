@@ -25,6 +25,16 @@ class UserMailer < ActionMailer::Base
     mail(:to => ref_email, :subject => "#{user} has requested a reference from you.")
   end
 
+  def reset_request(user)
+    con_type = "http://"
+    @reset_request = ResetRequest.new
+    @reset_request.user_id = user.id
+    @reset_request.request_hash = secure_hash("#{Time.now.utc}--{created_at}--{firstname}--{email}")
+    @reset_request.save
+    @url = "#{con_type}localhost/reset/#{@reset_request.request_hash}"
+    mail(:to => user.email, :subject => "Follow this link to reset your password.")
+  end
+
   private
    def secure_hash(string)
       Digest::SHA2.hexdigest(string)

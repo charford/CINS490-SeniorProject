@@ -1,9 +1,11 @@
 class AnswersController < ApplicationController
 
   def get_attachment
-  @answer = Answer.find(params[:answer_id])
-    filename = "resumes/#{@answer.id}/#{@answer.photo_file_name}"
-    send_file filename, :filename => "#{@answer.id}.pdf",
+  @answer = Answer.find(sanitize_filename(params[:answer_id]))
+    #filename = "resumes/#{sanitize_filename @answer.id}/#{sanitize_filename @answer.photo_file_name}"
+    filename = sanitize_filename(@answer.photo_file_name)
+    path = "resumes/#{@answer.id}/#{filename}"
+    send_file path, :filename => sanitize_filename("#{@answer.id}.pdf"),
             :type => "application/pdf",
             :disposition => "inline"
   end
@@ -22,4 +24,8 @@ class AnswersController < ApplicationController
   #     format.html { redirect_to answers_url }
   #   end
   # end
+end
+
+def sanitize_filename(filename)
+  filename.gsub(/[^0-9A-z.\-]/, '_')
 end

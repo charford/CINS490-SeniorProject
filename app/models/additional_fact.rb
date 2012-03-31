@@ -3,4 +3,5 @@ class AdditionalFact < ActiveRecord::Base
   validates :applicant_id, :presence => true
   validates :fact, :presence  => true
   belongs_to :applicant
+  attr_accessible :evaluator_id, :applicant_id, :fact
 end

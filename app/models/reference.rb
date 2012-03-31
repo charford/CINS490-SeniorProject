@@ -5,6 +5,7 @@ class Reference < ActiveRecord::Base
   validates  :lastname,       :presence => true
   validates	 :letter,         :presence => true
   validates  :reference_hash, :presence => true
+  attr_accessible :user_id, :firstname, :lastname, :email, :phone, :letter, :reference_hash
 	#email and phone not required
 
   def request_for_reference

@@ -1,14 +1,40 @@
 class UsersController < ApplicationController
   before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
-  before_filter :authenticate, :except => [:new, :create, :confirm, :resetpw]
+  before_filter :authenticate, :except => [:new, :create, :confirm, :resetpw,:forgotpw]
   before_filter :correct_user, :except => [:confirm,:request_reference]
 
   def resetpw
     @request_hash = params[:request_hash]
+    if request.post?
+      reset_request = ResetRequest.find_by_request_hash(params[:request_hash])
+      if reset_request.nil?
+        redirect_to root_path
+      else
+        @user = User.find(reset_request.user_id)
+
+        if @user.update_attributes(:password => params[:password], :password_confirmation => params[:password_confirmation])
+          ResetRequest.find_all_by_user_id(reset_request.user_id).each { |rs| rs.destroy }
+          redirect_to login_path, :only_path => true, notice: "Your password has been reset."
+        else
+          redirect_to :back, :only_path => true, notice: "Failed to reset passwords. Password and password confirmation must match."
+        end
+      end
+    end
   end
 
-  def doresetpw
-    redirect_to root_path
+  def forgotpw
+    if request.post?
+      user = User.find_by_email(params[:email])
+      if !user.nil?
+        if UserMailer.reset_request(user).deliver
+          redirect_to root_path, notice: "Sent link to reset password successfully."
+        else
+          redirect_to root_path, notice: "An error occurred."
+        end  
+      else
+        redirect_to root_path, notice: "An error occurred."
+      end
+    end
   end
 
   def request_reference
@@ -23,7 +49,7 @@ class UsersController < ApplicationController
     @confirm_hash = params[:confirm_hash]
     @confirmation = Confirmation.find_by_user_id(@user.id)
     if @confirmation.nil?
-      redirect_to login_path, notice: "Failed to activate account."
+      redirect_to login_path, :only_path => true, notice: "Failed to activate account."
       return
     end
     if @confirmation.confirm_hash == @confirm_hash
@@ -31,12 +57,12 @@ class UsersController < ApplicationController
       @activeuser.user_id = @user.id
       if @activeuser.save
         @user.confirmation.destroy
-        redirect_to login_path, notice: "Successfully activated account. Please login to continue."
+        redirect_to login_path, :only_path => true, notice: "Successfully activated account. Please login to continue."
       else
-        redirect_to login_path, notice: "Failed to activate user. Please contact the system administrator."
+        redirect_to login_path, :only_path => true, notice: "Failed to activate user. Please contact the system administrator."
       end
     else
-      redirect_to login_path, notice: "Failed to activate account."
+      redirect_to login_path, :only_path => true, notice: "Failed to activate account."
     end
   end
 
@@ -90,7 +116,7 @@ class UsersController < ApplicationController
           admin.save
         end
         UserMailer.welcome_email(@user).deliver
-        format.html { redirect_to login_path, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, :only_path => true, notice: 'User was successfully created.' }
       else
         #format.html { render action: "new" }
         format.html { render action: "new" }
@@ -103,7 +129,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, :only_path => true, notice: 'User was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -116,7 +142,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/admin/users', notice: 'User was destroyed.' }
+      format.html { redirect_to '/admin/users', :only_path => true, notice: 'User was destroyed.' }
     end
   end
 
@@ -127,9 +153,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @activeuser.save
-        format.html { redirect_to '/admin/users', notice: 'User has been activated.' }
+        format.html { redirect_to '/admin/users', :only_path => true, notice: 'User has been activated.' }
       else
-        format.html { redirect_to '/admin/users', notice: 'Failed activating user. Is this user already active?' }
+        format.html { redirect_to '/admin/users', :only_path => true, notice: 'Failed activating user. Is this user already active?' }
       end
     end
   end
@@ -139,15 +165,15 @@ class UsersController < ApplicationController
     @activeuser = Activeuser.find_by_user_id(user_id)
 
     if Administrator.find_by_user_id(user_id)
-      redirect_to '/admin/users', notice: 'Unable to deactive an administrator.'
+      redirect_to '/admin/users', :only_path => true, notice: 'Unable to deactive an administrator.'
       return
     end
 
     respond_to do |format|
       if @activeuser.destroy
-        format.html { redirect_to '/admin/users', notice: 'User has been deactivated.' }
+        format.html { redirect_to '/admin/users', :only_path => true, notice: 'User has been deactivated.' }
       else
-        format.html { redirect_to '/admin/users', notice: 'Failed deactivating user.' }
+        format.html { redirect_to '/admin/users', :only_path => true, notice: 'Failed deactivating user.' }
       end
     end
   end
@@ -157,11 +183,11 @@ class UsersController < ApplicationController
     def correct_user
       return if Administrator.find_by_user_id(current_user)
       return if User.find_by_id(params[:id]) == current_user
-      redirect_to root_path
+      redirect_to root_path, :only_path => true
     end
 
     def is_admin?
       return if Administrator.find_by_user_id(current_user)
-      redirect_back_or root_path, notice: 'You must be an Administrator to perform this task.'
+      redirect_back_or root_path, :only_path => true, notice: 'You must be an Administrator to perform this task.'
     end
 end

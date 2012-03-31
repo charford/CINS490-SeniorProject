@@ -12,9 +12,11 @@ class User < ActiveRecord::Base
   validates   :firstname,             :presence => true
   validates   :lastname,              :presence => true
   validates   :password,              :presence => true,
-                                      :confirmation => true
+                                      :confirmation => true,
+                                      :on => :create
                                     
-  validates   :password_confirmation, :presence => true
+  validates   :password_confirmation, :presence => true,
+                                      :on => :create
   # validate    :password_must_be_present
   validates   :reference_hash,        :uniqueness => true
   has_many    :applicants,            :dependent => :destroy

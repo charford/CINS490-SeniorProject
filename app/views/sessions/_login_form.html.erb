@@ -10,6 +10,5 @@
   <div class="actions">
     <%= f.submit @title %>
   </div>
-  <p>Forgot your password? <b>Click here.</b></p>
-  <p>Need confirmation email resent? <b>Click here.</b></p>
+  <p>Forgot your password? <b><%= link_to "Click here.", "/forgotpw" %></b></p>
 <% end %>

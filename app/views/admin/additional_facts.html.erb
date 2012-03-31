@@ -24,7 +24,7 @@
             <td><%= User.find(fact.evaluator_id) %></td>
             <td><%= fact.created_at.strftime("%m/%d/%Y") %></td>
             <td style='text-align: right'>      
-              <%= link_to 'Destroy', fact, confirm: 'Performing this action will remove all related data, including job applications that belong to this user. Are you sure?', method: :delete %>
+              <%= link_to 'Destroy', job_jobapp_applicant_additional_fact_path(fact.applicant.job, fact.applicant.job.jobapp, fact.applicant, fact), confirm: 'Performing this action will remove all related data, including job applications that belong to this user. Are you sure?', method: :delete %>
             </td>
           </tr>
         <% end %>

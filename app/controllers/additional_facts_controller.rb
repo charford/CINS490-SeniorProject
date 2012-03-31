@@ -43,7 +43,7 @@ class AdditionalFactsController < ApplicationController
     @additional_fact.destroy
 
     respond_to do |format|
-      format.html { redirect_to additional_facts_url }
+      format.html { redirect_to "/admin/additional_facts" }
     end
   end
 end

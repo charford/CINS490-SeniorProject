@@ -23,6 +23,7 @@ class AdminController < ApplicationController
 
   def additional_facts
     @additional_facts = AdditionalFact.all
+        
   end
 
   def ratings

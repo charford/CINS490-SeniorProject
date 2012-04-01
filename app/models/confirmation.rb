@@ -1,5 +1,5 @@
 class Confirmation < ActiveRecord::Base
-  has_many :users
+  belongs_to :user
   validates :user_id, :presence => true,
                       :uniqueness => true
   validates :confirm_hash, :presence => true,

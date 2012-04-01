@@ -1,10 +1,4 @@
 JobmeApp::Application.routes.draw do
-  #resources :additional_facts
-
-  resources :reset_requests, :only => [:destroy]
-
-  resources :confirmations
-
   resources :references, :only => [:new,:create]
   resources :administrators, :only => [:create, :destroy]
   resources :hiring_managers, :only => [:create, :destroy]
@@ -38,6 +32,7 @@ JobmeApp::Application.routes.draw do
   match '/references/:user_id/:reference_hash', :to => 'references#new'
   match '/users/:id/jobapps', :to => 'users#jobapps'
   match '/admin/users', :to => 'admin#users'
+  match '/admin/confirmations', :to => 'admin#confirmations'
   match '/admin', :to => 'admin#index'
   match '/admin/jobs', :to => 'admin#jobs'
   match '/admin/applicants', :to => 'admin#applicants'

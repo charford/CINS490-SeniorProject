@@ -9,6 +9,10 @@ class AdminController < ApplicationController
     @users = User.find(:all, :order => ("lastname,firstname"))
   end
 
+  def confirmations
+    @confirmations = Confirmation.all
+  end
+
   def jobs
     @jobs = Job.find(:all, :order => ("position"))
   end

@@ -44,6 +44,7 @@ JobmeApp::Application.routes.draw do
   match '/admin/ratings', :to => 'admin#ratings'
   match '/admin/permissions', :to => 'admin#permissions'
   match '/admin/additional_facts', :to => 'admin#additional_facts'
+  match '/admin/reset_requests', :to => 'admin#reset_requests'
   match '/users/:id/deactivate', :to => 'users#deactivate'
   match '/users/:id/activate', :to => 'users#activate'
   match '/users/:id/confirm/:confirm_hash', :to => 'users#confirm'

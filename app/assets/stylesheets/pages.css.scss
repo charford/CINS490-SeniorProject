@@ -235,3 +235,12 @@ header nav span a {
   top: -15px;
   right: 0px;
 }
+.previous_page.disabled,.next_page.disabled {
+	display: none;
+}
+em.current {
+	font-weight: bold;
+}
+div.pagination {
+	text-align: right;
+}

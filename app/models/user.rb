@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   belongs_to  :administrator
   has_many    :references,            :dependent => :destroy
   has_one     :confirmation
-  has_one     :reset_request  #pw reset
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

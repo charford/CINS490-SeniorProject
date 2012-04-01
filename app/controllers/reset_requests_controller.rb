@@ -1,4 +1,9 @@
 class ResetRequestsController < ApplicationController
+
+  def clean_up
+    
+  end
+
   # GET /reset_requests
   # GET /reset_requests.json
   def index

@@ -26,6 +26,10 @@ class AdminController < ApplicationController
         
   end
 
+  def reset_requests
+    @requests = ResetRequest.all
+  end
+
   def ratings
     @ratings = Rating.find(:all, :order => ("created_at DESC"))
   end

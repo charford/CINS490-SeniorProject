@@ -1,5 +1,5 @@
 class ResetRequestsController < ApplicationController
-  before_filter :is_admin?, :only => [:destroy,:deactivate,:activate]
+  before_filter :is_admin?, :only => [:destroy]
   # DELETE /reset_requests/1
   def destroy
     @reset_request = ResetRequest.find(params[:id])

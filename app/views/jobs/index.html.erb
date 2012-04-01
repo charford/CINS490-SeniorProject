@@ -22,7 +22,6 @@
       <ul> 
         <li><b>Description</b><br /> <%= job.description.html_safe %></li>
         <li><b>Minimum Qualifications</b><br /> <%= job.minimum_qualifications.html_safe %></li>
-        <li>Hiring Manager: <%= User.find(job.hiring_manager_id) %>
         </li>
       </ul>
     </div>

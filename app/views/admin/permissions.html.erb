@@ -3,7 +3,10 @@
   <%= render 'pages/admin_tabs' %>
   <div class="fwc_body">
 <%= render 'administrators' %>
+<%= will_paginate  @administrators, :param_name => 'admin_page' %>
 <%= render 'hiringmanagers' %>
+<%= will_paginate  @hiringmanagers, :param_name => 'hm_page' %>
 <%= render 'evaluators' %>
+<%= will_paginate  @evaluators, :param_name => 'eval_page' %>
 </div>
 </div>

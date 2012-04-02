@@ -1,10 +1,49 @@
 <nav>
-  <%= link_to content_tag(:span, 'Users'), '/admin/users' %>
-  <%= link_to content_tag(:span, 'Confirmations'), '/admin/confirmations' %>
-  <%= link_to content_tag(:span, 'Reset Requests'), '/admin/reset_requests' %>
-  <%= link_to content_tag(:span, 'Permissions'), '/admin/permissions' %>
+  <% if @tab == "users" %>
+    <%= link_to content_tag(:span, 'Users', :id => "current_tab"), '/admin/users' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Users'), '/admin/users' %>
+  <% end %>
+
+  <% if @tab == "confirmations" %>
+    <%= link_to content_tag(:span, 'Confirmations', :id => "current_tab"), '/admin/confirmations' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Confirmations'), '/admin/confirmations' %>
+  <% end %>
+
+  <% if @tab == "reset_requests" %>
+    <%= link_to content_tag(:span, 'Reset Requests', :id => "current_tab"), '/admin/reset_requests' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Reset Requests'), '/admin/reset_requests' %>
+  <% end %>
+
+  <% if @tab == "permissions" %>
+    <%= link_to content_tag(:span, 'Permissions', :id => "current_tab"), '/admin/permissions' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Permissions'), '/admin/permissions' %>
+  <% end %>
+
+  <% if @tab == "jobs" %>
+  <%= link_to content_tag(:span, 'Jobs', :id => "current_tab"), '/admin/jobs' %>
+  <% else %>
   <%= link_to content_tag(:span, 'Jobs'), '/admin/jobs' %>
-  <%= link_to content_tag(:span, 'Applicants'), '/admin/applicants' %>
-  <%= link_to content_tag(:span, 'Additional Facts'), '/admin/additional_facts' %>
-  <%= link_to content_tag(:span, 'Ratings'), '/admin/ratings' %>
+  <% end %>
+
+  <% if @tab == "applicants" %>
+    <%= link_to content_tag(:span, 'Applicants', :id => "current_tab"), '/admin/applicants' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Applicants'), '/admin/applicants' %>
+  <% end %>
+
+  <% if @tab == "additional_facts" %>
+    <%= link_to content_tag(:span, 'Additional Facts', :id => "current_tab"), '/admin/additional_facts' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Additional Facts'), '/admin/additional_facts' %>
+  <% end %>
+
+  <% if @tab == "ratings" %>
+    <%= link_to content_tag(:span, 'Ratings', :id => "current_tab"), '/admin/ratings' %>
+  <% else %>
+    <%= link_to content_tag(:span, 'Ratings'), '/admin/ratings' %>
+  <% end %>
 </nav>

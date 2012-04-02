@@ -1,7 +1,20 @@
 class AdminController < ApplicationController
   before_filter :authenticate
   before_filter :is_admin?
+
   def index
+    @users = User.all
+    @confirmations = Confirmation.all
+    @applicants = Applicant.all
+    @reset_requests = ResetRequest.all
+    @administrators = Administrator.all
+    @hiring_managers = HiringManager.all
+    @evaluators = Evaluator.all
+    @jobs = Job.all
+    @additional_facts = AdditionalFact.all
+    @ratings = Rating.all
+    @server_uptime = %x[uptime | cut -d',' -f1]
+    @server_load = %x[uptime | cut -d',' -f4 | cut -d':' -f2]
 
   end
 
@@ -14,7 +27,7 @@ class AdminController < ApplicationController
   end
 
   def jobs
-    @jobs = Job.find(:all, :order => ("position"))
+    @jobs = Job.find(:all, :order => ("created_at DESC"))
   end
 
   def applicants
@@ -26,7 +39,7 @@ class AdminController < ApplicationController
   end
 
   def additional_facts
-    @additional_facts = AdditionalFact.all
+    @additional_facts = AdditionalFact.find(:all, :order => ("created_at DESC"))
         
   end
 

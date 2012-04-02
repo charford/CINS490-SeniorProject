@@ -18,7 +18,8 @@
       <tr>
         <td><%= link_to confirmation.user, confirmation.user %></td>
         <td><%= time_ago_in_words(confirmation.created_at) %> ago</td>
-        <td><%= confirmation.confirm_hash %></td>
+        <td><%= link_to confirmation.confirm_hash, 
+                  "/users/#{confirmation.user_id}/confirm/#{confirmation.confirm_hash}" %></td>
         <td style='text-align: right'>      
           <%= link_to 'Destroy', confirmation, confirm: 'Performing this action will remove all related data, including job applications that belong to this user. Are you sure?', method: :delete %>
         </td>

@@ -2,7 +2,75 @@
   <h1>Administration</h1>
   <%= render 'pages/admin_tabs' %>
   <div class="fwc_body">
-
- </div>
-
+    <h3>System Information</h3>
+    <div id="table_border">
+    <table>
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th style="text-align: right">Count</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Users:</td>
+          <td style="text-align: right"><%= @users.count %></td>
+        </tr>
+        <tr>
+          <td>Confirmations:</td>
+          <td style="text-align: right"><%= @confirmations.count %></td>
+        </tr>
+        <tr>
+          <td>Reset Requests:</td>
+          <td style="text-align: right"><%= @reset_requests.count %></td>
+        </tr>
+        <tr>
+          <td>Administrators:</td>
+          <td style="text-align: right"><%= @administrators.count %></td>
+        </tr>
+        <tr>
+          <td>Hiring Managers:</td>
+          <td style="text-align: right"><%= @hiring_managers.count %></td>
+        </tr>
+        <tr>
+          <td>Evaluators:</td>
+          <td style="text-align: right"><%= @evaluators.count %></td>
+        </tr>
+        <tr>
+          <td>Jobs:</td>
+          <td style="text-align: right"><%= @jobs.count %></td>
+        </tr>
+        <tr>
+          <td>Applicants:</td>
+          <td style="text-align: right"><%= @applicants.count %></td>
+        </tr>
+        <tr>
+          <td>Additional Facts:</td>
+          <td style="text-align: right"><%= @additional_facts.count %></td>
+        </tr>
+        <tr>
+          <td>Ratings:</td>
+          <td style="text-align: right"><%= @ratings.count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3></h3>
+  <div id="table_border">
+    <table>
+      <thead>
+        <tr>
+          <th>Uptime</th>
+          <th>Load Averages</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @server_uptime %></td>
+          <td><%= @server_load %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
 </div>

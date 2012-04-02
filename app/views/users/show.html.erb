@@ -17,7 +17,7 @@
       </p>
       <h3>Address</h3>
       <p>
-        <%=  @user.address.nil? ? "None provided" : @user.address %>
+        <%= @user.address.nil? ? "None provided" : @user.address %>
       </p>
     </div>
     <div class="applicant_right">
@@ -42,7 +42,7 @@
         <% if is_an_administrator? %>
           <p>
             <b>Reference Hash:</b>
-            <%= @user.reference_hash %>
+            <%= link_to @user.reference_hash, "/references/#{@user.id}/#{@user.reference_hash}" %>
           </p>
         <% end %>
       </div>

@@ -3,7 +3,7 @@
   <h1>Listing jobs</h1>
   <%= "render 'pages/tabs'" %>
   <div class="fwc_body">
-
+  <%= will_paginate @jobs %>
   <% @jobs.each do |job| %>
   <div class="job_container">
     <nav>

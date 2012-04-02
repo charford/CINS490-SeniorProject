@@ -4,6 +4,8 @@ JobmeApp::Application.routes.draw do
   resources :hiring_managers, :only => [:create, :destroy]
   resources :evaluators, :only => [:create, :destroy]
   resources :sessions, :only => [:create, :new, :destroy]
+  resources :reset_requests, :only => [:destroy]
+  resources :confirmations, :only => [:destroy]
 
   #resources :users, :only => [:new, :create, :edit, :update, :destroy, :show] do
   resources :users do

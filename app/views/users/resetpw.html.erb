@@ -3,8 +3,8 @@
 
   <div class="fwc_body">
     <%= form_tag("", :id => "resetpw_form") do |f| %>
-      <%= text_field_tag :password, params[:password], :placeholder => "Enter password here" %>
-      <%= text_field_tag :password_confirmation, params[:password_confirmation], :placeholder => "Confirm password here" %>
+      <%= password_field_tag :password, params[:password], :placeholder => "Enter password here" %>
+      <%= password_field_tag :password_confirmation, params[:password_confirmation], :placeholder => "Confirm password here" %>
       <%= submit_tag "Reset Password" %>
     <% end %>
   </div>

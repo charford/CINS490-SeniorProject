@@ -13,6 +13,9 @@ header .search_form .fields input {
 	float: right;
 	border-right: 1px;
 }
+header .search_form .fields input:hover {
+	background-color: #ffffee;
+}
 header .search_form .actions input {
 	border: 2px solid #ccc;
 	border-radius: 0px 6px 6px 0px;
@@ -28,6 +31,6 @@ header .search_form .actions {
 }
 
 header .search_form .actions input:hover {
-	background-color: white;
+	background-color: #ffffee;
 	cursor: pointer;
 }

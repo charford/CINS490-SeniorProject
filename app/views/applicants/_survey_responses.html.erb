@@ -8,7 +8,7 @@
           <% if answer.question.nil? %>
             This question is missing.
           <% else %>
-            <%= answer.question.body.html_safe if answer.question.body.nil? %>
+            <%= answer.question.body.html_safe if !answer.question.body.nil? %>
           <% end %>
         </p>
         <b>Response:</b><br />

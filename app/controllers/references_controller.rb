@@ -1,25 +1,27 @@
 class ReferencesController < ApplicationController
- # before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
+  before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
+  #before_filter :verify_hash_is_valid, :only => [:create,:new]
+
   #before_filter :correct_user, :except => [:new, :create]
 
-  # GET /references
-  def index
-    @user = User.find(params[:user_id])
-    @references = @user.references
+  # # GET /references
+  # def index
+  #   @user = User.find(params[:user_id])
+  #   @references = @user.references
 
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #   end
+  # end
 
-  # GET /references/1
-  def show
-    @reference = Reference.find(params[:id])
+  # # GET /references/1
+  # def show
+  #   @reference = Reference.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #   end
+  # end
 
   # GET /references/new
   def new
@@ -42,10 +44,6 @@ class ReferencesController < ApplicationController
     end
   end
 
-  def request_reference
-    
-  end
-
   # DELETE /references/1
   def destroy
     @reference = Reference.find(params[:id])
@@ -57,7 +55,9 @@ class ReferencesController < ApplicationController
   end
     private
     def verify_hash_is_valid
-      User.find(@reference.user_id).reference_hash == @reference.reference_hash ? true : false
+      user = User.find(params[:user_id])
+      return false if user.nil?
+      user.reference_hash == params[:reference_hash] ? true : false
     end
 
     def is_correct_user_and_hash?

@@ -39,6 +39,12 @@
       </div>
       <div class="container">
         <%= render "references" %>
+        <% if is_an_administrator? %>
+          <p>
+            <b>Reference Hash:</b>
+            <%= @user.reference_hash %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>

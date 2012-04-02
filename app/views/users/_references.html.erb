@@ -1,4 +1,7 @@
 <h3>References (<%= @user.references.count %>)</h3>
+<% if @user.references.empty? %>
+  <p>No references available.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -17,6 +20,4 @@
     <% end %>
   </tbody>
 </table>
-<% if @user.references.empty? %>
-  <p>No references available.</p>
 <% end %>

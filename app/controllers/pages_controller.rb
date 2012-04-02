@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-	@title = "Do what you love."
+	@title = "Find A Job"
   end
 
   def admin

@@ -10,7 +10,7 @@ module ApplicantsHelper
       !applicant.ratings.empty? ? "
       <div class='field' id='#{rating_styles[average.to_i]}'>
       <label>Average:</label>
-        #{average} / 5
+        #{'%.2f' % average} / 5
       </div>
       <div class='field'>
         <label>Max:</label>

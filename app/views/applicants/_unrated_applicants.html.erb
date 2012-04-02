@@ -6,19 +6,13 @@
       <th>Applied</th>
       <th>Average Rating</th>
       <th></th>
-      <th></th>
     </tr>
     <% @unrated_applicants.each do |applicant| %>
       <tr>
-        <td><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-        <td><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
-        <td>Not rated</td>
-        <td><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-        <td>
-          <span  class="rating_text_row"><%= link_to 'Destroy', job_jobapp_applicant_path(@job,@job.jobapp,applicant), 
-                                              confirm: 'Are you sure?', method: :delete %>
-          </span>
-        </td>
+        <td style="width: 30%"><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
+        <td style="width: 30%"><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+        <td style="width: 30%">Not rated</td>
+        <td style="width: 10%; text-align: right"><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
       </tr>
     <% end %>
   </table>

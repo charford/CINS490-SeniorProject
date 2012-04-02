@@ -10,7 +10,7 @@ class Job < ActiveRecord::Base
   validates :hiring_manager_id, :presence => true
 
   has_one :jobapp, :dependent => :destroy
-  attr_accessible :position,:description,:minimum_qualifications,:preferred_qualifications,:hiring_manager_id, :responsiblities, :salary, :published
+  attr_accessible :position,:description,:minimum_qualifications,:preferred_qualifications,:hiring_manager_id, :responsibilities, :salary, :published
 
   def to_param
     @job = Job.find(id)

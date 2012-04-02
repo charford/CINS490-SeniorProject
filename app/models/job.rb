@@ -19,8 +19,8 @@ class Job < ActiveRecord::Base
   def self.search(search)
     if search
       search_condition = "%" + search + "%"
-      where('position LIKE ? OR description LIKE ?', search_condition, search_condition)
-      order('created_at DESC')
+      where('position LIKE ? OR description LIKE ?', search_condition, search_condition).order('created_at DESC')
+      
     else
       scoped
       order('created_at DESC')

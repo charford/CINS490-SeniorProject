@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     ref_email = params[:email]
     UserMailer.request_reference(user,ref_email).deliver
-    redirect_to root_path, notice: "Successfully sent reference request to #{ref_email}"
+    redirect_to :back, notice: "Successfully sent reference request to #{ref_email}"
   end
 
   def confirm

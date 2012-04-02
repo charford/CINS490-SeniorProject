@@ -2,8 +2,7 @@ class Job < ActiveRecord::Base
   belongs_to :hiring_manager
   has_many   :applicants, :dependent => :destroy
   has_many   :users, :through => :applicants
- 
-
+  
   validates :position, 				  :presence => true
   validates :description,       :presence => true
   validates :minimum_qualifications,      :presence => true

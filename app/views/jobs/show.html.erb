@@ -9,24 +9,35 @@
   <h3>Description</h3>
   <%= BlueCloth.new(@job.description).to_html.html_safe %>
 
-
+  <% if !@job.minimum_qualifications.blank? %>
   <h3>Minimum Qualifications</h3>
   <%= BlueCloth.new(@job.minimum_qualifications).to_html.html_safe %>
+  <% end %>
 
+  <% if !@job.preferred_qualifications.blank? %>
   <h3>Preferred Qualifications</h3>
   <%= BlueCloth.new(@job.preferred_qualifications).to_html.html_safe %>
+  <% end %>
 
+  <% if !@job.responsibilities.blank? %>
   <h3>Responsibilities</h3>
   <%= BlueCloth.new(@job.responsibilities).to_html.html_safe %>
+  <% end %>
 
+  <% if !@job.salary.blank? %>
   <h3>Salary</h3>
   <%= BlueCloth.new(@job.salary).to_html.html_safe %>
+  <% end %>
 
+  <% if !@job.department.blank? %>
   <h3>Department</h3>
   <%= BlueCloth.new(@job.department).to_html.html_safe %>
+  <% end %>
 
+  <% if !@job.hiring_manager_id.blank? %>
   <h3>Hiring manager</h3>
   <%= BlueCloth.new(User.find(@job.hiring_manager_id)).to_html.html_safe %>
-
+  <% end %>
+  
 </div>
 </div>

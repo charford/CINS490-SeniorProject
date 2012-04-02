@@ -97,7 +97,7 @@ class ApplicantsController < ApplicationController
       if @applicant.update_attributes(params[:applicant])
         #format.html { redirect_to [@job,@applicant], notice: 'Applicant was successfully updated.' }
         #format.html { redirect_to user_jobapps_path(@applicant.user_id), notice: 'Application was successfully updated.' }
-        format.html { redirect_to user_job_apps_path(User.find(@applicant.user_id)), :only_path => true, notice: 'Application was successfully updated.' }
+        format.html { redirect_to User.find(@applicant.user_id), :only_path => true, notice: 'Application was successfully updated.' }
       else
         format.html { redirect_to edit_job_jobapp_applicant_path(@job,@job.jobapp), :only_path => true }
       end

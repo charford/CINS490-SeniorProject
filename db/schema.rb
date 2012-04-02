@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329051731) do
+ActiveRecord::Schema.define(:version => 20120402185250) do
 
   create_table "activeusers", :force => true do |t|
     t.integer  "user_id"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(:version => 20120329051731) do
   create_table "applicants", :force => true do |t|
     t.integer  "user_id"
     t.integer  "job_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "avgrating"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.decimal  "avgrating",  :precision => 8, :scale => 2
     t.boolean  "published"
   end
 

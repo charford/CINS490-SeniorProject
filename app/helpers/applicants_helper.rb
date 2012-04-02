@@ -8,7 +8,7 @@ module ApplicantsHelper
     average = applicant.ratings.average('rating')
       rating_styles = ['','rate_1','rate_2','rate_3','rate_4','rate_5']
       !applicant.ratings.empty? ? "
-      <div class='field' id='#{rating_styles[average]}'>
+      <div class='field' id='#{rating_styles[average.to_i]}'>
       <label>Average:</label>
         #{average} / 5
       </div>
@@ -57,7 +57,7 @@ module ApplicantsHelper
   end
 
   def set_row_color(applicant)
-    case applicant.avgrating
+    case applicant.avgrating.to_i
       when 1
         "<tr class=\"rating_1_row\">"
       when 2

@@ -1,6 +1,6 @@
 class Rating < ActiveRecord::Base
-  has_many :applicants
-  has_many :evaluators
+  belongs_to :applicant
+  belongs_to :evaluator
   validates :applicant_id,  :uniqueness => { :scope => :evaluator_id },
                             :presence => true
   validates :evaluator_id,  :presence => true

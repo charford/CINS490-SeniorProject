@@ -13,4 +13,9 @@ class Applicant < ActiveRecord::Base
     @user = User.find(user_id)
     "#{id}-#{@user.firstname.parameterize}-#{@user.lastname.parameterize}"
   end
+
+  def update_avgrating
+    average = self.ratings.average('rating')
+    self.update_attribute(:avgrating, average)
+  end
 end

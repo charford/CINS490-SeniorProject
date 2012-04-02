@@ -83,6 +83,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @tab = "view"
     @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -101,6 +102,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @tab = "edit"
     @user = User.find(params[:id])
     @submit_text = "Save Changes"
   end

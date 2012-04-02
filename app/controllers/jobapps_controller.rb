@@ -8,7 +8,6 @@ class JobappsController < ApplicationController
     question = @job.jobapp.questions.new
     question.job_id=@job.id
     question.qtype=params[:add_question]
-    
     question.save
   end
 
@@ -83,10 +82,8 @@ class JobappsController < ApplicationController
     respond_to do |format|
       if @jobapp.save
         format.html { redirect_to job_path(@job), notice: 'Application was successfully created.' }
-        format.json { render json: @jobapp, status: :created, location: @jobapp }
       else
         format.html { render action: "new" }
-        format.json { render json: @jobapp.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -94,14 +91,17 @@ class JobappsController < ApplicationController
   # PUT /jobapps/1
   # PUT /jobapps/1.json
   def update
+    if !params[:add_question].nil?
+      redirect_to root_path
+      return
+    end
     @jobapp = Jobapp.find(params[:id])
     respond_to do |format|
       if @jobapp.update_attributes(params[:jobapp])
-        format.html { redirect_to job_jobapp_path(@job,@jobapp), notice: 'Application was successfully updated.' }
-        format.json { head :no_content }
+        
+        format.html { redirect_to edit_job_jobapp_path(@job,@jobapp), notice: 'Application was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @jobapp.errors, status: :unprocessable_entity }
       end
     end
   end

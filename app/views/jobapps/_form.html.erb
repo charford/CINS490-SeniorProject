@@ -1,7 +1,6 @@
 <%= render 'pages/fancy_textarea' %>
 <%= render 'pages/confirm_before_close' %>
 <%= form_for([@job,@job.jobapp]) do |f| %>
-  <%= f.submit "Save Changes" , :class => "save_changes_button" %>
   <% if @jobapp.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jobapp.errors.count, "error") %> prohibited this jobapp from being saved:</h2>
@@ -19,21 +18,24 @@
     <%= f.text_area :intro %>
   </div>
 <div id="qfc">
- 
   <%= render 'question_fields', :ff => f, :q => :questions %>
-
-
 </div>
-
-<ul>
-
-<li><%= link_to "Short Answer", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "short") %></li>
-<li><%= link_to "Multiple Choice", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "multiple") %></li>
-<li><%= link_to "File Attachment", edit_job_jobapp_path(@job,@job.jobapp, :add_question => "file") %></li>
+<h3>Add Question</h3>
+<ul id="add_question_buttons">
+  <%= link_to content_tag(:li, 'Short Answer'), 
+        edit_job_jobapp_path(@job,@job.jobapp, :add_question => "short") %>
+  <%= link_to content_tag(:li, 'Multiple Choice'), 
+        edit_job_jobapp_path(@job,@job.jobapp, :add_question => "multiple") %>
+  <%= link_to content_tag(:li, 'File Attachment'), 
+        edit_job_jobapp_path(@job,@job.jobapp, :add_question => "file") %>
 </ul>
-
-<div class="fields">
+<h3>Save Changes</h3>
+<div class="field">
  <%= f.label :published %>
  <%= f.check_box :published, :confirm => "Are you sure?" %>
+</div>
+<div class="action">
+  <%= f.submit "Save Changes" , :class => "save_changes_button" %>
+  <%= f.submit "Save Changes" %>
 </div>
 <% end %>

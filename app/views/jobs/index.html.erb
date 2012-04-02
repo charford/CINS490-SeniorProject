@@ -21,7 +21,7 @@
       <h3><%= link_to job.position, job %></h3>
       <ul> 
         <li><b>Description</b><br /> <%= job.description.html_safe %></li>
-        <li><b>Minimum Qualifications</b><br /> <%= job.minimum_qualifications.html_safe %></li>
+        <li><b>Date Posted</b><br /> <%= job.created_at.strftime("%m/%d/%Y") %></li>
         </li>
       </ul>
     </div>

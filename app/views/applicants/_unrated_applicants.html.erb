@@ -1,19 +1,23 @@
 <h3>You have not rated these applicants</h3>
 <div id="table_border">
   <table>
+    <thead>
     <tr>
       <th>Name</th>
       <th>Applied</th>
       <th>Average Rating</th>
       <th></th>
     </tr>
-    <% @unrated_applicants.each do |applicant| %>
-      <tr>
-        <td style="width: 30%"><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-        <td style="width: 30%"><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
-        <td style="width: 30%">Not rated</td>
-        <td style="width: 10%; text-align: right"><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-      </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @unrated_applicants.each do |applicant| %>
+        <tr>
+          <td style="width: 30%"><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
+          <td style="width: 30%"><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+          <td style="width: 30%">Not rated</td>
+          <td style="width: 10%; text-align: right"><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

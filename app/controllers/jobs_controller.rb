@@ -16,7 +16,7 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
-
+    @tab = "overview"
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -34,6 +34,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
+    @tab = "overview"
     @job = Job.find(params[:id])
   end
 

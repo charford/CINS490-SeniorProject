@@ -1,22 +1,26 @@
 <h3>Applicants</h3>
 <div id="table_border">
   <table>
-    <tr>
-      <th>Name</th>
-      <th>Applied</th>
-      <th>Average Rating</th>
-      <th></th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Applied</th>
+        <th>Average Rating</th>
+        <th></th>
+      </tr>
+    </thead>
 
-    <% @applicants.each do |applicant| %>
-      <% if has_rated_applicant? applicant %>
-        <%= set_row_color(applicant).html_safe %>
-          <td style="width: 30%"><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-          <td style="width: 30%"><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
-          <td style="width: 30%"><%= applicant.ratings.average('rating') %></td>
-          <td style="width: 10%; text-align: right"><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
-        </tr>
+    <tbody>
+      <% @applicants.each do |applicant| %>
+        <% if has_rated_applicant? applicant %>
+          <%= set_row_color(applicant).html_safe %>
+            <td style="width: 30%"><%= link_to applicant.user, job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
+            <td style="width: 30%"><%= applicant.created_at.strftime("%m/%d/%Y") %></td>
+            <td style="width: 30%"><%= applicant.ratings.average('rating') %></td>
+            <td style="width: 10%; text-align: right"><%= link_to 'Display', job_jobapp_applicant_path(@job,@job.jobapp,applicant) %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
+    </tbody>
   </table>
 </div>

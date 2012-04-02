@@ -25,7 +25,6 @@ class JobappsController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @jobapps }
     end
   end
 
@@ -33,10 +32,9 @@ class JobappsController < ApplicationController
   # GET /jobapps/1.json
   def show
     @jobapp = Jobapp.find(params[:id])
-
+    @tab = "application"
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @jobapp }
     end
   end
 
@@ -48,19 +46,18 @@ class JobappsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @jobapp }
     end
   end
 
   # GET /jobapps/1/edit
   def edit
     @jobapp = Jobapp.find(params[:id])
+    @tab = "application"
 
     if params[:add_question]
       add_question
       respond_to do |format|
         format.html { redirect_to edit_job_jobapp_path(@job,@jobapp) }
-        format.js
       end
     end
 
@@ -68,7 +65,6 @@ class JobappsController < ApplicationController
       remove_question 
       respond_to do |format|
         format.html { redirect_to edit_job_jobapp_path(@job,@jobapp) }
-        format.js
       end
     end
   end
@@ -114,7 +110,6 @@ class JobappsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to job_jobapps_path(@job) }
-      format.json { head :no_content }
     end
   end
   private

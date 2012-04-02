@@ -14,6 +14,7 @@ class ApplicantsController < ApplicationController
   end
   # GET /applicants
   def index
+    @tab = "applicants"
     if Administrator.find_by_user_id(current_user)
       @evaluator_id = Administrator.find_by_user_id(current_user).user_id
     elsif Evaluator.find_by_user_id(current_user)
@@ -34,6 +35,7 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/1
   def show
+    @tab = "applicants"
     @applicant = Applicant.find(params[:id])
     @job = Job.find(params[:job_id])
     @rating = Rating.new
@@ -46,6 +48,7 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/new
   def new
+    @tab = "apply"
     @applicant = Applicant.new
     @job = Job.find(params[:job_id])
     @job.jobapp.questions.each do |question|

@@ -14,7 +14,7 @@ class AdminController < ApplicationController
     @additional_facts = AdditionalFact.all
     @ratings = Rating.all
     @server_uptime = %x[uptime | cut -d',' -f1]
-    @server_load = %x[uptime | cut -d',' -f4 | cut -d':' -f2]
+    @server_load = %x[uptime | cut -d':' -f5]
 
   end
 

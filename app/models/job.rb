@@ -21,9 +21,10 @@ class Job < ActiveRecord::Base
     if search
       search_condition = "%" + search + "%"
       where('position LIKE ? OR description LIKE ?', search_condition, search_condition)
+      order('created_at DESC')
     else
       scoped
-      #all
+      order('created_at DESC')
     end
   end
 end

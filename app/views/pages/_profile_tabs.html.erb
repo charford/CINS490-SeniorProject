@@ -1,12 +1,5 @@
 <nav>
-  <% if @tab == "view" %>
-    <%= link_to content_tag(:span, 'View Profile', :id => "current_tab"), user_path(@user) %>
-  <% else %>
-    <%= link_to content_tag(:span, 'View Profile'), user_path(@user) %>
-  <% end %>
-  <% if @tab == "edit" %>
-    <%= link_to content_tag(:span, 'View Profile', :id => "current_tab"), user_path(@user) %>
-  <% else %>
-    <%= link_to content_tag(:span, 'Edit Profile'), edit_user_path(@user) %>
-  <% end %>
+  <%= link_to content_tag(:span, 'View Profile', :id => @tab == "view" ? "current_tab" : ""), user_path(@user) %>
+
+  <%= link_to content_tag(:span, 'Edit Profile', :id => @tab == "edit" ? "current_tab" : ""), edit_user_path(@user) %>
 </nav>

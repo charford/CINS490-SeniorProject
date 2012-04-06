@@ -1,34 +1,18 @@
-<h1><%= @job.position %>&nbsp</h1>
+<h1><%= @job.position %></h1>
 <nav>
-<% if @job.id.nil? %>
-  <span>New Job</span>
-<% else %>
-  
-  <% if @tab == "overview" %>
-    <%= link_to content_tag(:span, 'Overview', :id => "current_tab"), @job %>
+  <% if @job.id.nil? %>
+    <span>New Job</span>
   <% else %>
-    <%= link_to content_tag(:span, 'Overview'), @job %>
-  <% end %>
+    <%= link_to content_tag(:span, 'Overview', :id =>  @tab == "overview" ? "current_tab" : ""),
+      @job %>
 
-  <% if @tab == "application" %>
-    <%= link_to content_tag(:span, 'Application', :id => "current_tab"), job_jobapp_path(@job,@job.jobapp) %>
-  <% else %>
-    <%= link_to content_tag(:span, 'Application'), job_jobapp_path(@job,@job.jobapp) %>
-  <% end %>
+    <%= link_to content_tag(:span, 'Application', :id=> @tab == "application" ? "current_tab" : ""),
+      job_jobapp_path(@job,@job.jobapp) %>
 
-  <% if is_faculty? %>
-    <% if @tab == "applicants" %>
-      <%= link_to content_tag(:span, 'Applicants', :id => "current_tab"), job_jobapp_applicants_path(@job,@job.jobapp) %>
-      <% else %>
-      <%= link_to content_tag(:span, 'Applicants'), job_jobapp_applicants_path(@job,@job.jobapp) %>
+    <% if is_faculty? %>
+      <%= link_to content_tag(:span, 'Applicants', :id => @tab == "applicants" ? "current_tab" : ""), job_jobapp_applicants_path(@job,@job.jobapp) %>
     <% end %>
-  <% end %>
 
-  <% if @tab == "apply" %>
-    <%= link_to content_tag(:span, 'Apply', :id => "current_tab"), new_job_jobapp_applicant_path(@job,@job.jobapp) %>
-  <% else %>
-    <%= link_to content_tag(:span, 'Apply'), new_job_jobapp_applicant_path(@job,@job.jobapp) %>
-
+    <%= link_to content_tag(:span, 'Apply', :id => @tab == "apply" ? "current_tab" : ""), new_job_jobapp_applicant_path(@job,@job.jobapp) %>
   <% end %>
-<% end %>
 </nav>

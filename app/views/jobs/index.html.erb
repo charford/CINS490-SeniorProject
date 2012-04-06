@@ -18,9 +18,9 @@
       <%= link_to content_tag(:span, 'Details'), job %>
       <%= link_to content_tag(:span, 'Apply Now!'), new_job_jobapp_applicant_path(job,job.jobapp) %>
     </nav>
-      <h3><%= link_to job.position, job %></h3>
+      <h3><%= link_to highlight(job.position,@search), job %></h3>
       <ul> 
-        <li><b>Description</b><br /> <%= job.description.html_safe %></li>
+        <li><b>Description</b><br /> <%= highlight(job.description.html_safe,@search) %></li>
         <li><b>Date Posted</b><br /> <%= job.created_at.strftime("%m/%d/%Y") %></li>
         </li>
       </ul>

@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.search(params[:search]).paginate(:page => params[:page], :per_page => 5)
-
+    @search = params[:search]
     respond_to do |format|
       format.html # index.html.erb
     end

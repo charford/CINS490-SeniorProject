@@ -48,5 +48,7 @@ JobmeApp::Application.routes.draw do
   match '/reset/:request_hash', :to => 'users#resetpw'
   match '/forgotpw', :to => 'users#forgotpw'
   match '/:user_id/request_reference', :to => 'users#request_reference'
+  match '/jobs/:job_id/jobapps/:jobapp_id/applicants/:applicant_id/references/:reference_id/show_attachment', :to => 'references#show_attachment'
+  match '/jobs/:job_id/jobapps/:jobapp_id/applicants/:applicant_id/references/:reference_id/get_attachment', :to => 'references#get_attachment'
 
 end

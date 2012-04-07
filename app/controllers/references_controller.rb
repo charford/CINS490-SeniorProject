@@ -26,6 +26,19 @@ class ReferencesController < ApplicationController
     end
   end
 
+  def show_attachment
+    @job = Job.find(params[:job_id])
+  end
+  
+  def get_attachment
+    @reference = Reference.find(params[:reference_id])
+    filename = @reference.photo_file_name
+    path = "references/#{@reference.id}/#{@reference.photo_file_name}"
+    send_file path, :filename => filename,
+            :type => "application/pdf",
+            :disposition => "attached"
+  end
+
   # DELETE /references/1
   def destroy
     @reference = Reference.find(params[:id])
@@ -55,5 +68,9 @@ class ReferencesController < ApplicationController
       return if Administrator.find_by_user_id(current_user)
       return if User.find_by_id(params[:user_id]) == current_user
       redirect_to root_path, :only_path => true
+    end
+
+    def sanitize_filename(filename)
+      filename.gsub(/[^0-9A-z.\-]/, '_')
     end
 end

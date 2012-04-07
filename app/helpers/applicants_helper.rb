@@ -88,4 +88,10 @@ module ApplicantsHelper
     end
     "#{total}"
   end
+  def show_reference_attachment_url applicant_id, reference_id
+    "/jobs/#{params[:job_id]}/jobapps/#{params[:jobapp_id]}/applicants/#{applicant_id}/references/#{reference_id}/show_attachment"
+  end
+  def get_reference_attachment_url jobapp_id=params[:jobapp_id], applicant_id=params[:applicant_id], reference_id=params[:reference_id]
+    "/jobs/#{params[:job_id]}/jobapps/#{jobapp_id}/applicants/#{applicant_id}/references/#{reference_id}/get_attachment"
+  end
 end

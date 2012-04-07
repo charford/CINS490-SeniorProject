@@ -5,7 +5,12 @@
       	Phone: <%= reference.phone.nil? ? "Not provided" : reference.phone %><br />
       	Email: <%= reference.email.nil? ? "Not provided" : mail_to(reference.email, reference.email)  %>
         <%= reference.letter.html_safe %></p>
-        <% if !User.find(@applicant.user_id).references.last == reference %>
+        <% if !reference.photo_file_name.nil? %>
+        <p>
+          <%= link_to "View Attachment", show_reference_attachment_url(@applicant.id,reference.id) %>
+        </p>
+        <% end %>
+        <% if User.find(@applicant.user_id).references.last != reference %>
         <h3></h3>
         <% end %>
       <% end %>

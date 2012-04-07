@@ -38,7 +38,12 @@
   <div class="field">
     <%= f.text_area :letter %>
   </div>
+  <h3>Add Attachment</h3>
+  <div class="field">
+    
+    <%= f.file_field :photo %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Reference" %>
   </div>
 <% end %>

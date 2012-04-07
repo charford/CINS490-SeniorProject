@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402185250) do
+ActiveRecord::Schema.define(:version => 20120407212519) do
 
   create_table "activeusers", :force => true do |t|
     t.integer  "user_id"
@@ -123,9 +123,12 @@ ActiveRecord::Schema.define(:version => 20120402185250) do
     t.string   "email"
     t.string   "phone"
     t.text     "letter"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "reference_hash"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.string   "photo_file_size"
   end
 
   create_table "reset_requests", :force => true do |t|

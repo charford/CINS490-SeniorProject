@@ -2,27 +2,6 @@ class ReferencesController < ApplicationController
   before_filter :is_correct_user_and_hash?, :only => [:new]
   before_filter :verify_hash_is_valid, :only => [:create]
 
-  #before_filter :correct_user, :except => [:new, :create]
-
-  # # GET /references
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @references = @user.references
-
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #   end
-  # end
-
-  # # GET /references/1
-  # def show
-  #   @reference = Reference.find(params[:id])
-
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #   end
-  # end
-
   # GET /references/new
   def new
     @reference = Reference.new

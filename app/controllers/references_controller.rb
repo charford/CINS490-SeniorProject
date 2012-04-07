@@ -1,7 +1,7 @@
 class ReferencesController < ApplicationController
   before_filter :is_correct_user_and_hash?, :only => [:new]
   before_filter :verify_hash_is_valid, :only => [:create]
-
+  before_filter :is_faculty?, :except => [:new,:create]
   # GET /references/new
   def new
     @reference = Reference.new
@@ -72,5 +72,11 @@ class ReferencesController < ApplicationController
 
     def sanitize_filename(filename)
       filename.gsub(/[^0-9A-z.\-]/, '_')
+    end
+    def is_faculty?
+      return if Administrator.find_by_user_id(current_user)
+      return if Evaluator.find_by_user_id(current_user)
+      return if HiringManager.find_by_user_id(current_user)
+      redirect_to root_path
     end
 end

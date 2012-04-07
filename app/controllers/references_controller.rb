@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
-  #before_filter :is_correct_user_and_hash?, :except => [:index, :destroy]
-  #before_filter :verify_hash_is_valid, :only => [:create,:new]
+  before_filter :is_correct_user_and_hash?, :only => [:new]
+  before_filter :verify_hash_is_valid, :only => [:create]
 
   #before_filter :correct_user, :except => [:new, :create]
 
@@ -34,12 +34,15 @@ class ReferencesController < ApplicationController
   # POST /references
   def create
     @reference = Reference.new(params[:reference])
-    #return if !verify_hash_is_valid
+    if !verify_hash_is_valid
+      redirect_to root_path
+      return
+    end
     respond_to do |format|
       if @reference.save
         format.html { redirect_to root_path, :only_path => true, notice: 'Reference was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :back }
       end
     end
   end
@@ -55,9 +58,12 @@ class ReferencesController < ApplicationController
   end
     private
     def verify_hash_is_valid
-      user = User.find(1)
-      return false if user.nil?
-      user.reference_hash == params[:reference_hash] ? true : false
+      user = User.find(params[:reference][:user_id])
+      if user.nil?
+        redirect_to root_path
+        return
+      end
+      user.reference_hash == params[:reference][:reference_hash] ? true : false
     end
 
     def is_correct_user_and_hash?

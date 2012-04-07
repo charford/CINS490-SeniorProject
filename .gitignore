@@ -16,3 +16,4 @@
 *.swp
 ORIG_README.rdoc
 /resumes/*
+.DS_Store

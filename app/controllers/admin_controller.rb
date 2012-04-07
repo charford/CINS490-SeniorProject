@@ -45,7 +45,6 @@ class AdminController < ApplicationController
   def additional_facts
     @tab = "additional_facts"
     @additional_facts = AdditionalFact.find(:all, :order => ("created_at DESC"))
-        
   end
 
   def reset_requests

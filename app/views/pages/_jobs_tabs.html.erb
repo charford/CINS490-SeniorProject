@@ -1,0 +1,5 @@
+<nav>
+  <% if is_a_hiring_manager? %>
+    <%= link_to content_tag(:span, 'New Job'), new_job_path %>
+  <% end %>
+</nav>

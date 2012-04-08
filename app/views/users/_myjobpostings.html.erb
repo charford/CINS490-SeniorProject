@@ -11,7 +11,7 @@
   <tbody>
     <% @myjobs.order("created_at DESC").each do |job| %>
       <tr>
-        <td><%= link_to_edit_job_app job %></td>
+        <td><%= link_to job.position, job %></td>
         <td><%= time_ago_in_words(get_application_date @user, job.id) %> ago</td>
         <td><%= time_ago_in_words(get_application_date_updated @user, job.id) %> ago</td>
         <td><%= job.published ? "Published" : "Not published" %></td>

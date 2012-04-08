@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
 
   def request_reference(user,ref_email,host_url,con_type)
     @user = user
-    @url = "#{con_type}#{host}/references/#{user.id}/#{user.reference_hash}"
+    @url = "#{con_type}#{host_url}/references/#{user.id}/#{user.reference_hash}"
     mail(:to => ref_email, :subject => "#{user} has requested a reference from you.")
   end
 

@@ -14,10 +14,11 @@ class UserMailer < ActionMailer::Base
   	mail(:to => user.email, :subject => "Welcome to JobMe! Account activation required.")
   end
 
-  def request_reference(user,ref_email)
-    con_type = "http://"
+  def request_reference(user,ref_email,ref_url,con_type)
     @user = user
-    @url = "http://localhost:3000/references/#{user.id}/#{user.reference_hash}"
+    @url = "#{con_type}#{ref_url}/references/#{user.id}/#{user.reference_hash}"
+    
+
     #@request_reference = RequestReference.new
     #@request_reference.request_hash = secure_hash("#{Time.now.utc}--{created_at}--{firstname}--{email}")
     #@request_reference.user_id = @user.id

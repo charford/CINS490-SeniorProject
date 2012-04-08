@@ -41,9 +41,9 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    hiring_manager = HiringManager.find_by_user_id(current_user.id).user_id
-    hiring_manager.nil? ? hiring_manager = Administrator.find_by_user_id(current_user.id).user_id : nil
-    params[:job][:hiring_manager_id] = hiring_manager
+    hiring_manager = HiringManager.find_by_user_id(current_user.id)
+    hiring_manager.nil? ? hiring_manager = Administrator.find_by_user_id(current_user.id) : nil
+    params[:job][:hiring_manager_id] = hiring_manager.user_id
     
     @job = Job.new(params[:job])
 

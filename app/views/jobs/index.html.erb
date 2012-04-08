@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="full_width_content">
-  <h1>Listing jobs</h1>
-  <%= "render 'pages/tabs'" %>
+  <h1>Listing Jobs</h1>
+  <%= render 'pages/jobs_tabs' %>
   <div class="fwc_body">
   <%= will_paginate @jobs %>
   <% @jobs.each do |job| %>

@@ -87,6 +87,7 @@ class UsersController < ApplicationController
   def show
     @tab = "view"
     @user = User.find(params[:id])
+    @myjobs = Job.where("hiring_manager_id = ?", @user.id)
     respond_to do |format|
       format.html # show.html.erb
     end

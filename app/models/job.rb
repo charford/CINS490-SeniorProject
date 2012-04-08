@@ -23,7 +23,7 @@ class Job < ActiveRecord::Base
       
     else
       scoped
-      order('created_at DESC')
+      order('created_at DESC')      
     end
   end
 end

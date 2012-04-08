@@ -21,6 +21,11 @@
       </p>
     </div>
     <div class="applicant_right">
+      <% if is_a_hiring_manager? %>
+        <div class="container">
+          <%= render "myjobpostings" %>
+        </div>
+      <% end %>
       <div class="container">
         <h3>My Jobs</h3>
         <%= render "jobapps" %>

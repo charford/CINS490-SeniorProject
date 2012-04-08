@@ -1,0 +1,21 @@
+<h3>My Job Postings</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Created</th>
+      <th>Last Edited</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @myjobs.order("created_at DESC").each do |job| %>
+      <tr>
+        <td><%= link_to_edit_job_app job %></td>
+        <td><%= time_ago_in_words(get_application_date @user, job.id) %> ago</td>
+        <td><%= time_ago_in_words(get_application_date_updated @user, job.id) %> ago</td>
+        <td><%= job.published ? "Published" : "Not published" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

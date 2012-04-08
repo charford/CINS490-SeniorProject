@@ -23,10 +23,11 @@ class UsersController < ApplicationController
   end
 
   def forgotpw
+    request.ssl? ? con_type = "https://" : con_type = "http://"
     if request.post?
       user = User.find_by_email(params[:email])
       if !user.nil?
-        if UserMailer.reset_request(user).deliver
+        if UserMailer.reset_request(user,request.host_with_port,con_type).deliver
           redirect_to root_path, notice: "Sent link to reset password successfully."
         else
           redirect_to root_path, notice: "An error occurred."
@@ -111,6 +112,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
+    request.ssl? ? con_type = "https://" : con_type = "http://"
     respond_to do |format|
       if @user.save
         if @user.id == 1
@@ -118,7 +120,7 @@ class UsersController < ApplicationController
           admin.user_id = @user.id
           admin.save
         end
-        UserMailer.welcome_email(@user).deliver
+        UserMailer.welcome_email(@user,request.host_with_port,con_type).deliver
         format.html { redirect_to login_path, :only_path => true, notice: 'User was successfully created.' }
       else
         #format.html { render action: "new" }

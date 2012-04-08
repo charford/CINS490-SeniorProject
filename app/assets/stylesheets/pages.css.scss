@@ -209,13 +209,15 @@ header nav span a {
 .fwc_body th {
   text-align: left;
 }
-
+.fwc_body th {
+  background-color: #eee;
+}
 .fwc_body td,.fwc_body th {
   padding: 3px;
   margin: 0pt;
 }
 .fwc_body td {
-  border-top: 1pt solid #eee;
+  border-top: 1px solid #eee;
 }
 
 .fwc_body h3 {

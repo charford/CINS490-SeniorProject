@@ -1,7 +1,7 @@
 <div class="new_jobs_container">
   <h1>New Job Postings</h1>
   <ul>
-  <% Job.find(:all, :order => 'updated_at DESC', :limit => '4').each do |job| %>
+  <% Job.find(:all, :order => 'updated_at DESC', :limit => '4', :conditions => ["published = ?", true]).each do |job| %>
     <li>
       <b><%= link_to job.position, job %></b><br /> Posted <%= time_ago_in_words(job.updated_at) %> ago.
     </li>

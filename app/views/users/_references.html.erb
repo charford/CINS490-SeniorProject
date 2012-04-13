@@ -1,7 +1,10 @@
+<% if @user.references.count > 0 %>
+<div class="container">
 <h3>References (<%= @user.references.count %>)</h3>
 <% if @user.references.empty? %>
   <p>No references available.</p>
 <% else %>
+<div id="table_border">
 <table>
   <thead>
     <tr>
@@ -20,4 +23,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
+<% end %>
+<p>
+</div>
 <% end %>

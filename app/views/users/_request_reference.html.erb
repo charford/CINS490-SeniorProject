@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Request a reference</h3>
+  <p>
+    Fill out the email address of your referral below.
+  </p>
+  <p>
+    <%= form_tag("/#{current_user.id}/request_reference", :id => "request_reference_form") do |f| %>
+      <%= text_field_tag :email, params[:email], :placeholder => "Enter email here" %>
+      <%= submit_tag "Request Reference" %>
+    <% end %>
+  </p>
+  <% if is_an_administrator? %>
+    <p>
+      <b>Reference Hash:</b>
+      <%= link_to @user.reference_hash, "/references/#{@user.id}/#{@user.reference_hash}" %>
+    </p>
+  <% end %>
+</div>

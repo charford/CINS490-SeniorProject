@@ -20,19 +20,19 @@ class ApplicantsController < ApplicationController
     elsif Evaluator.find_by_user_id(current_user)
       @evaluator_id = Evaluator.find_by_user_id(current_user).user_id
     end
-    # if is_the_hiring_manager?
+    if @job.hiring_manager_id == current_user.id
       @applicants = @job.applicants.where("published = ?", true)
       @unrated_applicants = @job.applicants.where("published = ?", true)
-    # else
-    #   @applicants = 
-    #     @job.applicants.where("published = ? 
-    #                           AND id IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
-    #                           true,@evaluator_id).order("avgrating DESC")
-    #   @unrated_applicants = 
-    #     @job.applicants.where("published = ? 
-    #                           AND id NOT IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
-    #                           true,@evaluator_id)
-    # end
+    else
+      @applicants = 
+        @job.applicants.where("published = ? 
+                              AND id IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
+                              true,@evaluator_id).order("avgrating DESC")
+      @unrated_applicants = 
+        @job.applicants.where("published = ? 
+                              AND id NOT IN (SELECT applicant_id FROM ratings WHERE evaluator_id = ?)",
+                              true,@evaluator_id)
+    end
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -146,12 +146,12 @@ class ApplicantsController < ApplicationController
       redirect_to job, :only_path => true, notice: 'You must be signed in to apply for a job.'
     end
 
-    def is_the_hiring_manager?
-      return true if is_admin?
+    # def is_the_hiring_manager?
+    #   return true if is_admin?
 
-      job = Job.find(params[:job_id])
-      return Job.where("hiring_manager_id = ? and id = ?", current_user.id,job.id)
-    end
+    #   job = Job.find(params[:job_id])
+    #   return Job.where("hiring_manager_id = ? and id = ?", current_user.id,job.id)
+    # end
 
     def is_the_applicant?
       return if Administrator.find_by_user_id(current_user)

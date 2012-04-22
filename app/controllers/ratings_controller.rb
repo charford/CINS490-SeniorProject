@@ -15,6 +15,7 @@ class RatingsController < ApplicationController
     params[:rating][:applicant_id] = params[:applicant_id]
     evaluator = Evaluator.find_by_user_id(current_user)
     evaluator.nil? ? evaluator = Administrator.find_by_user_id(current_user) : nil
+    evaluator.nil? ? evaluator = HiringManager.find_by_user_id(current_user) : nil
     params[:rating][:evaluator_id] = User.find(evaluator.user_id).id
 
     @rating = Rating.new(params[:rating])

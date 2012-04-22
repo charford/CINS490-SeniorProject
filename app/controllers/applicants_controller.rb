@@ -20,8 +20,8 @@ class ApplicantsController < ApplicationController
     elsif Evaluator.find_by_user_id(current_user)
       @evaluator_id = Evaluator.find_by_user_id(current_user).user_id
     end
-    if @job.hiring_manager_id == current_user.id or Administrator.find(current_user)
-      @applicants = @job.applicants.where("published = ?", true)
+    if @job.hiring_manager_id == current_user.id
+      @applicants = @job.applicants.where("published = ?", true).order("avgrating DESC")
       @unrated_applicants = @job.applicants.where("published = ?", true)
     else
       @applicants = 

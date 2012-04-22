@@ -1,8 +1,10 @@
 <div class="full_width_content">
   <%= render 'pages/tabs' %>
   <div class="fwc_body">
-    <% if !@unrated_applicants.empty? %>
-      <%= render 'unrated_applicants' %>
+    <% if @job.hiring_manager_id != current_user.id %>
+      <% if !@unrated_applicants.empty? %>
+        <%= render 'unrated_applicants' %>
+      <% end %>
     <% end %>
     <% if !@applicants.empty? %>
       <%= render 'rated_applicants' %>

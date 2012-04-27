@@ -41,8 +41,11 @@ module ApplicantsHelper
   end
 
   def has_rated_applicant?(applicant)
-    applicant.ratings.where("evaluator_id = ? and applicant_id = ?", current_user.id, applicant.id)
-
+    if applicant.ratings.where("evaluator_id = ? and applicant_id = ?", current_user.id, applicant.id).empty?
+      return false
+    else
+      return true
+    end
     # if Job.where("hiring_manager_id = ? and id = ?", current_user.id, applicant.job_id)
     #   applicant.ratings
     # else

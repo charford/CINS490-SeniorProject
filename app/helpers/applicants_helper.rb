@@ -46,11 +46,6 @@ module ApplicantsHelper
     else
       return true
     end
-    # if Job.where("hiring_manager_id = ? and id = ?", current_user.id, applicant.job_id)
-    #   applicant.ratings
-    # else
-    #   applicant.ratings.where("evaluator_id = ? and applicant_id = ?", current_user.id, applicant.id).empty? ? false : true
-    # end
   end
 
   def get_attachment(answer_id)

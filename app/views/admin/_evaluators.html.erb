@@ -15,7 +15,7 @@
   <tbody>
     <% @evaluators.each do |evaluator| %>
       <tr>
-        <td><%= User.find(evaluator.user_id) %></td>
+        <td><%= link_to User.find(evaluator.user_id), User.find(evaluator.user_id) %></td>
         <td></td>
         <td><%= evaluator.created_at.strftime("%m/%d/%Y") %></td>
         <td></td>

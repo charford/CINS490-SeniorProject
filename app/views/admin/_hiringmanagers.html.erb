@@ -15,7 +15,7 @@
   <tbody>
     <% @hiringmanagers.each do |hiringmanager| %>
       <tr>
-        <td><%= User.find(hiringmanager.user_id) %></td>
+        <td><%= link_to User.find(hiringmanager.user_id), User.find(hiringmanager.user_id) %></td>
         <td></td>
         <td><%= hiringmanager.created_at.strftime("%m/%d/%Y") %></td>
         <td></td>

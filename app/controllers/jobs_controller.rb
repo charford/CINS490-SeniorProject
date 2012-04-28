@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
-    
+    @tab = "new_job"
     respond_to do |format|
       format.html # new.html.erb
     end

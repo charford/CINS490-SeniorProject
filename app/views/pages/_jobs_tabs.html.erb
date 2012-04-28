@@ -1,5 +1,5 @@
 <nav>
   <% if is_a_hiring_manager? %>
-    <%= link_to content_tag(:span, 'New Job'), new_job_path %>
+    <%= link_to content_tag(:span, 'New Job', :id=> @tab == "new_job" ? "current_tab" : ""), new_job_path %>
   <% end %>
 </nav>

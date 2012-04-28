@@ -2,7 +2,6 @@ class HiringManagersController < ApplicationController
   before_filter :is_admin?
 
   # POST /hiring_managers
-  # POST /hiring_managers.json
   def create
     @hiring_manager = HiringManager.new(params[:hiring_manager])
 
@@ -16,7 +15,6 @@ class HiringManagersController < ApplicationController
   end
 
   # DELETE /hiring_managers/1
-  # DELETE /hiring_managers/1.json
   def destroy
     @hiring_manager = HiringManager.find(params[:id])
     @hiring_manager.destroy

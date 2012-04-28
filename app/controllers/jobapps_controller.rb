@@ -1,10 +1,12 @@
 class JobappsController < ApplicationController
   before_filter :get_job
-  #before_filter :is_hiring_manager?, :except => [:show]
   before_filter :validate_is_the_hiring_manager, :only => [:edit, :update]
 
+  def get_job
+    @job = Job.find(params[:job_id])
+  end
+
   def add_question
-    #jobapp = Jobapp.find(params[:jobapp_id])
     question = @job.jobapp.questions.new
     question.job_id=@job.id
     question.qtype=params[:add_question]
@@ -15,11 +17,7 @@ class JobappsController < ApplicationController
     Question.find(params[:remove_question]).destroy
   end
 
-  def get_job
-    @job = Job.find(params[:job_id])
-  end
   # GET /jobapps
-  # GET /jobapps.json
   def index
     @jobapps = Jobapp.all
     
@@ -29,23 +27,11 @@ class JobappsController < ApplicationController
   end
 
   # GET /jobapps/1
-  # GET /jobapps/1.json
   def show
     @jobapp = Jobapp.find(params[:id])
     @tab = "application"
     respond_to do |format|
       format.html # show.html.erb
-    end
-  end
-
-  # GET /jobapps/new
-  # GET /jobapps/new.json
-  def new
-    @jobapp = Jobapp.new
-    2.times { questions = @jobapp.questions.build }
-
-    respond_to do |format|
-      format.html # new.html.erb
     end
   end
 
@@ -69,23 +55,21 @@ class JobappsController < ApplicationController
     end
   end
 
-  # POST /jobapps
-  # POST /jobapps.json
-  def create
-    @jobapp = Jobapp.new(params[:jobapp])
-    @jobapp.job_id = @job.id
+  # # POST /jobapps
+  # def create
+  #   @jobapp = Jobapp.new(params[:jobapp])
+  #   @jobapp.job_id = @job.id
 
-    respond_to do |format|
-      if @jobapp.save
-        format.html { redirect_to job_path(@job), notice: 'Application was successfully created.' }
-      else
-        format.html { render action: "new" }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @jobapp.save
+  #       format.html { redirect_to job_path(@job), notice: 'Application was successfully created.' }
+  #     else
+  #       format.html { render action: "new" }
+  #     end
+  #   end
+  # end
 
   # PUT /jobapps/1
-  # PUT /jobapps/1.json
   def update
     if !params[:add_question].nil?
       redirect_to root_path
@@ -103,7 +87,6 @@ class JobappsController < ApplicationController
   end
 
   # DELETE /jobapps/1
-  # DELETE /jobapps/1.json
   def destroy
     @jobapp = Jobapp.find(params[:id])
     @jobapp.destroy
@@ -113,12 +96,6 @@ class JobappsController < ApplicationController
     end
   end
   private
-    # def is_hiring_manager?
-    #   @job = Job.find(params[:job_id])
-    #   return if Administrator.find_by_user_id(current_user)
-    #   return if HiringManager.find(current_user)
-    #   redirect_to job_jobapp_path(@job,@job.jobapp), notice: 'You must be a hiring manager to edit a job application.'
-    # end
     def validate_is_the_hiring_manager
       @job = Job.find(params[:job_id])
       return if Administrator.find_by_user_id(current_user)

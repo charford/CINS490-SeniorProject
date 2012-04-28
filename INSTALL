@@ -1,0 +1,181 @@
+JobMe Installation
+
+
+Requirements Before Installation
+
+* Linux based server, I tested with Ubuntu Server 32bit, should work fine with 64bit
+
+* Internet access
+
+Steps To Install
+1. Install Apache webserver
+2. Install RVM, Ruby, and Rails
+3. Install libmodpassenger
+4. Configure rails app
+5. Setup the Admin user
+
+=====================================================================================
+1. Install Apache webserver
+=====================================================================================
+
+  sudo apt-get install apache2
+
+=====================================================================================
+2. Install RVM, Ruby, and Rails
+=====================================================================================
+ 
+  Install curl:
+
+    sudo apt-get install curl
+ 
+  Install RVM:
+
+    curl -L get.rvm.io | bash -s stable
+
+  Load RVM:
+
+    source ~/.rvm/scripts/'rvm'
+
+  Find the requirements(follow the instructions to install them as well):
+
+    rvm requirements
+
+    For Ubuntu Server 11.10 32bit, the requirements can be installed with this line:
+
+      sudo apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion nodejs
+
+  Install ruby:
+
+    rvm install 1.9.2
+
+=====================================================================================
+3. Install libmodpassenger
+=====================================================================================
+
+  Install the passenger gem:
+
+    gem install passenger
+
+  Install the apache2 module:
+
+    passenger-install-apache2-module
+
+    The requirements will be displayed, with instructions on how to install.
+
+    For Ubuntu Server 11.10 32bit, the requirements can be installed with this line:
+    
+      sudo apt-get install libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev
+
+    Once requirements have been installed, try to install module again:
+    
+      passenger-install-apache2-module
+
+    At the end of the installation, there is 3 lines of code displayed, these
+    need to be added to the top of the httpd.conf file.
+
+    For Ubuntu Server 11.10 32bit, the code to add looked like this,
+    DO NOT USE, JUST AN EXAMPLE:
+
+      LoadModule passenger_module /home/casey/.rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.12/ext/apache2/mod_passenger.so
+      PassengerRoot /home/casey/.rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.12
+      PassengerRuby /home/casey/.rvm/wrappers/ruby-1.9.3-p194/ruby
+
+    On Ubuntu Server 11.10 32bit, the httpd file can be found in:
+
+      /etc/apache2/httpd.conf
+
+=====================================================================================
+4. Configure rails app
+=====================================================================================
+
+  The instructions below assume you are in the root directory of the rails app. In
+  this example, I put the jobme_app in my home directory.
+
+  Configure SMTP server:
+  
+    vi config/environment.rb
+    
+    Make sure that the :address is set correctly for your SMTP server. Also check to
+    
+    make sure the correct port is being used, and domain.
+
+  Install the bundle:
+
+    bundle install
+
+  Migrate db:
+
+    RAILS_ENV='production' rake db:migrate  
+
+  Precompile assets(required to make stylesheets work):
+
+    rake assets:precompile
+
+  Add virtualhost info to apache:
+
+    sudo vi /etc/apache2/sites-available/jobme
+    
+    For this example, I entered the following into the new file:
+
+     <VirtualHost *:80>
+        ServerName jobme.com
+        # !!! Be sure to point DocumentRoot to 'public'!
+        DocumentRoot /home/casey/jobme_app/public
+        <Directory /home/casey/jobme_app/public>
+           # This relaxes Apache security settings.
+           AllowOverride all
+           # MultiViews must be turned off.
+           Options -MultiViews
+        </Directory>
+     </VirtualHost>
+
+  Restart apache:
+    
+    sudo apachectl restart
+
+ 
+  You may need to restart the rails app:
+
+    From within the jobme root directory, do the following:
+    
+    mkdir tmp
+    touch tmp/restart.txt
+  
+=====================================================================================
+5. Setup the Admin user
+=====================================================================================
+
+  The first user to be created in the system is automatically assigned as the admin.
+
+  Use the web interface to "sign up" as a new user. The user must be activated, to
+
+  do this, retrieve the email that is sent with a confirmation link. 
+
+  
+  If you don't have access to the email, you will need the confirmation hash, which
+
+  can be retireved using the rails console.
+
+  
+    RAILS_ENV='production' rails c
+
+    Confirmation.all
+
+    Using the hash, you would make a url similar to the following:
+
+    http://jobme/users/1/confirm/faa3606f13279b82d3a50861e2dc1fca7de149e99769d47d4e98411507b78cb2
+
+    If you navigate to the URL, you will be able to activate the user.
+
+  
+    If the above method does not work, you can add a row to the ActiveUsers table, which will
+
+    Activate the user. It is recommended that you remove the confirmation hash when finished.
+
+    From the rails console:
+
+      au = Activeuser.new
+      au.user_id = 1
+      au.save
+
+      Confirmation.find_by_user_id(1).destroy    

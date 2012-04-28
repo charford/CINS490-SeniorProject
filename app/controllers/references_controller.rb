@@ -2,6 +2,7 @@ class ReferencesController < ApplicationController
   before_filter :is_correct_user_and_hash?, :only => [:new]
   before_filter :verify_hash_is_valid, :only => [:create]
   before_filter :is_faculty?, :except => [:new,:create]
+  
   # GET /references/new
   def new
     @reference = Reference.new

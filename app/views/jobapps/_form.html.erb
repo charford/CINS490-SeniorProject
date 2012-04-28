@@ -35,7 +35,7 @@
  <%= f.check_box :published, :confirm => "Are you sure?" %>
 </div>
 <div class="action">
-  <%= f.submit "Save Changes" , :class => "save_changes_button" %>
-  <%= f.submit "Save Changes" %>
+  <%= f.submit "Save Changes" , :class => "save_changes_button", :onclick => "needToConfirm = false;"  %>
+  <%= f.submit "Save Changes", :onclick => "needToConfirm = false;"  %>
 </div>
 <% end %>

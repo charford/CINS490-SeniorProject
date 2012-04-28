@@ -55,4 +55,7 @@
     <%= f.label "Publish job post?" %>
     <%= f.check_box :published %> Yes
 </div>
+<div class="action">
+  <%= f.submit "Save Changes", :onclick => "needToConfirm = false;"  %>
+</div>
 <% end %>

@@ -41,6 +41,7 @@ module ApplicantsHelper
   end
 
   def has_rated_applicant?(applicant)
+    return true if HiringManager.find_by_user_id(current_user)
     if applicant.ratings.where("evaluator_id = ? and applicant_id = ?", current_user.id, applicant.id).empty?
       return false
     else
